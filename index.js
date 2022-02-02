@@ -3,6 +3,8 @@ const fs = require("fs");
 
 const config = require("./config.json");
 const SlashCmd = require("./slashCMD");
+const token = process.env.TOKEN;
+const testtoken = process.env.TEST_TOKEN;
 
 const client = new Discord.Client({
     intents: [
@@ -142,6 +144,6 @@ process.on('multipleResolves', (type, promise, reason) => {
     }
 })
 
-client.login(TOKEN);
+client.login(token);
 
-//client.login(TEST_TOKEN);
+//client.login(testtoken);
