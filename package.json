@@ -1,22 +1,18 @@
 {
-  "name": "v13musicbot",
+  "name": "Discord Bot",
   "version": "1.0.0",
-  "description": "A Discord Music Bot built with latest Discord Voice Features",
+  "description": "DIscord Bots",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Music",
-    "Bot",
     "Discord",
     "Discord-jsv13",
     "v13",
     "js",
     "nodejs"
   ],
-  "author": "Tomato6966",
-  "license": "MIT",
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
     "colors": "^1.4.0",
