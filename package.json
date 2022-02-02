@@ -1,15 +1,26 @@
 {
-  "name": "Chiller",
+  "name": "v13musicbot",
   "version": "1.0.0",
-  "description": "a discord bot",
+  "description": "A Discord Music Bot built with latest Discord Voice Features",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Music",
+    "Bot",
+    "Discord",
+    "Discord-jsv13",
+    "v13",
+    "js",
+    "nodejs"
+  ],
+  "author": "Tomato6966",
+  "license": "MIT",
   "dependencies": {
-    "discord.js": "^13.5.0",
-    "fs": "^0.0.1-security"
+    "@discordjs/builders": "^0.6.0",
+    "colors": "^1.4.0",
+    "discord.js": "^13.1.0",
+    "moment": "^2.29.1"
   }
 }
