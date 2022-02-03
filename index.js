@@ -35,6 +35,23 @@ client.on('ready', () => {
     console.log(`     ┃ `.bold.brightGreen + ` /--/ ${client.user.tag} /--/ `.bold.brightGreen+ " ".repeat(-1+stringlength-` ┃ `.length-` /--/ ${client.user.tag} /--/ `.length)+ "┃".bold.brightGreen)
     console.log(`     ┃ `.bold.brightGreen + " ".repeat(-1+stringlength-` ┃ `.length)+ "┃".bold.brightGreen)
     console.log(`     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`.bold.brightGreen)
+    const arrayOfStatus = [
+        `test`,
+        `beta`,
+        `test`,
+        `beya`,
+        `With BAKA's head 💀`,
+        `--help || By CodeMaster100#7978`,
+     ];
+      
+      let index = 0;
+      setInterval(() => {
+        if(index === arrayOfStatus.length) index = 0;
+        const status = arrayOfStatus[index];
+        //console.log(status);
+        client.user.setActivity(status);
+        index++;
+      }, 5000)
 });
 
 
