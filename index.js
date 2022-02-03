@@ -48,5 +48,5 @@ client.on("messageCreate", message => {
     );
     }
 
-await interaction.reply({ content: 'Pong!', components: [row] });
+    message.channel.send({ content: 'Pong!', components: [row] });
 })
