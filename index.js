@@ -72,14 +72,28 @@ client.on('messageCreate', async message => {
 					.addOptions([
 						{
 							label: 'VIP Commands',
-              description: 'VIP Commands For VIPs',
               emoji: '938788355750105108',
 							value: 'Vip_option',
 						},
 						{
-							label: 'Bot Info Commands',
-              emoji: '938788355750105108',
+							label: 'Bot Commands',
+              emoji: '938792606014513222',
 							value: 'bot_option',
+						},
+            {
+							label: 'Utility Commands',
+              emoji: '📦',
+							value: 'utility_option',
+						},
+            {
+							label: 'Moderator Commands',
+              emoji: '938796723420147713',
+							value: 'moderator_option',
+						},
+            {
+							label: 'Fun Commands',
+              emoji: '938797555716882482',
+							value: 'fun_option',
 						},
 					]),
 			);
