@@ -4,7 +4,8 @@
   "description": "A Discord bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,9 @@
   "license": "Apache License 2",
   "dependencies":{
     "discord.js": "^13.6.0"
+  },
+  "engines": {
+    "node": ">=16.6.0"
   },
   "bugs": {
     "url": "https://github.com/Code19Master/Chiller-Bot/issues"
