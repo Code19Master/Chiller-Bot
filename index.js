@@ -57,7 +57,7 @@ client.on('ready', () => {
 
 
 
-client.on("messageCreate", async (message) => {
+client.on('interactionCreate', async interaction => {
     if (message.content === "test-") {
 		const row = new MessageActionRow()
 			.addComponents(
