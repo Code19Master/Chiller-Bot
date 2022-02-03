@@ -19,6 +19,7 @@ const client = new Discord.Client({
 });
 
 client.on("messageCreate", message => {
+    if (message.content === "--rr") {
     const row = new MessageActionRow()
     .addComponents(
         new MessageSelectMenu()
@@ -44,6 +45,7 @@ client.on("messageCreate", message => {
                 },
             ]),
     );
+    }
 
 await interaction.reply({ content: 'Pong!', components: [row] });
 })
