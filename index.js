@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
@@ -19,7 +20,7 @@ const client = new Discord.Client({
 });
 
 client.on("messageCreate", message => {
-    if (message.content === "--rr") {
+    if (message.content === "test-") {
     const row = new MessageActionRow()
     .addComponents(
         new MessageSelectMenu()
