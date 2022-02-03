@@ -59,28 +59,28 @@ client.on('ready', () => {
 
 client.on("messageCreate", async (message) => {
     if (message.content === "test-") {
-        let fun = new MessageMenuOption()
+        let fun = new MessageActionRow()
         .setLabel("Fun Commands")
         .setEmoji("875672722754113556")
         .setDescription("Moderation features of bottish")
         .setValue("fun");
      
-      let mod = new MessageMenuOption()
+      let mod = new MessageActionRow()
         .setLabel("Moderation Commands")
         .setDescription("Moderation features of bottish")
         .setValue("mod");
 
-        let helpmenu = new MessageMenu()
+        let helpmenu = new MessageSelectMenu()
         .setID("helpmenu")
         .setPlaceholder("Search commands")
         .addOption(fun)
         .addOption(mod)
 
-        await message.channel.send('helpme', {
-            component: helpmenu
-          });
+        message.channel.send({ content: 'Pong!', components: [helpmenu] })
+    }
+
           
-}
+
 })
 
 client.login(token);
