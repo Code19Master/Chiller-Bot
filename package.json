@@ -1,22 +1,28 @@
 {
-  "name": "Discord Bot",
+  "name": "chiller",
   "version": "1.0.0",
-  "description": "Discord Bots",
+  "description": "A Discord bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code19Master/Chiller-Bot.git"
   },
   "keywords": [
-    "Discord",
-    "Discord-jsv13",
-    "v13",
-    "js",
-    "nodejs"
+    "Multipurpose",
+    "Discord Bot",
+    "Discord Server",
+    "Discord"
   ],
-  "dependencies": {
-    "@discordjs/builders": "^0.6.0",
-    "colors": "^1.4.0",
-    "discord.js": "^13.1.0",
-    "moment": "^2.29.1"
-  }
+  "author": "CodeMaster100",
+  "license": "Apache License 2",
+  "dependencies":{
+    "discord.js": "^13.6.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Code19Master/Chiller-Bot/issues"
+  },
+  "homepage": "https://github.com/Code19Master/Chiller-Bot#readme"
 }
