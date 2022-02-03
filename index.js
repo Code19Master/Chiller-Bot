@@ -59,24 +59,27 @@ client.on('ready', () => {
 
 client.on("messageCreate", async (message) => {
     if (message.content === "test-") {
-        let fun = new MessageActionRow()
-        .setLabel("Fun Commands")
-        .setEmoji("875672722754113556")
-        .setDescription("Moderation features of bottish")
-        .setValue("fun");
-     
-      let mod = new MessageActionRow()
-        .setLabel("Moderation Commands")
-        .setDescription("Moderation features of bottish")
-        .setValue("mod");
+		const row = new MessageActionRow()
+			.addComponents(
+				new MessageSelectMenu()
+					.setCustomId('select')
+					.setPlaceholder('Nothing selected')
+					.addOptions([
+						{
+							label: 'Select me',
+							description: 'This is a description',
+							value: 'first_option',
+						},
+						{
+							label: 'You can select me too',
+							description: 'This is also a description',
+							value: 'second_option',
+						},
+					]),
+			);
 
-        let helpmenu = new MessageSelectMenu()
-        .setID("helpmenu")
-        .setPlaceholder("Search commands")
-        .addOption(fun)
-        .addOption(mod)
+		await message.channel.send({ content: 'Pong!', components: [row] });
 
-        message.channel.send({ content: 'Pong!', components: [helpmenu] })
     }
 
           
