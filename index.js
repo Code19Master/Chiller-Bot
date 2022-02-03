@@ -59,7 +59,27 @@ client.on('ready', () => {
 
 client.on("messageCreate", message => {
     if (message.content === "test-") {
-    message.channel.send("work pls");
+        let fun = new MessageMenuOption()
+        .setLabel("Fun Commands")
+        .setEmoji("875672722754113556")
+        .setDescription("Moderation features of bottish")
+        .setValue("fun");
+     
+      let mod = new MessageMenuOption()
+        .setLabel("Moderation Commands")
+        .setDescription("Moderation features of bottish")
+        .setValue("mod");
+
+        let helpmenu = new MessageMenu()
+        .setID("helpmenu")
+        .setPlaceholder("Search commands")
+        .addOption(fun)
+        .addOption(mod)
+
+        await message.channel.send('helpme', {
+            component: helpmenu
+          });
+          
 }
 })
 
