@@ -81,13 +81,7 @@ client.on('interactionCreate', async interaction => {
 					]),
 			);
 
-		await message.channel.send({ content: 'Pong!', components: [row] });
-
-    if (!interaction.isSelectMenu()) return;
-
-    if (interaction.customId === 'select') {
-      await interaction.update({ content: 'Something was selected!', components: [] });
-    }
+		await interaction.reply({ content: 'Pong!', components: [row] });
 
     }
 
