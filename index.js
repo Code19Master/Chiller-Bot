@@ -55,7 +55,10 @@ client.on('ready', () => {
 });
 
 
-
+client.on('interactionCreate', interaction => {
+	if (!interaction.isSelectMenu()) return;
+	console.log(interaction);
+});
 
 client.on('interactionCreate', async interaction => {
     if (message.content === "test-") {
@@ -80,11 +83,16 @@ client.on('interactionCreate', async interaction => {
 
 		await message.channel.send({ content: 'Pong!', components: [row] });
 
+    if (!interaction.isSelectMenu()) return;
+
+    if (interaction.customId === 'select') {
+      await interaction.update({ content: 'Something was selected!', components: [] });
     }
 
-          
+    }
 
-})
+});
+
 
 client.login(token);
 
