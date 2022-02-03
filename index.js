@@ -105,14 +105,14 @@ client.on('messageCreate', async message => {
    .setStyle('LINK')
    .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands')
    
-   .addComponents(
+   .addComponent(
    new MessageButton()
    .setLabel('Support Server')
    .setStyle('LINK')
    .setURL('https://discord.gg/59PfqAUN3Z')
    )
 
-   .addComponents(
+   .addComponent(
    new MessageButton()
    .setLabel('Vote Me')
    .setStyle('LINK')
