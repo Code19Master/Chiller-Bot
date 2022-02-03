@@ -55,11 +55,6 @@ client.on('ready', () => {
 });
 
 
-client.on('interactionCreate', interaction => {
-	if (!interaction.isSelectMenu()) return;
-	console.log(interaction);
-});
-
 client.on('interactionCreate', async interaction => {
     if (message.content === "test-") {
 		const row = new MessageActionRow()
