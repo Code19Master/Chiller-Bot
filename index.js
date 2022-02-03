@@ -54,7 +54,14 @@ client.on('ready', () => {
       }, 5000)
 });
 
+//help (interaction)
+client.on('interactionCreate', interaction => {
+	if (!interaction.isSelectMenu()) return;
+  await interaction.reply({ content: 'Something was selected!', components: [] });
+});
 
+
+//help (normal)
 client.on('messageCreate', async message => {
     if (message.content === "test-") {
 		const row = new MessageActionRow()
