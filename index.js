@@ -19,6 +19,9 @@ const client = new Discord.Client({
       ]
 });
 
+const token = process.env.TOKEN;
+const testtoken = process.env.TEST_TOKEN;
+
 client.on("messageCreate", message => {
     if (message.content === "test-") {
     const row = new MessageActionRow()
@@ -50,3 +53,9 @@ client.on("messageCreate", message => {
 
     message.channel.send({ content: 'work', components: [row] });
 })
+
+client.login(token);
+
+//for test
+
+//client.login(testtoken);
