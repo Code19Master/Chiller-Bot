@@ -8,11 +8,10 @@ const {
 } = require(`${process.cwd()}/handlers/functions`)
 module.exports = {
   name: "help",
-  category: "🔰 Info",
+  category: "Information",
   aliases: ["h", "commandinfo", "halp", "hilfe"],
   usage: "help [Command/Category]",
   description: "Returns all Commmands, or one specific command",
-  type: "bot",
   run: async (client, message, args, cmduser, text, prefix) => {
     
     let settings = client.settings.get(message.guild.id);
