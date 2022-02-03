@@ -57,7 +57,7 @@ client.on('ready', () => {
 //help (interaction)
 client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
-  interaction.reply({ content: 'Something was selected!', components: [] });
+  interaction.reply({ content: 'Something was selected!', components: [],ephemeral: true  });
 });
 
 
