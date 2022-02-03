@@ -90,7 +90,7 @@ module.exports = {
       await tempmsg.edit({
         embed: new MessageEmbed()
           .setColor(ee.color).setFooter(ee.footertext, ee.footericon)
-          .setAuthor("Successfully Reloaded:", "https://cdn.discordapp.com/emojis/833101995723194437.gif?v=1", "https://discord.gg/FQGXbypRf8")
+          .setAuthor("Successfully Reloaded:", "https://cdn.discordapp.com/emojis/833101995723194437.gif?v=1", "https://youtu.be/dQw4w9WgXcQ")
           .setTitle(`> **\`${client.commands.size} Commands\`**\n\n> **\`${eventcount} Events\`**\n\n> **\`${client.handlers.length} Modules/Features\`**`)
       })
     } catch (e) {

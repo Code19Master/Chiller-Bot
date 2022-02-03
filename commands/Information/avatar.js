@@ -35,7 +35,7 @@ module.exports = {
         return message.reply(e)
       }
       message.reply({embeds: [new Discord.MessageEmbed()
-        .setAuthor(`Avatar from: ${user.tag}`, user.displayAvatarURL({dynamic: true}), "https://discord.gg/FQGXbypRf8")
+        .setAuthor(`Avatar from: ${user.tag}`, user.displayAvatarURL({dynamic: true}), "https://youtu.be/dQw4w9WgXcQ")
         .setColor(ee.color)
         .addField("❱ PNG",`[\`LINK\`](${user.displayAvatarURL({format: "png"})})`, true)
         .addField("❱ JPEG",`[\`LINK\`](${user.displayAvatarURL({format: "jpg"})})`, true)

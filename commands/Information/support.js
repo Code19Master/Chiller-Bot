@@ -22,7 +22,12 @@ module.exports = {
   argstoomany_message: "", //Message if the user has too many / not enough args / too many plus args, which will be sent, leave emtpy / dont add, if you wanna use command.usage or the default message! [OPTIONAL]
   run: async (client, message, args, plusArgs, cmdUser, text, prefix) => {
     try {
-       message.reply("https://discord.com/invite/FQGXbypRf8");
+      message.reply({embeds: [new MessageEmbed()
+        .setColor(ee.color)
+        .setFooter(ee.footertext, ee.footericon)
+        .setTitle("Support Server")
+        .setDescription("Click The Button Below To Join Support Server")]
+      })
     } catch (e) {
       console.log(String(e.stack).bgRed)
       return message.reply({embeds: [new MessageEmbed()
