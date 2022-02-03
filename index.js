@@ -48,5 +48,5 @@ client.on("messageCreate", message => {
     );
     }
 
-    message.channel.send({ content: 'Pong!', components: [row] });
+    message.channel.send({ content: 'work', components: [row] });
 })
