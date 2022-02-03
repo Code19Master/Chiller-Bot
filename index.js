@@ -57,7 +57,7 @@ client.on('ready', () => {
 
 
 
-client.on("messageCreate", message => {
+client.on("messageCreate", async (message) => {
     if (message.content === "test-") {
         let fun = new MessageMenuOption()
         .setLabel("Fun Commands")
