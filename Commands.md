@@ -1,3 +1,11 @@
+Command Catergories - 
+Bot 
+Fun 
+Mod
+utilities
+VIP
+
+
 Bot Commands-
 
 Activity - utils

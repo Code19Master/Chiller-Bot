@@ -71,14 +71,15 @@ client.on('messageCreate', async message => {
 					.setPlaceholder('Nothing selected')
 					.addOptions([
 						{
-							label: 'Select me',
-							description: 'This is a description',
-							value: 'first_option',
+							label: 'VIP Commands',
+              description: 'VIP Commands For VIPs',
+              emoji: '938788355750105108',
+							value: 'Vip_option',
 						},
 						{
-							label: 'You can select me too',
-							description: 'This is also a description',
-							value: 'second_option',
+							label: 'Bot Info Commands',
+              emoji: '938788355750105108',
+							value: 'bot_option',
 						},
 					]),
 			);
