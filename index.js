@@ -81,9 +81,15 @@ client.on('interactionCreate', async interaction => {
 					]),
 			);
 
-		await interaction.reply({ content: 'Pong!', components: [row] });
+		await message.channel.send({ content: 'Pong!', components: [row] });
 
+    if (!interaction.isSelectMenu()) return;
+
+    if (interaction.customId === 'select') {
+      await message.channel.send({ content: 'Something was selected!', components: [] });
     }
+    }
+  
 
 });
 
