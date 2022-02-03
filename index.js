@@ -1,28 +1,49 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES"]});
+const client = new Discord.Client({
+    intents: [ Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_BANS,
+        Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+        Discord.Intents.FLAGS.GUILD_INTEGRATIONS,
+        Discord.Intents.FLAGS.GUILD_WEBHOOKS,
+        Discord.Intents.FLAGS.GUILD_INVITES,
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
+        Discord.Intents.FLAGS.GUILD_PRESENCES,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING,
+        Discord.Intents.FLAGS.DIRECT_MESSAGES,
+        Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+        Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING
+      ]
+});
 
 client.on("messageCreate", message => {
-  if(message.content === "Test msg") {
-    message.channel.send("working!")
-  }
-  if(message.content === "test msg") {
-    message.channel.send("working!")
-  }
-if(message.content.toLowerCase() ==="test embed") {
-let embed = new Discord.MessageEmbed()
-.setTitle("tis working?")
-.setDescription("yes tis working!")
-.setFooter("Status:clear!")
-.addField("all system rinning!", "botscriptnode")
-.setColor("GREEN")
-message.channel.send({embeds:[embed]})
-  }
-if(message.content ==="Test embed") {
-let embed = new Discord.MessageEmbed()
-.setTitle("tis working?")
-.setDescription("yes tis working!")
-.addField("all system running!", "botscriptnode")
-.setFooter("Status:clear!")
-.setColor("GREEN")
-message.channel.send({embeds:[embed]})
-  }
+    const row = new MessageActionRow()
+    .addComponents(
+        new MessageSelectMenu()
+            .setCustomId('select')
+            .setPlaceholder('Nothing selected')
+            .setMinValues(2)
+            .setMaxValues(3)
+            .addOptions([
+                {
+                    label: 'Select me',
+                    description: 'This is a description',
+                    value: 'first_option',
+                },
+                {
+                    label: 'You can select me too',
+                    description: 'This is also a description',
+                    value: 'second_option',
+                },
+                {
+                    label: 'I am also an option',
+                    description: 'This is a description as well',
+                    value: 'third_option',
+                },
+            ]),
+    );
+
+await interaction.reply({ content: 'Pong!', components: [row] });
+})
