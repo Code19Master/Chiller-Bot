@@ -63,7 +63,7 @@ client.on('interactionCreate', interaction => {
 
 //help (normal)
 client.on('messageCreate', async message => {
-    if (message.content === "c!help") {
+    if (message.content === "@help") {
 		const row = new MessageActionRow()
 			.addComponents(
 
@@ -115,13 +115,31 @@ client.on('messageCreate', async message => {
 					]),
           
 			);
+
+     const btnRow = new MessageActionRow().addComponents(
+      new MessageButton()
+      .setLabel('Invite Me')
+      .setStyle('LINK')
+      .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
+ 
+
+      new MessageButton()
+      .setLabel('Support Server')
+      .setStyle('LINK')
+      .setURL('https://discord.gg/59PfqAUN3Z'),
+
+      new MessageButton()
+      .setLabel('Vote Me')
+      .setStyle('LINK')
+      .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vot Me TOPGG 
+     )
       
 
 
 
   
  
-  await message.channel.send({ content: 'Pong!', components: row });
+  await message.channel.send({ content: 'Pong!', components: [row, btnrow] });
 
 
     }
