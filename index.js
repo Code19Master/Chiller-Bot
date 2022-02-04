@@ -139,7 +139,7 @@ client.on('messageCreate', async message => {
 
   
  
-  await message.channel.send({ content: 'Pong!', components: [ [row], [btnRow] ] });
+  await message.channel.send({ content: 'Pong!', components: [row] [btnRow]  });
 
 
     }
