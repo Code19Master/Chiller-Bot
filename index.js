@@ -66,6 +66,23 @@ client.on('messageCreate', async message => {
     if (message.content === "test-") {
 		const row = new MessageActionRow()
 			.addComponents(
+
+        new MessageButton()
+        .setLabel('Invite Me')
+        .setStyle('LINK')
+        .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
+   
+
+        new MessageButton()
+        .setLabel('Support Server')
+        .setStyle('LINK')
+        .setURL('https://discord.gg/59PfqAUN3Z'),
+
+        new MessageButton()
+        .setLabel('Vote Me')
+        .setStyle('LINK')
+        .setURL(''),
+
 				new MessageSelectMenu()
 					.setCustomId('select')
 					.setPlaceholder('Nothing selected')
@@ -99,29 +116,12 @@ client.on('messageCreate', async message => {
           
 			);
       
-   const btnrow = new MessageActionRow().addComponents(
-    new MessageButton()
-   .setLabel('Invite Me')
-   .setStyle('LINK')
-   .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands')
-   
-   .addComponent(
-   new MessageButton()
-   .setLabel('Support Server')
-   .setStyle('LINK')
-   .setURL('https://discord.gg/59PfqAUN3Z')
-   )
 
-   .addComponent(
-   new MessageButton()
-   .setLabel('Vote Me')
-   .setStyle('LINK')
-   .setURL('')
-  )
-)
+
+
   
  
-  await message.channel.send({ content: 'Pong!', components: [row, btnrow] });
+  await message.channel.send({ content: 'Pong!', components: [row] });
 
 
     }
