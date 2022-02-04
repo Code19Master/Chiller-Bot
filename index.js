@@ -63,7 +63,7 @@ client.on('interactionCreate', interaction => {
 
 //help (normal)
 client.on('messageCreate', async message => {
-    if (message.content === "test-") {
+    if (message.content === "c!help") {
 		const row = new MessageActionRow()
 			.addComponents(
 
@@ -121,7 +121,7 @@ client.on('messageCreate', async message => {
 
   
  
-  await message.channel.send({ content: 'Pong!', components: [row] });
+  await message.channel.send({ content: 'Pong!', components: row });
 
 
     }
