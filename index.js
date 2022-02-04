@@ -81,7 +81,7 @@ client.on('messageCreate', async message => {
         new MessageButton()
         .setLabel('Vote Me')
         .setStyle('LINK')
-        .setURL(''),
+        .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vot Me TOPGG 
 
 				new MessageSelectMenu()
 					.setCustomId('select')
