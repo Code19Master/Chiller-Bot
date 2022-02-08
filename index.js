@@ -128,7 +128,7 @@ client.on('messageCreate', async message => {
 
   
  
-  await message.channel.send({ embed: [firstmainembed], components: [row, but] });
+  await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
 
 
     }
