@@ -119,7 +119,7 @@ client.on('messageCreate', async message => {
       );
 
       const firstmainembed = new MessageEmbed()
-      .setTitle(':red_circle: **CHILLER HELP**')
+      .setTitle(':red_circle: ***CHILLER HELP***')
       .setColor('BLACK')
       .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse @help <command> to get more information about a command.')
 
