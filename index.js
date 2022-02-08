@@ -118,7 +118,7 @@ client.on('messageCreate', async message => {
       .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vot Me TOPGG 
       );
 
-      const embed = new MessageEmbed()
+      const firstmainembed = new MessageEmbed()
       .setTitle(':red_circle: **CHILLER HELP**')
       .setColor('BLACK')
       .setdescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\nUse @help <command> to get more information about a command.')
@@ -129,7 +129,7 @@ client.on('messageCreate', async message => {
 
   
  
-  await message.channel.send({ content: 'Pong!', components: [row, but] });
+  await message.channel.send({ embed: firstmainembed, components: [row, but] });
 
 
     }
