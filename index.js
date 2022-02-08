@@ -121,7 +121,7 @@ client.on('messageCreate', async message => {
       const embed = new MessageEmbed()
       .setTitle(':red_circle: **CHILLER HELP**')
       .setColor('BLACK')
-      .setdescription('> SpaceBot is an open source feature packed discord bot. Navigate the help menu to see all commands!\nUse @Spacebot help <command> to get more information about a command.')
+      .setdescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\nUse @help <command> to get more information about a command.')
 
 
 
