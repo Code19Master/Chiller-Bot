@@ -23,6 +23,8 @@ const client = new Discord.Client({
 
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
+const gif = Chiller-Bot/standard.gif;
+
 
 
 
@@ -104,7 +106,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Invite Me')
       .setStyle('LINK')
-      .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
+      .setURL('dsc.gg/chll'),
  
 
       new MessageButton()
@@ -122,6 +124,8 @@ client.on('messageCreate', async message => {
       .setTitle(':red_circle: ***CHILLER HELP***')
       .setColor('BLACK')
       .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse @help <command> to get more information about a command.')
+      .setThumbnail(gif)
+      
 
 
 
