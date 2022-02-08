@@ -23,7 +23,7 @@ const client = new Discord.Client({
 
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
-const gif = Chiller-Bot/standard.gif;
+const gif = require(`Chiller-Bot/standard.gif`);
 
 
 
