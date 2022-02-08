@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { MessageActionRow, MessageSelectMenu, MessageEmbed } = require('discord.js');
 const { MessageButton } = require('discord.js');
 const { Client, Intents, Collection } = require('discord.js');
 const client = new Discord.Client({
@@ -129,7 +129,7 @@ client.on('messageCreate', async message => {
 
   
  
-  await message.channel.send({ embed: firstmainembed, components: [row, but] });
+  await message.channel.send({ embed: [firstmainembed], components: [row, but] });
 
 
     }
