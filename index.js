@@ -105,7 +105,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Invite Me')
       .setStyle('LINK')
-      .setURL('dsc.gg/chll'),
+      .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
  
 
       new MessageButton()
