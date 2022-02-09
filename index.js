@@ -23,7 +23,6 @@ const client = new Discord.Client({
 
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
-const { Calculator } = require("weky");
 
 
 
