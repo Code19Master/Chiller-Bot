@@ -271,12 +271,12 @@ if (message.content.startsWith("@say")) {
   message.delete();
   message.channel.send(sayMessage);
 }
-//uptime which shows the time the bot has been online in hours, minutes and seconds
+//uptime
 if (message.content === "@uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
-  .setDescription(`> ${client.uptime}`)
+  .setDescription('> Uptime Is ' + Math.floor(bot.uptime / 1000 / 60) + ' Minutes And ' + Math.floor(bot.uptime / 1000) + ' Seconds')
   .setTimestamp()
   
   await message.channel.send({ embeds: [embed] });
@@ -298,7 +298,6 @@ if (message.content === "@ping") {
   .setTitle('***Pong!***')
   .setColor('BLACK')
   .addField('Ping:', client.ws.ping + 'ms')
-  .addField('API Latency', `${client.ws.ping}ms`)
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
