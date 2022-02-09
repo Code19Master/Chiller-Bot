@@ -317,6 +317,7 @@ if (message.content === "@botinfo") {
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
+}
 
 
 
