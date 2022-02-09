@@ -28,14 +28,8 @@ const testtoken = process.env.TEST_TOKEN;
 
 
 client.on('ready', () => {
-    const stringlength = 69;
-    console.log("\n")
-    console.log(`     ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓`.bold.brightGreen)
-    console.log(`     ┃ `.bold.brightGreen + " ".repeat(-1+stringlength-` ┃ `.length)+ "┃".bold.brightGreen)
-    console.log(`     ┃ `.bold.brightGreen + `Discord Bot is online!`.bold.brightGreen + " ".repeat(-1+stringlength-` ┃ `.length-`Discord Bot is online!`.length)+ "┃".bold.brightGreen)
-    console.log(`     ┃ `.bold.brightGreen + ` /--/ ${client.user.tag} /--/ `.bold.brightGreen+ " ".repeat(-1+stringlength-` ┃ `.length-` /--/ ${client.user.tag} /--/ `.length)+ "┃".bold.brightGreen)
-    console.log(`     ┃ `.bold.brightGreen + " ".repeat(-1+stringlength-` ┃ `.length)+ "┃".bold.brightGreen)
-    console.log(`     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`.bold.brightGreen)
+
+    console.log(`Logged in as ${client.user.tag}!`);
     const arrayOfStatus = [
         `test`,
         `beta`,
@@ -229,6 +223,47 @@ client.on('messageCreate', async message => {
   await message.channel.send({ embeds: [embed], components: [but] });
 
     }
+    //invite
+    if (message.content === "@invite") {
+        
+        const embed = new MessageEmbed()
+        .setTitle('***Invite Me***')
+        .setColor('BLACK')
+        .setDescription('> You Can Invite Me To Your Server By Using This Link')
+        .setTimestamp()
+  
+        const but = new MessageActionRow()
+        .addComponents(
+        new MessageButton()
+        .setLabel('Invite Me')
+        .setStyle('LINK')
+        .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
+        );
+        
+    await message.channel.send({ embeds: [embed], components: [but] });
+        
+  
+      }
+      //support
+      if (message.content === "@support") {
+        const embed = new MessageEmbed()
+        .setTitle('***Support Server***')
+        .setColor('BLACK')
+        .setDescription('> You Can Join My Support Server By Using This Link')
+        .setTimestamp()
+  
+        const but = new MessageActionRow()
+        .addComponents(
+        new MessageButton()
+        .setLabel('Support Server')
+        .setStyle('LINK')
+        .setURL('https://discord.gg/59PfqAUN3Z'),
+        );
+        
+    await message.channel.send({ embeds: [embed], components: [but] });
+        
+  
+      }
   
 
 });
