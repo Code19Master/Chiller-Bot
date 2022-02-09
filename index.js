@@ -271,7 +271,7 @@ if (message.content.startsWith("@say")) {
   message.delete();
   message.channel.send(sayMessage);
 }
-//uptime
+//uptime which shows the time the bot has been online in  minutes and seconds
 if (message.content === "@uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
