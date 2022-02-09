@@ -303,16 +303,20 @@ if (message.content === "@ping") {
 await message.channel.send({ embeds: [embed] });
 }
 
-//simp rate percentage from 1 to 100 percent
-if (message.content === "@simprate") {
+//bot info
+if (message.content === "@botinfo") {
   const embed = new MessageEmbed()
-  .setTitle('***Simp Rate***')
+  .setTitle('***Bot Info***')
   .setColor('BLACK')
-  .setDescription('Simp Rate:', `${Math.floor(Math.random() * 100) + 1}` + '%')
+  .addField('Bot Name:', client.user.username)
+  .addField('Bot ID:', client.user.id)
+  .addField('Bot Tag:', client.user.tag)
+  .addField('Bot Owner:', 'CodeMaster100#7978')
+  .addField('Bot Prefix:', '@')
+  .addField('Bot Version:', '1.0.0')
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
-}
 
 
 
