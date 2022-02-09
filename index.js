@@ -281,6 +281,17 @@ if (message.content === "@uptime") {
 
 await message.channel.send({ embeds: [embed] });
 }
+//avatar
+if (message.content === "@avatar") {
+  const embed = new MessageEmbed()
+  .setTitle('***Avatar***')
+  .setColor('BLACK')
+  .setDescription('Avatar: ' + message.author.avatarURL())
+  .setImage(message.author.avatarURL())
+  .setTimestamp()
+
+await message.channel.send({ embeds: [embed] });
+
         
   
 
