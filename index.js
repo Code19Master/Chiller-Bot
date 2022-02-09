@@ -23,7 +23,6 @@ const client = new Discord.Client({
 
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
-const { Calculator } = require("weky");
 
 
 
@@ -266,21 +265,7 @@ client.on('messageCreate', async message => {
   
       }
 
-      //calculator
-      if (message.content === "@calculator") {
-        await Calculator({
-          message: message,
-          embed: {
-              title: 'Calculator',
-              color: '#5865F2',
-              footer: 'CodeMaster100#7978',
-              timestamp: true
-          },
-          disabledQuery: 'Calculator is disabled!',
-          invalidQuery: 'The provided equation is invalid!',
-          othersMessage: 'Only <@{{author}}> can use the buttons!'
-      });
-      }
+    
 
         
   
