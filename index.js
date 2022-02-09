@@ -276,7 +276,7 @@ if (message.content === "@uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
-  .setDescription('Uptime: ' + client.uptime + 'ms')
+  .setDescription('Uptime: ' + client.uptime + 'ms \n\nUptime: ' + client.uptime / 1000 + 's \n\nUptime: ' + client.uptime / 60000 + 'm \n\nUptime: ' + client.uptime / 3600000 + 'h')
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
@@ -297,7 +297,8 @@ if (message.content === "@ping") {
   const embed = new MessageEmbed()
   .setTitle('***Pong!***')
   .setColor('BLACK')
-  .setDescription('Pong! ' + client.ping + 'ms')
+  .setDescription('Pong! ' + client.ping + 'ms\nLatency: ' + message.createdTimestamp - Date.now() + 'ms')
+  .addField('API Latency', `${client.ws.ping}ms`)
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
