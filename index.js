@@ -308,7 +308,7 @@ if (message.content === "@simprate") {
   const embed = new MessageEmbed()
   .setTitle('***Simp Rate***')
   .setColor('BLACK')
-  .setDescription('Simp Rate:', Math.floor(Math.random() * 100) + 1 + '%')
+  .setDescription('Simp Rate:', `${Math.floor(Math.random() * 100) + 1}` + '%')
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
