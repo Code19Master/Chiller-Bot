@@ -156,12 +156,13 @@ client.on('messageCreate', async message => {
       
 
     }
+    //VIP
     if (message.content === "@vip") {
       
       const embed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
-      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You can have Access To VIP Commands')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in `**@vip**')
       .setTimestamp()
 
       const but = new MessageActionRow()
@@ -171,8 +172,20 @@ client.on('messageCreate', async message => {
       .setStyle('LINK')
       .setURL('https://github.com/Code19Master/Chiller-Bot'),
       );
+      }
       
   await message.channel.send({ embeds: [embed], components: [but] });
+
+  //premium
+  if (message.content === "@premium") {
+      
+    const embed = new MessageEmbed()
+    .setTitle('***Get PREMIUM***')
+    .setColor('BLURPLE')
+    .setDescription('> You Can Get PREMIUM by Gifting Me A Gift Card at CodeMaster100#7978.\n> By Having VIP You can have Access To Premium Commands')
+    .setTimestamp()
+
+    await message.channel.send({ embeds: [embed] });
       
 
     }
