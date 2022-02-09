@@ -303,14 +303,14 @@ if (message.content === "@ping") {
 await message.channel.send({ embeds: [embed] });
 }
 //youtube search
-if (message.content.startsWith("@ytsearch")) {
+if (message.content.startsWith("@yt")) {
   const searchMessage = message.content.slice(3);
   if(!searchMessage) return message.channel.send("Please Provide A Message To Search!");
   //embed
   const embed = new MessageEmbed()
   .setTitle('***Youtube Search***')
   .setColor('BLURPLE')
-  .setDescription('Click on The Button Below To got to the search result')
+  .setDescription('Click on The Button Below To go to the search result')
   .setTimestamp()
   //button
   const but = new MessageActionRow()
