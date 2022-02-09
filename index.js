@@ -25,8 +25,6 @@ const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
 
 
-
-
 client.on('ready', () => {
 
     console.log(`Logged in as ${client.user.tag}!`);
@@ -315,8 +313,16 @@ if (message.content === "@botinfo") {
   .addField('Bot Prefix:', '@')
   .addField('Bot Version:', '1.0.0')
   .setTimestamp()
+  
+  const but = new MessageActionRow()
+  .addComponents(
+  new MessageButton()
+  .setLabel('Vote Me')
+  .setStyle('LINK')
+  .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vote Me TOPGG 
+  );
 
-await message.channel.send({ embeds: [embed] });
+await message.channel.send({ embeds: [embed], components: [but] });
 }
 
 
