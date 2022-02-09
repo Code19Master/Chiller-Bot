@@ -302,27 +302,21 @@ if (message.content === "@ping") {
 
 await message.channel.send({ embeds: [embed] });
 }
-//youtube search
-if (message.content.startsWith("@yt ")) {
-  const searchMessage = message.content.slice(3);
-  if(!searchMessage) return message.channel.send("Please Provide A Message To Search!");
-  //embed
+
+//simp rate percentage from 1 to 100 percent
+if (message.content === "@simprate") {
   const embed = new MessageEmbed()
-  .setTitle('***Youtube Search***')
-  .setColor('BLURPLE')
-  .setDescription('Click on The Button Below To go to the search result')
+  .setTitle('***Simp Rate***')
+  .setColor('BLACK')
+  .addField('Simp Rate:', Math.floor(Math.random() * 100) + 1)
   .setTimestamp()
-  //button
-  const but = new MessageActionRow()
-  .addComponents(
-  new MessageButton()
-  .setLabel('Result')
-  .setStyle('LINK')
-  .setURL('https://www.youtube.com/results?search_query=' + searchMessage),
-  );
-  message.channel.send({ embeds: [embed], components: [but] });
-   
+
+await message.channel.send({ embeds: [embed] });
 }
+
+
+
+
         
   
 
@@ -334,3 +328,5 @@ client.login(token);
 //for test
 
 //client.login(testtoken);
+
+
