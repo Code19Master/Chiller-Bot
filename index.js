@@ -161,7 +161,7 @@ client.on('messageCreate', async message => {
       const embed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
-      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n By Having VIP You can have Access To VIP Commands')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You can have Access To VIP Commands')
       .setTimestamp()
 
       const but = new MessageActionRow()
