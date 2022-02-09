@@ -271,15 +271,15 @@ if (message.content.startsWith("@say")) {
   message.delete();
   message.channel.send(sayMessage);
 }
-//uptime
+//uptime which shows the time the bot has been online in hours, minutes and seconds
 if (message.content === "@uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
-  .setDescription('Uptime: ' + client.uptime + 'ms \n\nUptime: ' + client.uptime / 1000 + 's \n\nUptime: ' + client.uptime / 60000 + 'm \n\nUptime: ' + client.uptime / 3600000 + 'h')
+  .setDescription(`> ${client.uptime}`)
   .setTimestamp()
-
-await message.channel.send({ embeds: [embed] });
+  
+  await message.channel.send({ embeds: [embed] });
 }
 //avatar
 if (message.content === "@avatar") {
@@ -297,7 +297,7 @@ if (message.content === "@ping") {
   const embed = new MessageEmbed()
   .setTitle('***Pong!***')
   .setColor('BLACK')
-  .setDescription('Pong! ' + client.ping + 'ms\nLatency: ' + message.createdTimestamp - Date.now() + 'ms')
+  .addField('Ping:', client.ws.ping + 'ms')
   .addField('API Latency', `${client.ws.ping}ms`)
   .setTimestamp()
 
