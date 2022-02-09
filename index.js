@@ -320,7 +320,8 @@ if (message.content.startsWith("@ytsearch")) {
   .setStyle('LINK')
   .setURL('https://www.youtube.com/results?search_query=' + searchMessage),
   );
-  message.channel.send({ embeds: [embed], components: [but] });`); 
+  message.channel.send({ embeds: [embed], components: [but] });
+   
 }
         
   
