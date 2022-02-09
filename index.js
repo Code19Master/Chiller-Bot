@@ -159,7 +159,7 @@ client.on('messageCreate', async message => {
     //VIP
     if (message.content === "@vip") {
       
-      const embed = new MessageEmbed()
+      const ifembed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
       .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in `**@contributors**')
@@ -174,7 +174,7 @@ client.on('messageCreate', async message => {
       );
       }
       
-      message.channel.send({ embeds: [embed], components: [but] });
+      message.channel.send({ embeds: [ifembed], components: [but] });
 
   //premium
   if (message.content === "@premium") {
