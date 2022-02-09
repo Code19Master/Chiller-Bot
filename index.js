@@ -291,6 +291,7 @@ if (message.content === "@avatar") {
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
+}
 
         
   
