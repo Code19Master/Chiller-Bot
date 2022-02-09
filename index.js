@@ -64,7 +64,7 @@ client.on('interactionCreate', interaction => {
 
 //help (normal)
 client.on('messageCreate', async message => {
-    if (message.content === "@help" || "@Help") {
+    if (message.content === "@help") {
 		const row = new MessageActionRow()
 			.addComponents(
 
@@ -136,7 +136,7 @@ client.on('messageCreate', async message => {
 
     }
     //vote
-    if (message.content === "@vote" || "@Vote") {
+    if (message.content === "@vote") {
       
       const embed = new MessageEmbed()
       .setTitle('***VOTE ME***')
@@ -156,7 +156,7 @@ client.on('messageCreate', async message => {
       
 
     }
-    if (message.content === "@vip" || "@Vip") {
+    if (message.content === "@vip") {
       
       const embed = new MessageEmbed()
       .setTitle('***Get VIP***')
