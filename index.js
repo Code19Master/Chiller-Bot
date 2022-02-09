@@ -162,7 +162,7 @@ client.on('messageCreate', async message => {
       const embed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
-      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in `**@vip**')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in `**@contributors**')
       .setTimestamp()
 
       const but = new MessageActionRow()
@@ -182,7 +182,7 @@ client.on('messageCreate', async message => {
     const embed = new MessageEmbed()
     .setTitle('***Get PREMIUM***')
     .setColor('BLURPLE')
-    .setDescription('> You Can Get PREMIUM by Gifting Me A Gift Card at CodeMaster100#7978.\n> By Having VIP You can have Access To Premium Commands')
+    .setDescription('> You Can Get PREMIUM by Gifting Me A Gift Card at CodeMaster100#7978. ;)\n> By Having Premium You can have Access To Premium Commands')
     .setTimestamp()
 
     await message.channel.send({ embeds: [embed] });
