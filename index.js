@@ -302,6 +302,16 @@ if (message.content === "@ping") {
 
 await message.channel.send({ embeds: [embed] });
 }
+//activity
+if (message.content === "@activity") {
+  const embed = new MessageEmbed()
+  .setTitle('***Activity***')
+  .setColor('BLACK')
+  .addField('Activity:', client.user.presence.activities[0].name)
+  .setTimestamp()
+
+await message.channel.send({ embeds: [embed] });
+}
 
         
   
