@@ -302,17 +302,26 @@ if (message.content === "@ping") {
 
 await message.channel.send({ embeds: [embed] });
 }
-//advanced activity with image
-if (message.content === "@activity") {
+//youtube search
+if (message.content.startsWith("@ytsearch")) {
+  const searchMessage = message.content.slice(3);
+  if(!searchMessage) return message.channel.send("Please Provide A Message To Search!");
+  //embed
   const embed = new MessageEmbed()
-  .setTitle('***Activity***')
-  .setColor('BLACK')
-  .setDescription('> Activity: ' + member.user.presence.status)
+  .setTitle('***Youtube Search***')
+  .setColor('BLURPLE')
+  .setDescription('Click on The Button Below To got to the search result')
   .setTimestamp()
-
-await message.channel.send({ embeds: [embed] });
+  //button
+  const but = new MessageActionRow()
+  .addComponents(
+  new MessageButton()
+  .setLabel('Result')
+  .setStyle('LINK')
+  .setURL('https://www.youtube.com/results?search_query=' + searchMessage),
+  );
+  message.channel.send({ embeds: [embed], components: [but] });`); 
 }
-
         
   
 
