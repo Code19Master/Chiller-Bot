@@ -172,9 +172,9 @@ client.on('messageCreate', async message => {
       .setStyle('LINK')
       .setURL('https://github.com/Code19Master/Chiller-Bot'),
       );
+      message.channel.send({ embeds: [ifembed], components: [but] });
       }
   
-      message.channel.send({ embeds: [ifembed] });
 
   //premium
   if (message.content === "@premium") {
