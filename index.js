@@ -174,7 +174,7 @@ client.on('messageCreate', async message => {
       );
       }
   
-      message.channel.send({ embeds: [ifembed], components: [but] });
+      message.channel.send({ embeds: [ifembed] });
 
   //premium
   if (message.content === "@premium") {
