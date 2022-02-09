@@ -181,8 +181,7 @@ client.on('messageCreate', async message => {
     const embed = new MessageEmbed()
     .setTitle('***VIPs***')
     .setColor('BLURPLE')
-    .setDescription('> Currently There Are No legends Here \:(')
-    .setfeilds("You Can Contribute To The Repository Of Chiller Bot to Get Your Name Here.")
+    .setDescription('> Currently There Are No legends Here \:(\n> If You Want To Be A Legend, You Can Contribute To The Repository Of Chiller Bot.')
     .setTimestamp()
 
     await message.channel.send({ embeds: [embed] });
