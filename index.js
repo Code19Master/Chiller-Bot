@@ -203,6 +203,32 @@ client.on('messageCreate', async message => {
       
 
     }
+
+    //developer
+    if (message.content === "@devinfo") {
+      const embed = new MessageEmbed()
+      .setTitle('***DEVELOPERS***')
+      .setColor('BLACK')
+      .setDescription('Divik aka CodeMaster100#7978 - Bot Developer, Web Developer and Game Developer')
+      .setTimestamp()
+
+      const but = new MessageActionRow()
+      .addComponents(
+        new MessageButton()
+        .setLabel('My Github')
+        .setStyle('LINK')
+        .setURL('https://github.com/Code19Master'),
+      )
+			.addComponents(
+      new MessageButton()
+      .setLabel('My Portfolio')
+      .setStyle('LINK')
+      .setURL('https://codemaster-portfolio.netlify.app/'),
+      );
+      
+  await message.channel.send({ embeds: [embed], components: [but] });
+
+    }
   
 
 });
