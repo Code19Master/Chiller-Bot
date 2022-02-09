@@ -280,6 +280,7 @@ if (message.content === "@uptime") {
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
+}
         
   
 
