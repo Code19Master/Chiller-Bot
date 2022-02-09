@@ -304,10 +304,11 @@ await message.channel.send({ embeds: [embed] });
 }
 //advanced activity with image
 if (message.content === "@activity") {
+  const user = message.content.slice(5);
   const embed = new MessageEmbed()
   .setTitle('***Activity***')
   .setColor('BLACK')
-  .setDescription('> Activity: ' + client.user.presence.activities[0].name)
+  .setDescription('> Activity: ' + user.user.presence.activities[0].name)
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
