@@ -141,6 +141,7 @@ client.on('messageCreate', async message => {
       .setTitle('***VOTE ME***')
       .setColor('BLACK')
       .setDescription('> You can vote me on top.gg!!')
+      .setTimestamp()
 
       const but = new MessageActionRow()
 			.addComponents(
