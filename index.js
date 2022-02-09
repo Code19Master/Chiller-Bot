@@ -268,6 +268,7 @@ client.on('messageCreate', async message => {
 //say
 if (message.content.startsWith("@say")) {
   const sayMessage = message.content.slice(5);
+  if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
   message.channel.send(sayMessage);
 }
