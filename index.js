@@ -64,7 +64,7 @@ client.on('interactionCreate', interaction => {
 
 //help (normal)
 client.on('messageCreate', async message => {
-    if (message.content === "@help") {
+    if (message.content === "@help" || "@Help") {
 		const row = new MessageActionRow()
 			.addComponents(
 
@@ -135,7 +135,8 @@ client.on('messageCreate', async message => {
 
 
     }
-    if (message.content === "@vote") {
+    //vote
+    if (message.content === "@vote" || "@Vote") {
       
       const embed = new MessageEmbed()
       .setTitle('***VOTE ME***')
@@ -152,6 +153,26 @@ client.on('messageCreate', async message => {
       );
       
   await message.channel.send({ embeds: [embed], components: [but] });
+      
+
+    }
+    if (message.content === "@vip" || "@Vip") {
+      
+      const embed = new MessageEmbed()
+      .setTitle('***Get VIP***')
+      .setColor('BLURPLE')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n By Having VIP You can have Access To VIP Commands')
+      .setTimestamp()
+
+      const but = new MessageActionRow()
+			.addComponents(
+      new MessageButton()
+      .setLabel('Github Repository')
+      .setStyle('LINK')
+      .setURL('https://github.com/Code19Master/Chiller-Bot'),
+      );
+      
+  await message.channel.send({ embeds: [embed] });
       
 
     }
