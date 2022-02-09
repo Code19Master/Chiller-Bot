@@ -173,7 +173,7 @@ client.on('messageCreate', async message => {
       .setURL('https://github.com/Code19Master/Chiller-Bot'),
       );
       }
-      
+  
       message.channel.send({ embeds: [ifembed], components: [but] });
 
   //premium
