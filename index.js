@@ -307,7 +307,7 @@ if (message.content === "@activity") {
   const embed = new MessageEmbed()
   .setTitle('***Activity***')
   .setColor('BLACK')
-  .addField('Activity:', client.user.presence.activities[0].name)
+  .addField('Activity:', 'Playing ' + message.content.slice(11))
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
