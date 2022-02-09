@@ -265,24 +265,12 @@ client.on('messageCreate', async message => {
         
   
       }
-      //calculator
-      if (message.content === "@calculator") {
-        await Calculator({
-          message: message,
-          embed: {
-              title: 'Calculator',
-              color: '#5865F2',
-              footer: 'CodeMaster100#7978',
-              timestamp: true
-          },
-          disabledQuery: 'Calculator is disabled!',
-          invalidQuery: 'The provided equation is invalid!',
-          othersMessage: 'Only <@{{author}}> can use the buttons!'
-      });
-      }
-
-    
-
+//say
+if (message.content.startsWith("@say")) {
+  const sayMessage = message.content.slice(5);
+  message.delete();
+  message.channel.send(sayMessage);
+}
         
   
 
