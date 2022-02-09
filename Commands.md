@@ -16,17 +16,17 @@ Bot Info - Bot
 Calculator - Utilities
 Clown Rate - Fun
 Cool - Fun
+Contributors - VIP's
 Dare - Fun
 Dashboard (Probably)
 Define - utilities
-Dev Info - Bot
+Dev Info - Bot and buttons
 DiscOmegle (probably) - Fun
 EightBall - Fun
 Giveaway - utils
 Google Search - util
 Invite - button
 Kick - Moderation
-Meet The Developers - Bot and Button
 Meme - Fun
 Mute - Mod
 ping - Bot

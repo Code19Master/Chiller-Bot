@@ -162,7 +162,7 @@ client.on('messageCreate', async message => {
       const ifembed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
-      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in `**@contributors**')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in **@contributors** Command.')
       .setTimestamp()
 
       const but = new MessageActionRow()
@@ -174,6 +174,21 @@ client.on('messageCreate', async message => {
       );
       message.channel.send({ embeds: [ifembed], components: [but] });
       }
+
+  //contributors
+  if (message.content === "@contributors") {
+      
+    const embed = new MessageEmbed()
+    .setTitle('***VIPs***')
+    .setColor('BLURPLE')
+    .setDescription('> Currently There Are No legends Here \:(')
+    .setfeilds("You Can Contribute To The Repository Of Chiller Bot to Get Your Name Here.")
+    .setTimestamp()
+
+    await message.channel.send({ embeds: [embed] });
+      
+
+    }
   
 
   //premium
