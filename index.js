@@ -286,7 +286,8 @@ if (message.content === "@avatar") {
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
   .setColor('BLACK')
-  .setDescription('Avatar: ' + message.author.avatarURL())
+  .setDescription('Avatar URL')
+  .setURL(message.author.avatarURL())
   .setImage(message.author.avatarURL())
   .setTimestamp()
 
