@@ -292,6 +292,16 @@ if (message.content === "@avatar") {
 
 await message.channel.send({ embeds: [embed] });
 }
+//ping
+if (message.content === "@ping") {
+  const embed = new MessageEmbed()
+  .setTitle('***Pong!***')
+  .setColor('BLACK')
+  .setDescription('Pong! ' + client.ping + 'ms')
+  .setTimestamp()
+
+await message.channel.send({ embeds: [embed] });
+}
 
         
   
