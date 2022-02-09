@@ -116,7 +116,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Vote Me')
       .setStyle('LINK')
-      .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vot Me TOPGG 
+      .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vote Me TOPGG 
       );
 
       const firstmainembed = new MessageEmbed()
@@ -133,6 +133,25 @@ client.on('messageCreate', async message => {
  
   await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
 
+
+    }
+    if (message.content === "@vote") {
+      
+      const embed = new MessageEmbed()
+      .setTitle('***VOTE ME***')
+      .setColor('BLACK')
+      .setDescription('> You can vote me on top.gg!!')
+
+      const but = new MessageActionRow()
+			.addComponents(
+      new MessageButton()
+      .setLabel('Vote Me')
+      .setStyle('LINK')
+      .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vote Me TOPGG 
+      );
+      
+  await message.channel.send({ embeds: [embed], components: [but] });
+      
 
     }
   
