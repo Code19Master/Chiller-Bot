@@ -276,7 +276,7 @@ if (message.content === "@uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
-  .setDescription('> Uptime Is ' + Math.floor(bot.uptime / 1000 / 60) + ' Minutes And ' + Math.floor(bot.uptime / 1000) + ' Seconds')
+  .setDescription('> Uptime Is ' + Math.floor(client.uptime / 1000 / 60) + ' Minutes And ' + Math.floor(client.uptime / 1000) + ' Seconds')
   .setTimestamp()
   
   await message.channel.send({ embeds: [embed] });
