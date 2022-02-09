@@ -271,6 +271,15 @@ if (message.content.startsWith("@say")) {
   message.delete();
   message.channel.send(sayMessage);
 }
+//uptime
+if (message.content === "@uptime") {
+  const embed = new MessageEmbed()
+  .setTitle('***Uptime***')
+  .setColor('BLACK')
+  .setDescription('Uptime: ' + client.uptime + 'ms')
+  .setTimestamp()
+
+await message.channel.send({ embeds: [embed] });
         
   
 
