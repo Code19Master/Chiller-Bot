@@ -271,15 +271,15 @@ if (message.content.startsWith("@say")) {
   message.delete();
   message.channel.send(sayMessage);
 }
-//uptime which shows the time the bot has been online in  minutes and seconds
+//uptime
 if (message.content === "@uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
-  .setDescription('> Uptime Is ' + Math.floor(client.uptime / 1000 / 60) + ' Minutes And ' + Math.floor(client.uptime / 1000) + ' Seconds')
+  .setDescription('> Uptime: ' + client.uptime + 'ms')
   .setTimestamp()
-  
-  await message.channel.send({ embeds: [embed] });
+
+await message.channel.send({ embeds: [embed] });
 }
 //avatar
 if (message.content === "@avatar") {
