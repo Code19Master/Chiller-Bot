@@ -25,6 +25,7 @@ const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
 
 
+
 client.on('ready', () => {
 
     console.log(`Logged in as ${client.user.tag}!`);
@@ -324,7 +325,6 @@ if (message.content === "@botinfo") {
 
 await message.channel.send({ embeds: [embed], components: [but] });
 }
-
 
 
 
