@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const { MessageActionRow, MessageSelectMenu, MessageEmbed } = require('discord.js');
 const { MessageButton } = require('discord.js');
 const { Client, Intents, Collection } = require('discord.js');
+const akinator = require("discord.js-akinator")
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
@@ -23,6 +24,11 @@ const client = new Discord.Client({
 
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
+const language = "en"; 
+const childMode = true;
+const gameType = "character"; 
+const useButtons = true; 
+const embedColor = "#000000"; 
 
 
 
@@ -325,7 +331,16 @@ if (message.content === "@botinfo") {
 
 await message.channel.send({ embeds: [embed], components: [but] });
 }
-
+//akinator
+if(message.content.startsWith(`@akinator`)) {
+  akinator(message, {
+      language: language, //Defaults to "en"
+      childMode: childMode, //Defaults to "false"
+      gameType: gameType, //Defaults to "character"
+      useButtons: useButtons, //Defaults to "false"
+      embedColor: embedColor //Defaults to "RANDOM"
+  });
+}
 
 
         
