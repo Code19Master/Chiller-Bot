@@ -350,6 +350,7 @@ if (message.content.startsWith("@suggest")) {
   message.delete();
   message.channel.send("Your Suggestion Has Been Sent To The Support Server!");
   client.channels.cache.get('888455701326889027').send(suggestMessage);
+  }
   
 
 });
