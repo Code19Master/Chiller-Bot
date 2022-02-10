@@ -334,16 +334,22 @@ await message.channel.send({ embeds: [embed], components: [but] });
 //akinator
 if(message.content.startsWith(`@akinator`)) {
   akinator(message, {
-      language: language, //Defaults to "en"
-      childMode: childMode, //Defaults to "false"
-      gameType: gameType, //Defaults to "character"
-      useButtons: useButtons, //Defaults to "false"
-      embedColor: embedColor //Defaults to "RANDOM"
+      language: language, 
+      childMode: childMode, 
+      gameType: gameType, 
+      useButtons: useButtons, 
+      embedColor: embedColor 
   });
 }
 
 
-        
+//which take suggestion from a user and send it to a channel
+if (message.content.startsWith("@suggest")) {
+  const suggestMessage = message.content.slice(2);
+  if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
+  message.delete();
+  message.channel.send("Your Suggestion Has Been Sent To The Support Server!");
+  client.channels.cache.get('888455701326889027').send(suggestMessage);
   
 
 });
