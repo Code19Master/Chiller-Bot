@@ -356,6 +356,17 @@ if (message.content.startsWith("@suggest")) {
   message.channel.send("Your Suggestion Has Been Sent To The Support Server!");
   client.channels.cache.get('888455701326889027').send({ embeds: [embed] });
   }
+
+//kick command 
+if (message.content.startsWith("@kick")) {
+  const kickMessage = message.content.slice(5);
+  if(!kickMessage) return message.channel.send("Please Provide A User To Kick!");
+  message.delete();
+  message.channel.send("User Has Been Kicked!");
+  message.guild.member(message.mentions.users.first()).kick();
+  }
+
+
   
 
 });
