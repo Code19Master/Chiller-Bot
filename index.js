@@ -345,7 +345,7 @@ if(message.content.startsWith(`@akinator`)) {
 
 //which take suggestion from a user and send it to a channel
 if (message.content.startsWith("@suggest")) {
-  const suggestMessage = message.content.slice(2);
+  const suggestMessage = message.content.slice(1);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
   message.channel.send("Your Suggestion Has Been Sent To The Support Server!");
