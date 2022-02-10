@@ -347,7 +347,6 @@ if(message.content.startsWith(`@akinator`)) {
 if (message.content.startsWith("@suggest")) {
   const suggestMessage = message.content.slice(8);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
-  //embed for suggestion with user
   const embed = new MessageEmbed()
   .setTitle('***Suggestion***')
   .setColor('BLACK')
@@ -355,7 +354,7 @@ if (message.content.startsWith("@suggest")) {
   .setTimestamp()
   message.delete();
   message.channel.send("Your Suggestion Has Been Sent To The Support Server!");
-  client.channels.cache.get('888455701326889027').send({embed: embed});
+  client.channels.cache.get('888455701326889027').send({embed: [embed]});
   }
   
 
