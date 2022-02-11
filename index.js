@@ -380,6 +380,7 @@ simplydjs.calculator(message, {
   credit: false,
 });
 }
+simplydjs.nqn(message);
 
 
 
