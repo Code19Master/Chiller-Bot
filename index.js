@@ -30,7 +30,8 @@ const childMode = true;
 const gameType = "character"; 
 const useButtons = true; 
 const embedColor = "#000000"; 
-
+let { Database } = require('quickmongo')
+let db = new Database('mongodb://localhost:27017/quickmongo')
 
 
 client.on('ready', () => {
@@ -59,6 +60,10 @@ client.on('ready', () => {
 client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
   interaction.reply({ content: 'Something was selected!', components: [], ephemeral: true  });
+  //giveaway system
+  simplydjs.clickBtn(interaction, {
+    db: db
+  })
 });
 
 
@@ -385,7 +390,14 @@ simplydjs.calculator(message, {
 //nqn
 simplydjs.nqn(message);
 
+//giveaway
+simplydjs.giveawaySystem(client, db, message, {
+  args: args,
 
+  time: args[0],
+  winners: args[1],
+  prize: args[2],
+})
 
 
 
