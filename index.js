@@ -399,12 +399,24 @@ if (message.content.toLowerCase().startsWith('@cool')) {
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
+
 //clownrate command
 if (message.content.toLowerCase().startsWith('@clownrate')) {
   let user = message.mentions.users.first() || message.author
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
+
+if(message.content.startsWith("@8ball")) {
+  let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
+ 
+  let embed = new Discord.MessageEmbed()
+  .setTitle("8ball's Answer")
+  .setDescription(`8ball's Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
+  .setColor("RED")
+  .setFooter("8ball has given you an answer")
+  message.channel.send({ embeds: embed })
+  }
 
 
   
