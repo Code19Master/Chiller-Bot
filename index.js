@@ -391,6 +391,7 @@ simplydjs.calculator(message, {
 simplydjs.nqn(message);
 
 //giveaway
+if (message.content.toLowerCase().startsWith('@giveaway')) {
 simplydjs.giveawaySystem(client, db, message, {
   args: args,
 
@@ -398,7 +399,7 @@ simplydjs.giveawaySystem(client, db, message, {
   winners: args[1],
   prize: args[2],
 })
-
+}
 
 
 
