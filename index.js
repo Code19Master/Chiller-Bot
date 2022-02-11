@@ -31,10 +31,7 @@ const gameType = "character";
 const useButtons = true; 
 const embedColor = "#000000"; 
 
-//calculator 
-simplydjs.calculator(message, {
-  embedColor: "#000000",
-});
+
 
 client.on('ready', () => {
 
@@ -376,6 +373,10 @@ if (message.content.toLowerCase().startsWith('@kick')) {
   message.channel.send('Oops, something went wrong ')
   }
  }
+ //calculator 
+simplydjs.calculator(message, {
+  embedColor: "#000000",
+});
 
 
 
