@@ -374,9 +374,11 @@ if (message.content.toLowerCase().startsWith('@kick')) {
   }
  }
  //calculator 
+if (message.content.toLowerCase().startsWith('@calc')) {
 simplydjs.calculator(message, {
   embedColor: "#000000",
 });
+}
 
 
 
