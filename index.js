@@ -408,11 +408,13 @@ if (message.content.toLowerCase().startsWith('@clownrate')) {
 }
 
 if(message.content.startsWith("@8ball")) {
+  const args = message.content.slice(7);
+  if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
  
   let embed = new Discord.MessageEmbed()
   .setTitle("8ball's Answer")
-  .setDescription(`8ball's Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
+  .setDescription(`:8ball: 8ball's Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
   .setColor("RED")
   .setFooter("8ball has given you an answer")
   message.channel.send({ embeds: [embed] })
