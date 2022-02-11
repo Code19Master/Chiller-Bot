@@ -393,6 +393,14 @@ if (message.content.toLowerCase().startsWith('@simprate')) {
     message.channel.send(`${user} is **${simps}**% Simp. SIMP!`)
 }
 
+//cool command
+if (message.content.toLowerCase().startsWith('@cool')) {
+  let user = message.mentions.users.first() || message.author
+  let cool = Math.floor(Math.random() * 100) + 1;
+  message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
+}
+
+
   
 
 });
