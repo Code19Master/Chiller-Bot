@@ -399,6 +399,12 @@ if (message.content.toLowerCase().startsWith('@cool')) {
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
+//clownrate command
+if (message.content.toLowerCase().startsWith('@clownrate')) {
+  let user = message.mentions.users.first() || message.author
+  let clown = Math.floor(Math.random() * 100) + 1;
+  message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
+}
 
 
   
