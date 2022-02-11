@@ -388,32 +388,28 @@ simplydjs.nqn(message);
 
 //whois 
   if(message.content === `@whois`) {
-    if (message.author.bot) return;
-    let user = message.mentions.members.first() || message.guild.members.cache.get(message.content.slice(6)) || message.member;
-    let status;
-    switch (user.presence.status) {
-    case "online":
-    status = "🟢";
-    break;
-    case "dnd":
-    status = "⛔";
-    break;
-    case "idle":
-    status = "🌙";
-    break;
-    case "offline":
-    status = "⚫️";
-    break;
-    }
-    const embed = new Discord.MessageEmbed()
-    .setTitle(`${user.user.username}'s Information`)
-    .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
-    .setColor("RANDOM")
-    .setFooter(`Requested by ${message.author.tag}`)
-    .setTimestamp()
-    .addField("> Account", `\`\`\`Username : ${user.user.username} \n Discriminator : #${user.user.discriminator} \n Id : ${user.user.id} \n Created: ${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")} \n Status : ${status} \n Activity : ${user.presence.game ? user.presence.game.name : 'None'}\`\`\``)
-    .addField("> Guild Account Info", `\`\`\`Guild Roles : ${user.roles.cache.map(role => role.toString()).join(" ,")} \n Joined At : ${moment.utc(user.joinedAt).format("dddd, MMMM Do YYYY")}\n Nickname : ${user.user.displayName} \n Bot : ${user.user.bot} \n Nickname : ${user.displayName}\`\`\``)
-    message.channel.send({ embeds: embed })
+    let user;
+    if (message.mentions.users.first()) {
+        user = message.mentions.users.first();
+    } 
+    
+    const member = message.guild.member(user);
+    
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setThumbnail(message.author.avatarURL)
+        .addField(`${user.tag}`, `${user}`, true)
+        .addField("ID:", `${user.id}`, true)
+        .addField("Nickname:", `${member.nickname !== null ? `${member.nickname}` : 'None'}`, true)
+        .addField("Status:", `${user.presence.status}`, true)
+        .addField("In Server", message.guild.name, true)
+        .addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
+        .addField("Bot:", `${user.bot}`, true)
+        .addField("Joined The Server On:", `${moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY")}`, true)
+        .addField("Account Created On:", `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`, true) 
+        .addField("Roles:", member.roles.map(roles => `${roles}`).join(', '), true)
+        .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`)
+    message.channel.send({embed});
    }
 
   
