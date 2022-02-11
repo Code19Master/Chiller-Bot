@@ -413,8 +413,7 @@ if(message.content.startsWith("@8ball")) {
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
  
   let embed = new Discord.MessageEmbed()
-  .setTitle("**QUESTION** - " + `**${args}**`)
-  .setDescription(`:8ball: Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
+  .setDescription(`"**QUESTION** - "` + args + `\n:8ball: Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
   .setColor("BLACK")
   .setFooter("8Ball's Answer")
   message.channel.send({ embeds: [embed] })
