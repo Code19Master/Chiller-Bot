@@ -389,7 +389,7 @@ simplydjs.nqn(message);
 //whois 
   if(message.content === `@whois`) {
     if (message.author.bot) return;
-    let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+    let user = message.mentions.members.first() || message.guild.members.cache.get(message.content.slice(6)) || message.member;
     let status;
     switch (user.presence.status) {
     case "online":
