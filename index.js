@@ -373,19 +373,6 @@ if (message.content.toLowerCase().startsWith('@kick')) {
   }
  }
 
-//mute command
-if(message.content.startsWith("@mute")) {
-  if(message.member.hasPermission("MUTE_MEMBERS")) {
-  let member = message.mentions.members.first()
-  if(!member) message.channel.send("mention someone to mute!")
-  else {
-  message.channel.send("Member has been succesfully muted.")
-  }
- 
-  }else {
-  message.reply("You don't have permission to do that!")
-  }
- }
 
 
 
