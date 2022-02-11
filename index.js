@@ -416,7 +416,7 @@ if(message.content.startsWith("@8ball")) {
   .setTitle("Question - " + `**${args}**`)
   .setDescription(`:8ball: 8ball's Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
   .setColor("RED")
-  .setFooter("8ball's Answer")
+  .setFooter("8Ball's Answer")
   message.channel.send({ embeds: [embed] })
   }
 
