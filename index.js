@@ -409,7 +409,7 @@ simplydjs.nqn(message);
         .addField("Account Created On:", `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`, true) 
         .addField("Roles:", member.roles.map(roles => `${roles}`).join(', '), true)
         .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`)
-    message.channel.send({embed});
+    message.channel.send({embeds: [embed]});
    }
 
   
