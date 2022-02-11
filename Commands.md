@@ -29,6 +29,7 @@ Invite - button
 Kick - Moderation
 Meme - Fun
 Mute - Mod
+NQN - Fun
 ping - Bot
 Poll - util
 premium - VIP's
