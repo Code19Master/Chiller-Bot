@@ -21,7 +21,8 @@
   "license": "Apache License 2",
   "dependencies":{
     "discord.js": "^13.6.0",
-    "discord.js-akinator": "^3.3.3"
+    "discord.js-akinator": "^3.3.3",
+    "simply-djs": "^2.5.2"
   },
   "engines": {
     "node": ">=16.6.0"

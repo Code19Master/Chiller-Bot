@@ -3,6 +3,7 @@ const { MessageActionRow, MessageSelectMenu, MessageEmbed } = require('discord.j
 const { MessageButton } = require('discord.js');
 const { Client, Intents, Collection } = require('discord.js');
 const akinator = require("discord.js-akinator")
+const simplydjs = require("simply-djs");
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
@@ -30,7 +31,10 @@ const gameType = "character";
 const useButtons = true; 
 const embedColor = "#000000"; 
 
-
+//calculator 
+simplydjs.calculator(message, {
+  embedColor: "#000000",
+});
 
 client.on('ready', () => {
 
@@ -372,7 +376,6 @@ if (message.content.toLowerCase().startsWith('@kick')) {
   message.channel.send('Oops, something went wrong ')
   }
  }
-
 
 
 
