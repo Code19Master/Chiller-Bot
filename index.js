@@ -386,7 +386,35 @@ simplydjs.calculator(message, {
 //nqn
 simplydjs.nqn(message);
 
-
+//whois 
+  if(message.content === `@whois`) {
+    if (message.author.bot) return;
+    let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+    let status;
+    switch (user.presence.status) {
+    case "online":
+    status = "🟢";
+    break;
+    case "dnd":
+    status = "⛔";
+    break;
+    case "idle":
+    status = "🌙";
+    break;
+    case "offline":
+    status = "⚫️";
+    break;
+    }
+    const embed = new Discord.MessageEmbed()
+    .setTitle(`${user.user.username}'s Information`)
+    .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
+    .setColor("RANDOM")
+    .setFooter(`Requested by ${message.author.tag}`)
+    .setTimestamp()
+    .addField("> Account", `\`\`\`Username : ${user.user.username} \n Discriminator : #${user.user.discriminator} \n Id : ${user.user.id} \n Created: ${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")} \n Status : ${status} \n Activity : ${user.presence.game ? user.presence.game.name : 'None'}\`\`\``)
+    .addField("> Guild Account Info", `\`\`\`Guild Roles : ${user.roles.cache.map(role => role.toString()).join(" ,")} \n Joined At : ${moment.utc(user.joinedAt).format("dddd, MMMM Do YYYY")}\n Nickname : ${user.user.displayName} \n Bot : ${user.user.bot} \n Nickname : ${user.displayName}\`\`\``)
+    message.channel.send({ embeds: embed })
+   }
 
   
 
