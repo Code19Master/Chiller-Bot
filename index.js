@@ -544,7 +544,27 @@ if(message.content.startsWith("@8ball")) {
     .setFooter("CodeMaster100#7978")
     message.channel.send({ embeds: [embed] })
     }
+//google search
+  if(message.content.startsWith("@google")) {
+    let args = message.content.split(" ").slice(8);
+    let query = args.join(" ");
+    if (!query) return message.channel.send("Please enter a search query!");
+    let embed = new Discord.MessageEmbed()
+    .setTitle("**GOOGLE**")
+    .setDescription(`Click On The Button to Get Redirected to Google Search`)
+    .setColor("BLURPLE")
+    .setFooter("CodeMaster100#7978")
+
+    const but = new MessageActionRow()
+    .addComponents(
+    new MessageButton()
+    .setLabel('Invite Me')
+    .setStyle('LINK')
+    .setURL(`https://www.google.com/search?q=${query}`)
+    )
     
+    message.channel.send({ embeds: [embed] })
+    }
 
 
 
