@@ -544,6 +544,7 @@ if(message.content.startsWith("@8ball")) {
     .setFooter("CodeMaster100#7978")
     message.channel.send({ embeds: [embed] })
     }
+    
 
 
 
