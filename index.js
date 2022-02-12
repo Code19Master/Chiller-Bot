@@ -563,6 +563,7 @@ if(message.content.startsWith("@8ball")) {
     )
     
     message.channel.send({ embeds: [embed], components: [but] });
+    
     }
 
 
