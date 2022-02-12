@@ -418,7 +418,7 @@ if(message.content.startsWith("@8ball")) {
   message.channel.send({ embeds: [embed] })
   }
 
-  //truth
+  //truths
   if(message.content.startsWith("@truth")) {
     let truth = 
     ["If you could be invisible, what’s the first thing you would do?",
