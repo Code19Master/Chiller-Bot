@@ -126,6 +126,17 @@ client.on('messageCreate', async message => {
       .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse @help <command> to get more information about a command.')
       .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
       
+      function menuselection(menu) {
+        switch(menu.values[0]) {
+        case "Vip_option":
+        menu.reply.send("mate mate", true)
+        break;
+        case "bot_option":
+        menu.reply.send("oi oi oi mate mate", true)
+        break;
+        }
+      }
+      
 
 
 
