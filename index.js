@@ -484,6 +484,68 @@ if(message.content.startsWith("@8ball")) {
     .setFooter("CodeMaster100#7978")
     message.channel.send({ embeds: [embed] })
     }
+//Dare
+  if(message.content.startsWith("@dare")) {
+    let dare = 
+    ["Do a free-style rap for the next minute.",
+    "Let another person post a status on your behalf.",
+    "Hand over your phone to another player who can send a single text saying anything they want to anyone they want.",
+    "Let the other players go through your phone for one minute.",
+    "Smell yout house dustbin.",
+    "Smell another player's bare foot.",
+    "Eat a bite of a banana peel.",
+    "Do an impression of another player until someone can figure out who it is.",
+    "Say pickles at the end of every sentence you say until it's your turn again.",
+    "Imitate a YouTube star until another player guesses who you're portraying.",
+    "Act like a chicken until your next turn.",
+    "Talk in a British accent until your next turn.",
+    "Call a friend, pretend it's their birthday, and sing them Happy Birthday to You.",
+    "Name a famous person that looks like each player in the room.",
+    "Show us your best dance moves.",
+    "Eat a packet of hot sauce straight.",
+    "Let another person draw a tattoo on your back with a permanent marker.",
+    "Serenade the person to your right for a full minute.",
+    "Make up a song and voice record yourself singing it. Send it to me when you’re done",
+    "Video yourself eating a tablespoon of butter and send it in this chat",
+    "Prank call someone and try to talk for 15 minutes straight. Take a screenshot of the call",
+    "Eat a spoonful of any condiment of my choosing",
+    "Tell your crush you like them over text. Screenshot the conversation",
+    "Wrap your head with toilet paper like a mummy, take a picture, and make it your profile pic",
+    "Use a picture of poop as your phone background for 3 days",
+    "Text a friend and tell them their hair is on backward",
+    "Call someone and confess your new love of Justin Beiber",
+    "Send me the link of the last YouTube video you watched",
+    "Write a short love poem",
+    "Find some lipstick and put it on",
+    "Voice record yourself singing your favorite love song and send it to me",
+    "Send me the most unflattering picture of yourself on your phone",
+    "Read me the first email in your inbox",
+    "Video call me or record yourself dancing for 1 minute with no music",
+    "Send me a screenshot of your text inbox without deleting anything",
+    "Take a video of yourself drinking pickle juice",
+    "Go outside and do the chicken dance where people can see you for 1 minute",
+    "Dip a bar of soap in sauce and lick it",
+    "Write a status on Discord praising me",
+    "Do the macarena for 2 minutes straight",
+    "Close your eyes and write a text without looking. Send it to someone random and screenshot the conversation for proof",
+    "Write a break-up text message and send it to someone random in your contacts. Take a screenshot for proof",
+    "Wear all your clothing inside-out for an hour",
+    "Take a video of yourself drinking water like a dog",
+    "Fill your mouth full of water and say your full name. Take a video and send it",
+    "Call your crush and flirt with them",
+    "Dial a random number and make meaningless conversation for 2 minutes",
+    "Do 25 situps without stopping",
+    "Crack two eggs on your head then take a selfie"]
+   
+    let embed = new Discord.MessageEmbed()
+    .setTitle("**DARE**")
+    .setDescription(`${dare[Math.floor(Math.random() * dare.length)]}`)
+    .setColor("BLURPLE")
+    .setFooter("CodeMaster100#7978")
+    message.channel.send({ embeds: [embed] })
+    }
+
+
 
 
   
