@@ -30,7 +30,8 @@ const childMode = true;
 const gameType = "character"; 
 const useButtons = true; 
 const embedColor = "#000000"; 
-
+const https = require('https');
+const url = 'https://www.reddit.com/r/memes/hot/.json?limit=100';
 
 
 client.on('ready', () => {
@@ -582,11 +583,8 @@ if(message.content.startsWith("@8ball")) {
     }
 
 //memes
-  if(message.content.startsWith("@meme")) {
-    const https = require('https');
- const url = 'https://www.reddit.com/r/memes/hot/.json?limit=100';
 
- if (message.content.startsWith('d!meme')) {
+ if (message.content.startsWith('@meme')) {
  https.get(url, result => {
  var body = '';
  result.on('data', chunk => {
@@ -635,7 +633,6 @@ if(message.content.startsWith("@8ball")) {
  });
  });
  }
-  }
 
 
 
