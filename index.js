@@ -600,33 +600,17 @@ if(message.content.startsWith("@8ball")) {
 
   }
 //activity of the user mentioned
-if (message.content.startsWith("@whois")) {
-  const embed = new Discord.MessageEmbed()
-  let member = message.mentions.users.first() || message.author
-    const Roles = new Array()
-    message.guild.roles.cache.forEach(role => {
-      if (member.roles.cache.find(r => r.id == role.id)) {
-        Roles.push(role)
-      }
-        })
-    console.log(member.presence)
-  embed.setAuthor(user.tag, member.user.avatarURL())
-  embed.setTitle(`👋 Welcome to ${user.username}'s Profile!`)
-  embed.addField('#️⃣ Tag:', member.user.tag)
-  embed.addField('📡 Joined Guild at:', member.user.joinedAt)
-  embed.addField('💬 Joined Discord at:', member.user.cretedAt
-)
-if (!member.presence.activities) {
-  embed.addField('⚽️ Activity:', 'Not playing anything')
-} else {
-  embed.addField('⚽️ Activity:', `${member.presence.activities.type} ${member.presence.activities.name}\n${member.presence.activities.details}\n${member.presence.activities.state}`)
-}
-  embed.addField('📱 Platform:', member.presence.clientStatus)
-  embed.addField('🤖 Bot:', user.bot)
-  embed.addField('📜 Roles:', Roles.join(' | '))
-  embed.setFooter('Bot made with discord.js')
-  message.channel.send({ embeds: embed })
-  }
+if (message.content.startsWith("@activity")) {
+    const user = message.mentions.users.first();
+    if (!user) return message.channel.send("Please mention a user!");
+    let embed = new Discord.MessageEmbed()
+    .setTitle("**WHOIS**")
+    .setDescription(`${user.tag}`)
+    .addField("Activity", `${user.presence.activity}`)
+    .setColor("BLURPLE")
+    .setFooter("CodeMaster100#7978")
+    message.channel.send({ embeds: [embed] })
+    }
 
 
   
