@@ -591,7 +591,7 @@ if(message.content.startsWith("@8ball")) {
     const but = new MessageActionRow()
     .addComponents(
     new MessageButton()
-    .setLabel('Search Query')
+    .setLabel('Subreddit')
     .setStyle('LINK')
     .setURL(`https://www.reddit.com/r/${subreddit}`)
     )
