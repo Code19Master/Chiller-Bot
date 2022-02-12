@@ -45,6 +45,7 @@ Subreddit - Fun
 Suggest Dev - Bot
 Support Server - button
 Text To emoji - utils
+Truth - Fun
 Type F - Dun
 Unmute - Mod
 uptime - Bot

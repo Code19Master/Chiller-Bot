@@ -415,9 +415,44 @@ if(message.content.startsWith("@8ball")) {
   let embed = new Discord.MessageEmbed()
   .setDescription(`**QUESTION** - ` + args + `\n:8ball: Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
   .setColor("BLACK")
-  .setFooter("8Ball's Answer")
   message.channel.send({ embeds: [embed] })
   }
+
+  //truth
+  if(message.content.startsWith("@truth")) {
+    let truth = 
+    ["If you could be invisible, what’s the first thing you would do?",
+    "What’s a secret you kept from your parents?",
+    "What’s the most embarrassing music you listen to?",
+    "What’s the most embarrassing thing you’ve done?",
+    "What’s one thing you wish you could change about yourself?",
+    "Who is your secret crush?",
+    "Who is the last person you creeped on social media?",
+    "When was the last time you wet the bed?",
+    "If a genie granted you three wishes, what would you ask for?",
+    "Where is the weirdest place you've ever gone to the bathroom?",
+    "What’s the most embarrassing thing you’ve done in front of a mirror?",
+    "What’s the most food you've ever eaten in a single sitting?",
+    "Which player would survive a zombie apocalypse and which would be the first to go?",
+    "Reveal all the details of your first kiss.",
+    "What excuse have you used before to get out plans?",
+    "What's the longest you've ever slept?",
+    "Read the last thing you sent your best friend or significant other out loud.",
+    "What's your biggest pet peeve?",
+    "When was the last time you lied?",
+    "What five things would you bring to a deserted island?",
+    "Which is your favorite Hollywood Chris? Chris Evans, Chris Pratt, Chris Hemsworth or Chris Pine?",
+    "What's the most embarrassing thing you ever did on a date?",
+    "What is the craziest pickup line you've ever used?",
+    "What animal do you think you most look like?",
+    "How many selfies do you take a day?"]
+   
+    let embed = new Discord.MessageEmbed()
+    .setTitle("**TRUTH**")
+    .setDescription(`Truth - ${truth[Math.floor(Math.random() * truth.length)]}`)
+    .setColor("BLACK")
+    message.channel.send({ embeds: [embed] })
+    }
 
 
   
