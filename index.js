@@ -479,7 +479,7 @@ if(message.content.startsWith("@8ball")) {
    
     let embed = new Discord.MessageEmbed()
     .setTitle("**TRUTH**")
-    .setDescription(`Truth - ${truth[Math.floor(Math.random() * truth.length)]}`)
+    .setDescription(`${truth[Math.floor(Math.random() * truth.length)]}`)
     .setColor("BLURPLE")
     .setFooter("CodeMaster100#7978")
     message.channel.send({ embeds: [embed] })
