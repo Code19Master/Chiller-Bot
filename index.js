@@ -562,6 +562,24 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed], components: [but] });
 
     }
+//youtube search
+  if(message.content.startsWith("@ytsearch")) {
+    const query = message.content.slice(10);
+    if (!query) return message.channel.send("Please enter a search query!");
+    let embed = new Discord.MessageEmbed()
+    .setDescription(`Click On The Button to Get Redirected to YouTube Search`)
+
+    const but = new MessageActionRow()
+    .addComponents(
+    new MessageButton()
+    .setLabel('Search Query')
+    .setStyle('LINK')
+    .setURL(`https://www.youtube.com/results?search_query=${query}`)
+    )
+    
+    message.channel.send({ embeds: [embed], components: [but] });
+
+    }
 
 
 
