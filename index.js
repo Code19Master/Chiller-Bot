@@ -581,7 +581,7 @@ if(message.content.startsWith("@8ball")) {
 
     }
 
-//memes
+//subreddit search
   if(message.content.startsWith("@subreddit")) {
     const subreddit = message.content.slice(11);
     if (!subreddit) return message.channel.send("Please enter a Subreddit");
@@ -599,7 +599,16 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed], components: [but] });
 
   }
-
+//activity of the user mentioned
+  if(message.content.startsWith("@activity")){
+    const user = message.mentions.users.first();
+    if (!user) return message.channel.send("Please mention a user!");
+    let embed = new Discord.MessageEmbed()
+    .setDescription(`Activity of ${user.tag}`)
+    .setDescription(`${user.presence.activities.map(a => a.name).join(', ')}`)
+    .setColor("BLURPLE")
+    message.channel.send({ embeds: [embed] })
+  }
 
   
 
