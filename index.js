@@ -451,6 +451,7 @@ if(message.content.startsWith("@8ball")) {
     .setTitle("**TRUTH**")
     .setDescription(`Truth - ${truth[Math.floor(Math.random() * truth.length)]}`)
     .setColor("BLURPLE")
+    .setFooter("CodeMaster100#7978")
     message.channel.send({ embeds: [embed] })
     }
 
