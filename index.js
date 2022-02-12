@@ -545,8 +545,8 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed] })
     }
 //google search
-  if(message.content.startsWith("@google")) {
-    let args = message.content.split(" ").slice(8);
+  if(message.content.startsWith("@gsearch")) {
+    let args = message.content.split("@gsearch").slice(1);
     let query = args.join(" ");
     if (!query) return message.channel.send("Please enter a search query!");
     let embed = new Discord.MessageEmbed()
