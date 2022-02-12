@@ -406,7 +406,7 @@ if (message.content.toLowerCase().startsWith('@clownrate')) {
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
-
+//8ball
 if(message.content.startsWith("@8ball")) {
   const args = message.content.slice(7);
   if(!args) return message.channel.send("Please Provide A Question!");
@@ -602,7 +602,7 @@ if(message.content.startsWith("@8ball")) {
 //activity of the user mentioned
 if (message.content.startsWith("@whois")) {
   const embed = new Discord.MessageEmbed()
-  let member = message.mentions.members.first() || message.guild.members.cache.get(args[1]) || message.guild.member(message.author)
+  let member = message.mentions.users.first() || message.author
     const Roles = new Array()
     message.guild.roles.cache.forEach(role => {
       if (member.roles.cache.find(r => r.id == role.id)) {
