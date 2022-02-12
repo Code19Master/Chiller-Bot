@@ -600,7 +600,7 @@ if(message.content.startsWith("@8ball")) {
 
   }
 //activity of the user mentioned
-if (command == "info") {
+if (message.content.startsWith("@whois")) {
   const embed = new Discord.MessageEmbed()
   let member = message.mentions.members.first() || message.guild.members.cache.get(args[1]) || message.guild.member(message.author)
     const Roles = new Array()
