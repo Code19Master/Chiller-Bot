@@ -599,18 +599,6 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed], components: [but] });
 
   }
-//activity of the user mentioned
-if (message.content.startsWith("@activity")) {
-    const user = message.mentions.users.first();
-    if (!user) return message.channel.send("Please mention a user!");
-    let embed = new Discord.MessageEmbed()
-    .setTitle("**WHOIS**")
-    .setDescription(`${user.tag}`)
-    .addField("Activity", `${user.presence.activity}`)
-    .setColor("BLURPLE")
-    .setFooter("CodeMaster100#7978")
-    message.channel.send({ embeds: [embed] })
-    }
 
 
   
