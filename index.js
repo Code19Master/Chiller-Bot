@@ -605,11 +605,9 @@ if(message.content.startsWith("@8ball")) {
   if(message.content.startsWith("@warn")) {
     let user = message.mentions.users.first();
     if (!user) return message.channel.send("Please mention a user to warn!");
-    let reason = message.content.slice(6);
-    if (!reason) return message.channel.send("Please enter a reason to warn!");
     let embed = new Discord.MessageEmbed()
     .setTitle("**WARNING**")
-    .setDescription(`${user} has been warned for ${reason}`)
+    .setDescription(`${user} has been warned for breaking the rules!`)
     .setColor("BLURPLE")
     .setFooter(`Moderater : ${message.author.username}`)
     .setTimestamp()
