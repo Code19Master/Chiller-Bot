@@ -635,7 +635,7 @@ if(message.content.startsWith("@8ball")) {
     }
     //secret ping
     if(message.content.startsWith("@sp")) {
-        let user = message.mentions.users.first();
+        let user = message.mentions.members.first();
         if (!user) return message.channel.send("Please mention a user to ping!");
         let message = message.content.slice(5)
         if (!message) return message.channel.send("Please enter a message!");
