@@ -615,7 +615,7 @@ if(message.content.startsWith("@8ball")) {
     }
     //ban
     if(message.content.startsWith("@ban")) {
-        if (message.member.hasPermission("BAN_MEMBERS")) {
+        if (message.member.permissions.has("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
         else {
