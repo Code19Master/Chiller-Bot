@@ -647,16 +647,6 @@ simplydjs.tictactoe(message, {
 });
   }
 
-//rps
-  if(message.content.startsWith("@rps")) {
-    simplydjs.rps(message, {
-      embedFooter: "A Game of RPS",
-      rockColor: "colors", 
-      paperColor: "colors",
-      scissorsColor: "colors" ,
-      credit: false
-    });
-  }
 
   
 
