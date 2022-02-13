@@ -613,8 +613,8 @@ if(message.content.startsWith("@8ball")) {
     .setTimestamp()
     message.channel.send({ embeds: [embed] })
     }
-    //softban
-    if(message.content.startsWith("@softban")) {
+    //ban
+    if(message.content.startsWith("@ban")) {
         if (message.member.hasPermission("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
