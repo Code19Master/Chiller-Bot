@@ -126,16 +126,7 @@ client.on('messageCreate', async message => {
       .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse @help <command> to get more information about a command.')
       .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
       
-      function menuselection(menu) {
-        switch(menu.values[0]) {
-        case "Vip_option":
-        menu.reply.send("mate mate", true)
-        break;
-        case "bot_option":
-        menu.reply.send("oi oi oi mate mate", true)
-        break;
-        }
-      }
+
       
 
 
@@ -610,6 +601,20 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed], components: [but] });
 
   }
+  //warn
+  if(message.content.startsWith("@warn")) {
+    let user = message.mentions.users.first();
+    if (!user) return message.channel.send("Please mention a user to warn!");
+    let reason = message.content.slice(6);
+    if (!reason) return message.channel.send("Please enter a reason to warn!");
+    let embed = new Discord.MessageEmbed()
+    .setTitle("**WARNING**")
+    .setDescription(`${user} has been warned for ${reason}`)
+    .setColor("BLURPLE")
+    .setFooter(`Moderater : ${message.author.username}`)
+    .setTimestamp()
+    message.channel.send({ embeds: [embed] })
+    }
 
 
   
