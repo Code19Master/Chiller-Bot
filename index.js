@@ -621,7 +621,7 @@ if(message.content.startsWith("@8ball")) {
         else {
         member.ban().then(member => {
           let embed = new Discord.MessageEmbed()
-          .setTitle("**WARNING**")
+          .setTitle("**BAN**")
           .setDescription(`Banned ${member} From The Server!`)
           .setColor("BLURPLE")
           .setFooter(`Moderater : ${message.author.username}`)
