@@ -613,6 +613,26 @@ if(message.content.startsWith("@8ball")) {
     .setTimestamp()
     message.channel.send({ embeds: [embed] })
     }
+    //softban
+    if(message.content.startsWith("@softban")) {
+        if (message.member.hasPermission("BAN_MEMBERS")) {
+        let member = message.mentions.members.first()
+        if (!member) message.channel.send("Please mention someone")
+        else {
+        member.ban().then(member => {
+          let embed = new Discord.MessageEmbed()
+          .setTitle("**WARNING**")
+          .setDescription(`Banned ${member} From The Server!`)
+          .setColor("BLURPLE")
+          .setFooter(`Moderater : ${message.author.username}`)
+          .setTimestamp()
+        message.channel.send({ embeds: [embed] })
+        })
+        }
+        } else {
+        message.reply("You don't have the permission to do that...")
+        }
+    }
 
 
   
