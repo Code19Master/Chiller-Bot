@@ -647,6 +647,21 @@ simplydjs.tictactoe(message, {
 });
   }
 
+//rps
+  if(message.content.startsWith("@rps")) {
+    simplydjs.rps(message, {
+      embedColor: "hex code", 
+      timeoutEmbedColor: "hex code", 
+      drawEmbedColor: "hex code",
+      winEmbedColor: "hex code", 
+      embedFooter: "A Game of RPS",
+      rockColor: "colors", 
+      paperColor: "colors",
+      scissorsColor: "colors" ,
+      credit: false
+    });
+  }
+
   
 
 });
