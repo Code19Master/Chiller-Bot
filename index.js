@@ -672,9 +672,12 @@ if (message.content.startsWith("@poll")) {
   .setDescription(`${args}`)
   .setColor("#383c3c")
   .setFooter("CodeMaster100#7978")
+  .setTimestamp()
+  
+  message.react("👍")
+  message.react("👎")
   message.channel.send({ embeds: [embed] })
-  embed.react("👍")
-  embed.react("👎")
+
 }
 
 
