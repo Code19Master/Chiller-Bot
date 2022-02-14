@@ -59,6 +59,8 @@ client.on('ready', () => {
 client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
   interaction.reply({ content: 'Something was selected!', components: [], ephemeral: true  });
+  
+  
 
 });
 
@@ -646,6 +648,21 @@ simplydjs.tictactoe(message, {
   resultBtn: true
 });
   }
+//whois
+if (message.content === "@whois") {
+  const Target = message.mentions.users.first() || message.author;
+  const Member = message.guild.members.cache.get(Target.id);
+  let embednew = new MessageEmbed()
+    .setAuthor(`${Target.username}`, Target.displayAvatarURL({ dynamic: true }))
+    .setThumbnail(Target.displayAvatarURL({ dynamic: true }))
+    .setColor("#383c3c")
+    .addField("UserID:", `${Target.id}`, false)
+    .addField("Ping 🏓 :", `You have ${Date.now() - message.createdTimestamp}ms.`)
+    .addField("Discord User Since 🌐 :", `${moment(Target.createdAt).format('MMM Do Y, h:mm:ss a')}\n**-** ${moment(Target.createdAt).startOf('day').fromNow()}`)
+    .addField("Server Member Since 👥 :", `${moment(Member.joinedAt).format('MMM Do Y, h:mm:ss a')}\n**-** ${moment(Member.joinedAt).startOf('day').fromNow()}`)
+    .setTimestamp()
+  message.reply({ embeds: [embednew] });
+}
 
 
   
