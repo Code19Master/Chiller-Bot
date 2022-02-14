@@ -4,6 +4,7 @@ const { MessageButton } = require('discord.js');
 const { Client, Intents, Collection } = require('discord.js');
 const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
+const moment = require("moment")
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
