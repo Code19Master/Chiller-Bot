@@ -676,10 +676,13 @@ if (message.content.startsWith("@poll")) {
   .setTimestamp()
 
 
-  let m = message.channel.send({ embeds: [embed] })
-  m.react("👍")
-  m.react("👎")
-  
+ message.channel.send({ embeds: [embed] }).then(X => 
+  {
+  X.react("👍")
+  X.react("👎")
+  })
+
+
 
 
 }
