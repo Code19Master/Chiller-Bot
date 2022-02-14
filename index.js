@@ -667,15 +667,16 @@ if (message.content === "@whois") {
 //poll
 if (message.content.startsWith("@poll")) {
   let args = message.content.slice(6);
+  if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
   .setTitle("**POLL**")
   .setDescription(`${args}`)
   .setColor("#383c3c")
   .setFooter("CodeMaster100#7978")
   .setTimestamp()
-  
-  message.react("👍")
-  message.react("👎")
+
+  embed.react("👍")
+  embed.react("👎")
   message.channel.send({ embeds: [embed] })
 
 }
