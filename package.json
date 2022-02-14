@@ -23,7 +23,8 @@
     "discord.js": "^13.6.0",
     "discord.js-akinator": "^3.3.3",
     "simply-djs": "^2.5.2",
-    "something-random-on-discord": "^3.4.4"
+    "something-random-on-discord": "^3.4.4",
+    "moment": "^2.29.1"
   },
   "engines": {
     "node": ">=16.6.0"
