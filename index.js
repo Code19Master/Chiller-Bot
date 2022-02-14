@@ -675,9 +675,12 @@ if (message.content.startsWith("@poll")) {
   .setFooter("CodeMaster100#7978")
   .setTimestamp()
 
-  embed.react("👍")
-  embed.react("👎")
-  message.channel.send({ embeds: [embed] })
+
+  let m = message.channel.send({ embeds: [embed] })
+  m.react("👍")
+  m.react("👎")
+  
+
 
 }
 
