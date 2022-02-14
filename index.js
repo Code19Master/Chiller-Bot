@@ -664,6 +664,18 @@ if (message.content === "@whois") {
     .setTimestamp()
   message.reply({ embeds: [embednew] });
 }
+//poll
+if (message.content.startsWith("@poll")) {
+  let args = message.content.slice(6);
+  let embed = new Discord.MessageEmbed()
+  .setTitle("**POLL**")
+  .setDescription(`${args}`)
+  .setColor("#383c3c")
+  .setFooter("CodeMaster100#7978")
+  message.channel.send({ embeds: [embed] })
+  embed.react("👍")
+  embed.react("👎")
+}
 
 
   
