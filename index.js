@@ -120,7 +120,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Vote Me')
       .setStyle('LINK')
-      .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vote Me TOPGG 
+      .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
       );
 
       const firstmainembed = new MessageEmbed()
@@ -155,7 +155,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Vote Me')
       .setStyle('LINK')
-      .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vote Me TOPGG 
+      .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
       );
       
   await message.channel.send({ embeds: [embed], components: [but] });
@@ -333,7 +333,7 @@ if (message.content === "#botinfo") {
   new MessageButton()
   .setLabel('Vote Me')
   .setStyle('LINK')
-  .setURL('https://discord.gg/59PfqAUN3Z'),//Change Link To Vote Me TOPGG 
+  .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
   );
 
 await message.channel.send({ embeds: [embed], components: [but] });
