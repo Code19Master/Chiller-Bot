@@ -57,6 +57,11 @@ client.on('ready', () => {
 });
 
 
+client.api.applications(client.user.id).commands.post({data: {
+  name: 'calculator',
+  description: 'Just a casual calculator.'
+}})
+
 
 
 //help (normal)
