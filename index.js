@@ -132,16 +132,6 @@ client.on('messageCreate', async message => {
 
 
 
-      const filter = (interaction) => interaction.isSelectMenu() && interaction.user.id === message.author.id;
-      const collector = message.channel.createMessageComponentCollector({ filter, max: "5", });
-
-      collector.on('collect', async(collected) => {
-        const value = collected.value[0];
-
-        collected.deferUpdate();
-        collected.channel.send({ content: value });
-      })
-      
 
       
 
@@ -150,7 +140,33 @@ client.on('messageCreate', async message => {
 
   
  
-  await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
+    let msg = await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
+
+
+ const filter = (interaction) => interaction.user.id === message.author.id;   
+  
+ const collector = message.channel.createMessageComponentCollector({
+    filter,
+    componentType: "SELECT_MENU"
+ });
+       
+
+collector.on("collect", async (collected) =>{
+const value = collected.values[0]
+if(value === "Vip_option"){
+collected.reply({content: "hello chamak chalo", ephemeral: true})
+  }
+  if(value === "bot_optiom"){
+collected.reply({content: "hello Bruh", ephemeral: true})
+  }
+  if(value === "utility_option"){
+collected.reply({content: "hello brother", ephemeral: true})
+  }
+
+
+
+
+ })
 
 
     }
