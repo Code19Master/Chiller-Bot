@@ -68,7 +68,7 @@ client.on('interactionCreate', interaction => {
 
 //help (normal)
 client.on('messageCreate', async message => {
-    if (message.content === "@help") {
+    if (message.content === "#help") {
 		const row = new MessageActionRow()
 			.addComponents(
 
@@ -126,7 +126,7 @@ client.on('messageCreate', async message => {
       const firstmainembed = new MessageEmbed()
       .setTitle(':red_circle: ***CHILLER HELP***')
       .setColor('BLACK')
-      .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse @help <command> to get more information about a command.')
+      .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse #help <command> to get more information about a command.')
       .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
       
 
@@ -142,7 +142,7 @@ client.on('messageCreate', async message => {
 
     }
     //vote
-    if (message.content === "@vote") {
+    if (message.content === "#vote") {
       
       const embed = new MessageEmbed()
       .setTitle('***VOTE ME***')
@@ -163,12 +163,12 @@ client.on('messageCreate', async message => {
 
     }
     //VIP
-    if (message.content === "@vip") {
+    if (message.content === "#vip") {
       
       const ifembed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
-      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in **@contributors** Command.')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in **#contributors** Command.')
       .setTimestamp()
 
       const but = new MessageActionRow()
@@ -182,7 +182,7 @@ client.on('messageCreate', async message => {
       }
 
   //contributors
-  if (message.content === "@contributors") {
+  if (message.content === "#contributors") {
       
     const embed = new MessageEmbed()
     .setTitle('***VIPs***')
@@ -197,7 +197,7 @@ client.on('messageCreate', async message => {
   
 
   //premium
-  if (message.content === "@premium") {
+  if (message.content === "#premium") {
       
     const embed = new MessageEmbed()
     .setTitle('***Get PREMIUM***')
@@ -211,7 +211,7 @@ client.on('messageCreate', async message => {
     }
 
     //developer
-    if (message.content === "@devinfo") {
+    if (message.content === "#devinfo") {
       const embed = new MessageEmbed()
       .setTitle('***DEVELOPERS***')
       .setColor('BLACK')
@@ -236,7 +236,7 @@ client.on('messageCreate', async message => {
 
     }
     //invite
-    if (message.content === "@invite") {
+    if (message.content === "#invite") {
         
         const embed = new MessageEmbed()
         .setTitle('***Invite Me***')
@@ -257,7 +257,7 @@ client.on('messageCreate', async message => {
   
       }
       //support
-      if (message.content === "@support") {
+      if (message.content === "#support") {
         const embed = new MessageEmbed()
         .setTitle('***Support Server***')
         .setColor('BLACK')
@@ -277,14 +277,14 @@ client.on('messageCreate', async message => {
   
       }
 //say
-if (message.content.startsWith("@say")) {
+if (message.content.startsWith("#say")) {
   const sayMessage = message.content.slice(5);
   if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
   message.channel.send(sayMessage);
 }
 //uptime
-if (message.content === "@uptime") {
+if (message.content === "#uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
@@ -294,7 +294,7 @@ if (message.content === "@uptime") {
 await message.channel.send({ embeds: [embed] });
 }
 //avatar
-if (message.content === "@avatar") {
+if (message.content === "#avatar") {
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
   .setColor('BLACK')
@@ -305,7 +305,7 @@ if (message.content === "@avatar") {
 await message.channel.send({ embeds: [embed] });
 }
 //ping
-if (message.content === "@ping") {
+if (message.content === "#ping") {
   const embed = new MessageEmbed()
   .setTitle('***Pong!***')
   .setColor('BLACK')
@@ -316,7 +316,7 @@ await message.channel.send({ embeds: [embed] });
 }
 
 //bot info
-if (message.content === "@botinfo") {
+if (message.content === "#botinfo") {
   const embed = new MessageEmbed()
   .setTitle('***Bot Info***')
   .setColor('BLACK')
@@ -324,7 +324,7 @@ if (message.content === "@botinfo") {
   .addField('Bot ID:', client.user.id)
   .addField('Bot Tag:', client.user.tag)
   .addField('Bot Owner:', 'CodeMaster100#7978')
-  .addField('Bot Prefix:', '@')
+  .addField('Bot Prefix:', '#')
   .addField('Bot Version:', '1.0.0')
   .setTimestamp()
   
@@ -339,7 +339,7 @@ if (message.content === "@botinfo") {
 await message.channel.send({ embeds: [embed], components: [but] });
 }
 //akinator
-if(message.content.startsWith(`@akinator`)) {
+if(message.content.startsWith(`#akinator`)) {
   akinator(message, {
       language: language, 
       childMode: childMode, 
@@ -351,7 +351,7 @@ if(message.content.startsWith(`@akinator`)) {
 
 
 //which take suggestion from a user and send it to a channel
-if (message.content.startsWith("@suggest")) {
+if (message.content.startsWith("#suggest")) {
   const suggestMessage = message.content.slice(8);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
@@ -365,7 +365,7 @@ if (message.content.startsWith("@suggest")) {
   }
 
 //kick command 
-if (message.content.toLowerCase().startsWith('@kick')) {
+if (message.content.toLowerCase().startsWith('#kick')) {
   const member = message.mentions.members.first()
   if (!member) return message.channel.send('You need to mention a user/provide an ID')
   if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send('You lack the required permissions')
@@ -380,7 +380,7 @@ if (message.content.toLowerCase().startsWith('@kick')) {
   }
  }
  //calculator 
-if (message.content.toLowerCase().startsWith('@calc')) {
+if (message.content.toLowerCase().startsWith('#calc')) {
 simplydjs.calculator(message, {
   embedColor: "#000000",
   credit: false,
@@ -392,27 +392,27 @@ simplydjs.calculator(message, {
 simplydjs.nqn(message);
 
 //simprate command
-if (message.content.toLowerCase().startsWith('@simprate')) {
+if (message.content.toLowerCase().startsWith('#simprate')) {
     let user = message.mentions.users.first() || message.author
     let simps = Math.floor(Math.random() * 100) + 1;
     message.channel.send(`${user} is **${simps}**% Simp. SIMP!`)
 }
 
 //cool command
-if (message.content.toLowerCase().startsWith('@cool')) {
+if (message.content.toLowerCase().startsWith('#cool')) {
   let user = message.mentions.users.first() || message.author
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
 
 //clownrate command
-if (message.content.toLowerCase().startsWith('@clownrate')) {
+if (message.content.toLowerCase().startsWith('#clownrate')) {
   let user = message.mentions.users.first() || message.author
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
 //8ball
-if(message.content.startsWith("@8ball")) {
+if(message.content.startsWith("#8ball")) {
   const args = message.content.slice(7);
   if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
@@ -424,7 +424,7 @@ if(message.content.startsWith("@8ball")) {
   }
 
   //truths
-  if(message.content.startsWith("@truth")) {
+  if(message.content.startsWith("#truth")) {
     let truth = 
     ["If you could be invisible, what’s the first thing you would do?",
     "What’s a secret you kept from your parents?",
@@ -490,7 +490,7 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed] })
     }
 //Dare
-  if(message.content.startsWith("@dare")) {
+  if(message.content.startsWith("#dare")) {
     let dare = 
     ["Do a free-style rap for the next minute.",
     "Let another person post a status on your behalf.",
@@ -550,7 +550,7 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed] })
     }
 //google search
-  if(message.content.startsWith("@gsearch")) {
+  if(message.content.startsWith("#gsearch")) {
     const query = message.content.slice(9);
     if (!query) return message.channel.send("Please enter a search query!");
     let embed = new Discord.MessageEmbed()
@@ -568,7 +568,7 @@ if(message.content.startsWith("@8ball")) {
 
     }
 //youtube search
-  if(message.content.startsWith("@ytsearch")) {
+  if(message.content.startsWith("#ytsearch")) {
     const query = message.content.slice(10);
     if (!query) return message.channel.send("Please enter a search query!");
     let embed = new Discord.MessageEmbed()
@@ -587,7 +587,7 @@ if(message.content.startsWith("@8ball")) {
     }
 
 //subreddit search
-  if(message.content.startsWith("@subreddit")) {
+  if(message.content.startsWith("#subreddit")) {
     const subreddit = message.content.slice(11);
     if (!subreddit) return message.channel.send("Please enter a Subreddit");
     let embed = new Discord.MessageEmbed()
@@ -605,7 +605,7 @@ if(message.content.startsWith("@8ball")) {
 
   }
   //warn
-  if(message.content.startsWith("@warn")) {
+  if(message.content.startsWith("#warn")) {
     let user = message.mentions.users.first();
     if (!user) return message.channel.send("Please mention a user to warn!");
     let embed = new Discord.MessageEmbed()
@@ -617,7 +617,7 @@ if(message.content.startsWith("@8ball")) {
     message.channel.send({ embeds: [embed] })
     }
     //ban
-    if(message.content.startsWith("@ban")) {
+    if(message.content.startsWith("#ban")) {
         if (message.member.permissions.has("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
@@ -637,7 +637,7 @@ if(message.content.startsWith("@8ball")) {
         }
     }
 //ttt
-  if(message.content.startsWith("@ttt")) { 
+  if(message.content.startsWith("#ttt")) { 
 
 simplydjs.tictactoe(message, {
   xEmoji: "❌", 
@@ -650,7 +650,7 @@ simplydjs.tictactoe(message, {
 });
   }
 //whois
-if (message.content === "@whois") {
+if (message.content === "#whois") {
   const Target = message.mentions.users.first() || message.author;
   const Member = message.guild.members.cache.get(Target.id);
   let embednew = new MessageEmbed()
@@ -665,7 +665,7 @@ if (message.content === "@whois") {
   message.reply({ embeds: [embednew] });
 }
 //poll
-if (message.content.startsWith("@poll")) {
+if (message.content.startsWith("#poll")) {
   let args = message.content.slice(6);
   if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
