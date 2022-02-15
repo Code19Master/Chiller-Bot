@@ -166,13 +166,17 @@ client.on('messageCreate', async message => {
        
 
 collector.on("collect", async (collected) =>{
+  
 const value = collected.values[0]
+
 if(value === "Vip_option"){
 collected.reply({embed: [vipembed], ephemeral: true})
   }
+
   if(value === "bot_option"){
 collected.reply({embed: [botembed], ephemeral: true})
   }
+
   if(value === "utility_option"){
 collected.reply({embed: [utilityembed], ephemeral: true})
   }
