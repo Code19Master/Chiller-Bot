@@ -170,15 +170,15 @@ collector.on("collect", async (collected) =>{
 const value = collected.values[0]
 
 if(value === "Vip_option"){
-collected.reply({embed: [vipembed], ephemeral: true})
+collected.reply({embeds: [vipembed], ephemeral: true})
   }
 
   if(value === "bot_option"){
-collected.reply({embed: [botembed], ephemeral: true})
+collected.reply({embeds: [botembed], ephemeral: true})
   }
 
   if(value === "utility_option"){
-collected.reply({embed: [utilityembed], ephemeral: true})
+collected.reply({embeds: [utilityembed], ephemeral: true})
   }
 
 
