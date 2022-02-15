@@ -135,6 +135,27 @@ client.on('messageCreate', async message => {
  
     let msg = await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
 
+    const vipembed = new MessageEmbed()
+    .setTitle('Vip Commands')
+    .setDescription('**vip -** Do #vip to find out.\n**premium -** Get access to secret commands\n**contributors -** People who contributed')
+    .setColor('BLACK')
+    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setTimestamp()
+
+    const botembed = new MessageEmbed()
+    .setTitle('Bot Commands')
+    .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -**check The Ping of the Bot ')
+    .setColor('BLACK')
+    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setTimestamp()
+
+    const utilityembed = new MessageEmbed()
+    .setTitle('Utility Commands')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**gsearch -** search stuff on google\n**ytsearch -** search stuff on yt\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar')
+    .setColor('BLACK')
+    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setTimestamp()
+
 
  const filter = (interaction) => interaction.user.id === message.author.id;   
   
@@ -147,13 +168,13 @@ client.on('messageCreate', async message => {
 collector.on("collect", async (collected) =>{
 const value = collected.values[0]
 if(value === "Vip_option"){
-collected.reply({content: "hello chamak chalo", ephemeral: true})
+collected.reply({embed: [vipembed], ephemeral: true})
   }
-  if(value === "bot_optiom"){
-collected.reply({content: "hello Bruh", ephemeral: true})
+  if(value === "bot_option"){
+collected.reply({embed: [botembed], ephemeral: true})
   }
   if(value === "utility_option"){
-collected.reply({content: "hello brother", ephemeral: true})
+collected.reply({embed: [utilityembed], ephemeral: true})
   }
 
 
