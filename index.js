@@ -139,8 +139,8 @@ client.on('messageCreate', async message => {
         const value = collected.value[0];
 
         collected.deferUpdate();
-        collected.channel.send({ embed: firstmainembed, ephemeral: true });
-      })
+        collected.channel.send({ content: value });
+      })e
       
 
       
