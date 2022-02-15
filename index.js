@@ -151,7 +151,21 @@ client.on('messageCreate', async message => {
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
-    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**gsearch -** search stuff on google\n**ytsearch -** search stuff on yt\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**gsearch -** search stuff on google\n**ytsearch -** search stuff on yt\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**subreddit -** Searches a subreddit for you')
+    .setColor('BLACK')
+    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setTimestamp()
+
+    const moderatorembed = new MessageEmbed()
+    .setTitle('Moderator Commands')
+    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user')
+    .setColor('BLACK')
+    .setFooter('Use `#help <command>` to get additional help on a specific command. Moderation System is currently in development.')
+    .setTimestamp()
+
+    const funembed = new MessageEmbed()
+    .setTitle('Fun Commands')
+    .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say')
     .setColor('BLACK')
     .setFooter('Use `#help <command>` to get additional help on a specific command.')
     .setTimestamp()
@@ -179,6 +193,14 @@ collected.reply({embeds: [botembed], ephemeral: true})
 
   if(value === "utility_option"){
 collected.reply({embeds: [utilityembed], ephemeral: true})
+  }
+
+  if(value === "moderator_option"){
+collected.reply({embeds: [moderatorembed], ephemeral: true})
+  }
+
+  if(value === "fun_option"){
+collected.reply({embeds: [funembed], ephemeral: true})
   }
 
 
