@@ -176,6 +176,7 @@ collected.reply({embed: [botembed], ephemeral: true})
   if(value === "utility_option"){
 collected.reply({embed: [utilityembed], ephemeral: true})
   }
+  
 
 
 
