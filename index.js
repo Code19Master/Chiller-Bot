@@ -140,7 +140,7 @@ client.on('messageCreate', async message => {
 
         collected.deferUpdate();
         collected.channel.send({ content: value });
-      })e
+      })
       
 
       
