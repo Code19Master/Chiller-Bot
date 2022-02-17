@@ -725,7 +725,7 @@ if (message.content.startsWith("#f")) {
 }
 
 //flipcoin
-if (message.content.startsWith("#f")) {
+if (message.content.startsWith("#coinflip")) {
   let user = message.author
   let coinside = ["Heads", "Tails"]
   message.channel.send(`**${user}** Just flipped a coin and got **${coinside}**`)
