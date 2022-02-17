@@ -748,6 +748,12 @@ let sus =
 message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}` })
 
 }
+//rate 
+if (message.content.toLowerCase().startsWith('#rate')) {
+  let argu = message.content.slice(6);
+  let rate = Math.floor(Math.random() * 100) + 1;
+  message.channel.send(`I Give ${argu} a solid **${rate}**% `)
+}
 
 
 
