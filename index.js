@@ -148,28 +148,28 @@ client.on('messageCreate', async message => {
     .setTitle('Bot Commands')
     .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -**check The Ping of the Bot ')
     .setColor('BLACK')
-    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
     .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**gsearch -** search stuff on google\n**ytsearch -** search stuff on yt\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**subreddit -** Searches a subreddit for you')
     .setColor('BLACK')
-    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
 
     const moderatorembed = new MessageEmbed()
     .setTitle('Moderator Commands')
     .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user')
     .setColor('BLACK')
-    .setFooter('Use `#help <command>` to get additional help on a specific command. Moderation System is currently in development.')
+    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command. Moderation System is currently in development.' })
     .setTimestamp()
 
     const funembed = new MessageEmbed()
     .setTitle('Fun Commands')
     .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say')
     .setColor('BLACK')
-    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
 
 
@@ -557,7 +557,7 @@ if(message.content.startsWith("#8ball")) {
     .setTitle("**TRUTH**")
     .setDescription(`${truth[Math.floor(Math.random() * truth.length)]}`)
     .setColor("BLURPLE")
-    .setFooter("CodeMaster100#7978")
+    .setFooter({ text: "CodeMaster100#7978" })
     message.channel.send({ embeds: [embed] })
     }
 //Dare
@@ -617,7 +617,7 @@ if(message.content.startsWith("#8ball")) {
     .setTitle("**DARE**")
     .setDescription(`${dare[Math.floor(Math.random() * dare.length)]}`)
     .setColor("BLURPLE")
-    .setFooter("CodeMaster100#7978")
+    .setFooter({ text: "CodeMaster100#7978" })
     message.channel.send({ embeds: [embed] })
     }
 //google search
@@ -683,7 +683,7 @@ if(message.content.startsWith("#8ball")) {
     .setTitle("**WARNING**")
     .setDescription(`${user} has been warned for breaking the rules!`)
     .setColor("BLURPLE")
-    .setFooter(`Moderater : ${message.author.username}`)
+    .setFooter({ text: `Moderater : ${message.author.username}`})
     .setTimestamp()
     message.channel.send({ embeds: [embed] })
     }
@@ -698,7 +698,7 @@ if(message.content.startsWith("#8ball")) {
           .setTitle("**BAN**")
           .setDescription(`Banned ${member} From The Server!`)
           .setColor("BLURPLE")
-          .setFooter(`Moderater : ${message.author.username}`)
+          .setFooter({ text: `Moderater : ${message.author.username}`})
           .setTimestamp()
         message.channel.send({ embeds: [embed] })
         })
@@ -743,7 +743,7 @@ if (message.content.startsWith("#poll")) {
   .setTitle("**POLL**")
   .setDescription(`${args}`)
   .setColor("#383c3c")
-  .setFooter("CodeMaster100#7978")
+  .setFooter({ text: "CodeMaster100#7978" })
   .setTimestamp()
 
 
