@@ -753,7 +753,7 @@ if (message.content.toLowerCase().startsWith('#rate')) {
   let argu = message.content.slice(6);
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
-  message.channel.send(`I Rate ${argu} a solid **${rate}**/100`) `)
+  message.channel.send(`I Rate ${argu} a solid **${rate}/100**`)
 }
 
 
