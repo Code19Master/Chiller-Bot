@@ -57,17 +57,6 @@ client.on('ready', () => {
 });
 
 
-client.on('interactionCreate', async interaction => {
-  if (!interaction.isCommand()) return;
-  if(interaction.commandName == "help"){
-  let embed = new Discord.MessageEmbed()
-  .setTitle("Help Commands of, bot-name")
-  .addField("/help","THIS")
-  .setColor("RANDOM")
-  .setTimestamp()
-      interaction.reply({embeds:[embed]})
-  }})
-
 
 
 
@@ -767,6 +756,18 @@ if (message.content.toLowerCase().startsWith('#rate')) {
   
 
 });
+
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isCommand()) return;
+  if(interaction.commandName == "help"){
+  let embed = new Discord.MessageEmbed()
+  .setTitle("Help Commands of, bot-name")
+  .addField("/help","THIS")
+  .setColor("RANDOM")
+  .setTimestamp()
+      interaction.reply({embeds:[embed]})
+  }})
+
 
 
 client.login(token);
