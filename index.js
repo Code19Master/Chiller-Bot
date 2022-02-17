@@ -57,6 +57,17 @@ client.on('ready', () => {
 });
 
 
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isCommand()) return;
+  if(interaction.commandName == "help"){
+  let embed = new Discord.MessageEmbed()
+  .setTitle("Help Commands of, bot-name")
+  .addField("/help","THIS")
+  .setColor("RANDOM")
+  .setTimestamp()
+      interaction.reply({embeds:[embed]})
+  }})
+
 
 
 
@@ -699,6 +710,51 @@ if (message.content.startsWith("#poll")) {
   X.react("👎")
   })
 }
+
+//sanity check
+if (message.content.startsWith("#sanitycheck")) {
+  let user = message.mentions.users.first() || message.author
+  let sane = Math.floor(Math.random() * 100) + 1;
+  message.channel.send(`${user} is **${sane}**% sane Today!`)
+}
+
+//f
+if (message.content.startsWith("#f")) {
+  let user = message.author
+  message.channel.send(`**${user}** has paid Respect :heart:`)
+}
+
+//flipcoin
+if (message.content.startsWith("#f")) {
+  let user = message.author
+  let coinside = ["Heads", "Tails"]
+  message.channel.send(`**${user}** Just flipped a coin and got **${coinside}**`)
+}
+
+//sus
+if (message.content.startsWith("#sus")) {
+
+let sus = 
+["https://c.tenor.com/YebbLUmkg9YAAAAM/among-us.gif",
+"https://c.tenor.com/vHroFuuevf0AAAAM/among-us.gif",
+"https://c.tenor.com/5j6SImhtzsEAAAAM/sus-suspect.gif",
+"https://c.tenor.com/SSF8otXFR3UAAAAM/sus.gif",
+"https://c.tenor.com/LxeR852sVAMAAAAM/sus-check.gif",
+"https://c.tenor.com/1A6sTQJwLYAAAAAM/king-of-fighters-iori-yagami.gif",
+"https://c.tenor.com/H46daZMWzi4AAAAM/sus-buff.gif",
+"https://c.tenor.com/9smDMBhbmPoAAAAM/among-us-kinda-sus.gif",
+"https://c.tenor.com/u4DTDP287_kAAAAM/sus-suspect.gif"]
+
+message.channel.send({ content: `${sus}` })
+
+}
+
+
+
+
+
+
+
 
 
   
