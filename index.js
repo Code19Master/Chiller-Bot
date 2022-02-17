@@ -752,10 +752,6 @@ if (message.content.startsWith("#poll")) {
   X.react("👍")
   X.react("👎")
   })
-
-
-
-
 }
 
 
