@@ -728,7 +728,7 @@ if (message.content.startsWith("#f")) {
 if (message.content.startsWith("#coinflip")) {
   let user = message.author
   let coinside = ["Heads", "Tails"]
-  message.channel.send(`**${user}** Just flipped a coin and got **${coinside}**`)
+  message.channel.send(`**${user}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
 }
 
 //sus
@@ -745,7 +745,7 @@ let sus =
 "https://c.tenor.com/9smDMBhbmPoAAAAM/among-us-kinda-sus.gif",
 "https://c.tenor.com/u4DTDP287_kAAAAM/sus-suspect.gif"]
 
-message.channel.send({ content: `${sus}` })
+message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}` })
 
 }
 
