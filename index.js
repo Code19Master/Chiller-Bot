@@ -141,7 +141,7 @@ client.on('messageCreate', async message => {
     .setTitle('Vip Commands')
     .setDescription('**vip -** Do #vip to find out.\n**premium -** Get access to secret commands\n**contributors -** People who contributed')
     .setColor('BLACK')
-    .setFooter('Use `#help <command>` to get additional help on a specific command.')
+    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
 
     const botembed = new MessageEmbed()
@@ -153,7 +153,7 @@ client.on('messageCreate', async message => {
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
-    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**gsearch -** search stuff on google\n**ytsearch -** search stuff on yt\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**subreddit -** Searches a subreddit for you')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar')
     .setColor('BLACK')
     .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
@@ -620,61 +620,7 @@ if(message.content.startsWith("#8ball")) {
     .setFooter({ text: "CodeMaster100#7978" })
     message.channel.send({ embeds: [embed] })
     }
-//google search
-  if(message.content.startsWith("#gsearch")) {
-    const query = message.content.slice(9);
-    if (!query) return message.channel.send("Please enter a search query!");
-    let embed = new Discord.MessageEmbed()
-    .setDescription(`Click On The Button to Get Redirected to Google Search`)
 
-    const but = new MessageActionRow()
-    .addComponents(
-    new MessageButton()
-    .setLabel('Search Query')
-    .setStyle('LINK')
-    .setURL(`https://www.google.com/search?q=${query}`)
-    )
-    
-    message.channel.send({ embeds: [embed], components: [but] });
-
-    }
-//youtube search
-  if(message.content.startsWith("#ytsearch")) {
-    const query = message.content.slice(10);
-    if (!query) return message.channel.send("Please enter a search query!");
-    let embed = new Discord.MessageEmbed()
-    .setDescription(`Click On The Button to Get Redirected to YouTube Search`)
-
-    const but = new MessageActionRow()
-    .addComponents(
-    new MessageButton()
-    .setLabel('Search Query')
-    .setStyle('LINK')
-    .setURL(`https://www.youtube.com/results?search_query=${query}`)
-    )
-    
-    message.channel.send({ embeds: [embed], components: [but] });
-
-    }
-
-//subreddit search
-  if(message.content.startsWith("#subreddit")) {
-    const subreddit = message.content.slice(11);
-    if (!subreddit) return message.channel.send("Please enter a Subreddit");
-    let embed = new Discord.MessageEmbed()
-    .setDescription(`Click On The Button to Get Redirected to the Subreddit`)
-
-    const but = new MessageActionRow()
-    .addComponents(
-    new MessageButton()
-    .setLabel('Subreddit')
-    .setStyle('LINK')
-    .setURL(`https://www.reddit.com/r/${subreddit}`)
-    )
-    
-    message.channel.send({ embeds: [embed], components: [but] });
-
-  }
   //warn
   if(message.content.startsWith("#warn")) {
     let user = message.mentions.users.first();
