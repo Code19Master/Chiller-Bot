@@ -799,7 +799,7 @@ if(message.content.startsWith("#kill")) {
   }
   
   //mute
-if(message.content.startsWith("--mute")) {
+if(message.content.startsWith("#mute")) {
   if(message.member.permissions.has("ADMINISTRATOR")) {
   let member = message.mentions.members.first()
   if(!member) message.channel.send("mention someone to mute!")
@@ -813,7 +813,7 @@ if(message.content.startsWith("--mute")) {
  }
 
  //unmute
- if(message.content.startsWith("--unmute")) {
+ if(message.content.startsWith("#unmute")) {
   if(message.member.permissions.has("ADMINISTRATOR")) {
   let member = message.mentions.members.first()
   if(!member) message.channel.send("mention someone to unmute!")
