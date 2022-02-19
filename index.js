@@ -806,6 +806,7 @@ if(message.content.startsWith("#kill")) {
 
   //giveaway
   if(message.content.startsWith("#giveaway")) {
+    let args = message.content.slice(10);
 
 simplydjs.giveawaySystem(client, db, message, {
   args: args, 
