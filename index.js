@@ -185,23 +185,23 @@ collector.on("collect", async (collected) =>{
 const value = collected.values[0]
 
 if(value === "Vip_option"){
-collected.reply({embeds: [vipembed], ephemeral: true})
+await collected.reply({embeds: [vipembed], ephemeral: true})
   }
 
   if(value === "bot_option"){
-collected.reply({embeds: [botembed], ephemeral: true})
+await collected.reply({embeds: [botembed], ephemeral: true})
   }
 
   if(value === "utility_option"){
-collected.reply({embeds: [utilityembed], ephemeral: true})
+await collected.reply({embeds: [utilityembed], ephemeral: true})
   }
 
   if(value === "moderator_option"){
-collected.reply({embeds: [moderatorembed], ephemeral: true})
+await collected.reply({embeds: [moderatorembed], ephemeral: true})
   }
 
   if(value === "fun_option"){
-collected.reply({embeds: [funembed], ephemeral: true})
+await collected.reply({embeds: [funembed], ephemeral: true})
   }
 
 
