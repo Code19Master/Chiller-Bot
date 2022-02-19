@@ -76,7 +76,12 @@ client.on('messageDelete', function(message, channel) {
 
 //modals 
 
-const modal = new Modal() // We create a Modal
+
+
+client.on('interactionCreate', (interaction) => {
+  // Let's say that the interaction will be an Slash Command called 'ping'.
+  if(interaction.commandName === 'ping'){
+    const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
 .setTitle('Test of Discord-Modals!')
 .addComponents(
@@ -89,10 +94,6 @@ const modal = new Modal() // We create a Modal
   .setPlaceholder('Write a text here')
   .setRequired(true) // If it's required or not
 );
-
-client.on('interactionCreate', (interaction) => {
-  // Let's say that the interaction will be an Slash Command called 'ping'.
-  if(interaction.commandName === 'ping'){
     showModal(modal, {
       client: client, // The showModal() method needs the client to send the modal through the API.
       interaction: interaction // The showModal() method needs the interaction to send the modal with the Interaction ID & Token.
