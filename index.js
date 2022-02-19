@@ -798,34 +798,31 @@ if(message.content.startsWith("#kill")) {
   }
   }
   
-  //mute
-if(message.content.startsWith("#mute")) {
-  if(message.member.permissions.has("ADMINISTRATOR")) {
-  let member = message.mentions.members.first()
-  if(!member) message.channel.send("mention someone to mute!")
-  else {
-  message.channel.send("Member has been succesfully muted.")
+  //emoji
+  if(message.content === "--emoji") {
+    const args = message.content.trim().split(/ +/g);
+    let name = args[0]
+    let link = args[1]
+    if (!name) return message.channel.send("`-emoji [name] [link]` is the correct method")
+    if (!link) return message.channel.send("`-emoji [name] [link]` is the correct method")
+    message.guild.emojis.create(link, name)
+    message.channel.send("✅ Emoji has been created")
   }
- 
-  }else {
-  message.reply("You don't have permission to do that!")
+//listroles
+    if(message.content === "--listrole"){
+    let rolemap = message.guild.roles.cache
+            .sort((a, b) => b.position - a.position)
+            .map(r => r)
+            .join("\n");
+            if (rolemap.length > 1024) rolemap = "To many roles to display";
+            if (!rolemap) rolemap = "No roles";
+    const embed = new Discord.MessageEmbed()
+	.addFields(
+		{ name: 'Role', value: rolemap, inline: true },
+	)
+      
+    message.channel.send({ embeds: [embed] }); 
   }
- }
-
- //unmute
- if(message.content.startsWith("#unmute")) {
-  if(message.member.permissions.has("ADMINISTRATOR")) {
-  let member = message.mentions.members.first()
-  if(!member) message.channel.send("mention someone to unmute!")
-  else {
-  message.channel.send("Member has been succesfully unmuted.")
-  }
- 
-  }else {
-  message.reply("You don't have permission to do that!")
-  }
- }
- 
 
 
 
