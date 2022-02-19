@@ -32,8 +32,6 @@ const gameType = "character";
 const useButtons = true; 
 const embedColor = "#000000"; 
 
-let { Database } = require('quickmongo')
-let db = new Database('mongodb://localhost:27017/quickmongo')
 
 
 
@@ -74,11 +72,7 @@ client.on('messageDelete', function(message, channel) {
 
 
 
-client.on('interactionCreate', async interaction => {
-simplydjs.clickBtn(interaction, {
-  db: db
-})
-})
+
 
 //help (normal)
 client.on('messageCreate', async message => {
@@ -172,7 +166,7 @@ client.on('messageCreate', async message => {
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
-    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**giveaway -** Do a Giveaway\n**whois -** Get info about yourself\n**avatar -**Get your avatar')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar')
     .setColor('BLACK')
     .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
@@ -804,18 +798,7 @@ if(message.content.startsWith("#kill")) {
   }
   }
 
-  //giveaway
-  if(message.content.startsWith("#giveaway")) {
-    const args = message.content.slice(10).trim().split(/ +/g);
 
-simplydjs.giveawaySystem(client, db, message, {
-  args: args, 
-
-  time: args[0],
-  winners: args[1],
-  prize: args[2],
-})
-  }
 
 
 
