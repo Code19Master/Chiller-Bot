@@ -816,14 +816,14 @@ if(message.content.startsWith("#kill")) {
   }
 
 
-  //listserver
-  if(message.content === "#listserver"){
-  let servermap = message.guild.members.cache
+  //listmember
+  if(message.content === "#listmember"){
+  let membermap = message.guild.members.cache
   .sort((a, b) => b.memberCount - a.memberCount)
   .map(r => r)
   .join("\n");
-  if (servermap.length > 1024) servermap = "To many servers to display";
-  if (!servermap) servermap = "No servers";
+  if (membermap.length > 1024) membermap = "To many servers to display";
+  if (!membermap) membermap = "No servers";
   const embed = new Discord.MessageEmbed()
   .addFields(
     { name: 'Server', value: servermap, inline: true },
