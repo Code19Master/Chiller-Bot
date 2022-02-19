@@ -32,6 +32,9 @@ const gameType = "character";
 const useButtons = true; 
 const embedColor = "#000000"; 
 
+let { Database } = require('quickmongo')
+let db = new Database('mongodb://localhost:27017/quickmongo')
+
 
 
 client.on('ready', () => {
@@ -71,7 +74,11 @@ client.on('messageDelete', function(message, channel) {
 
 
 
-
+client.on('interactionCreate', async interaction => {
+simplydjs.clickBtn(interaction, {
+  db: db
+})
+})
 
 //help (normal)
 client.on('messageCreate', async message => {
@@ -797,16 +804,17 @@ if(message.content.startsWith("#kill")) {
   }
   }
 
-  client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-    if(interaction.commandName == "help"){
-    let embed = new Discord.MessageEmbed()
-    .setTitle("Help Commands of, bot-name")
-    .addField("/help","THIS")
-    .setColor("RANDOM")
-    .setTimestamp()
-        interaction.reply({embeds:[embed]})
-    }})
+  //giveaway
+  if(message.content.startsWith("#giveaway")) {
+
+simplydjs.giveawaySystem(client, db, message, {
+  args: args, 
+
+  time: args[0],
+  winners: args[1],
+  prize: args[2],
+})
+  }
 
 
 
@@ -818,6 +826,8 @@ if(message.content.startsWith("#kill")) {
   
 
 });
+
+
 
 
 
