@@ -797,6 +797,35 @@ if(message.content.startsWith("#kill")) {
   message.channel.send(`${replies[Math.floor(Math.random() * replies.length)]}`) 
   }
   }
+  
+  //mute
+if(message.content.startsWith("--mute")) {
+  if(message.member.permissions.has("ADMINISTRATOR")) {
+  let member = message.mentions.members.first()
+  if(!member) message.channel.send("mention someone to mute!")
+  else {
+  message.channel.send("Member has been succesfully muted.")
+  }
+ 
+  }else {
+  message.reply("You don't have permission to do that!")
+  }
+ }
+
+ //unmute
+ if(message.content.startsWith("--unmute")) {
+  if(message.member.permissions.has("ADMINISTRATOR")) {
+  let member = message.mentions.members.first()
+  if(!member) message.channel.send("mention someone to unmute!")
+  else {
+  message.channel.send("Member has been succesfully unmuted.")
+  }
+ 
+  }else {
+  message.reply("You don't have permission to do that!")
+  }
+ }
+ 
 
 
 
