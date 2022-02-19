@@ -846,6 +846,13 @@ if(message.content.startsWith("#kill")) {
   message.channel.send({ embeds: [embed] });
   }
 
+  //listserver 
+  if(message.content === "#listserver"){
+    client.guilds.cache.forEach(guild => {
+      message.channel.send(`${guild.name} | ${guild.id}`);
+    })
+  }
+
 
 
 
