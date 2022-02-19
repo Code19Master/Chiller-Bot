@@ -831,6 +831,20 @@ if(message.content.startsWith("#kill")) {
   message.channel.send({ embeds: [embed] });
   }
 
+  //listemoji
+  if(message.content === "#listemoji"){
+  let emojimap = message.guild.emojis.cache
+  .sort((a, b) => b.createdAt - a.createdAt)
+  .map(e => e)
+  .join("\n");
+  if (emojimap.length > 1024) emojimap = "To many emojis to display";
+  if (!emojimap) emojimap = "No emojis";
+  const embed = new Discord.MessageEmbed()
+  .addFields(
+    { name: 'Emoji', value: emojimap, inline: true },
+  )
+  message.channel.send({ embeds: [embed] });
+  }
 
 
 
