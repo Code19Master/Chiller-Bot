@@ -828,6 +828,7 @@ if(message.content.startsWith("#kill")) {
   .addFields(
     { name: 'Server', value: servermap, inline: true },
   )
+  message.channel.send({ embeds: [embed] });
   }
 
 
