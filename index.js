@@ -818,7 +818,7 @@ if(message.content.startsWith("#kill")) {
 
   //listserver
   if(message.content === "#listserver"){
-  let servermap = message.guilds.cache
+  let servermap = message.guild.members.cache
   .sort((a, b) => b.memberCount - a.memberCount)
   .map(r => r)
   .join("\n");
