@@ -798,18 +798,9 @@ if(message.content.startsWith("#kill")) {
   }
   }
   
-  //emoji
-  if(message.content === "--emoji") {
-    const args = message.content.trim().split(/ +/g);
-    let name = args[0]
-    let link = args[1]
-    if (!name) return message.channel.send("`-emoji [name] [link]` is the correct method")
-    if (!link) return message.channel.send("`-emoji [name] [link]` is the correct method")
-    message.guild.emojis.create(link, name)
-    message.channel.send("✅ Emoji has been created")
-  }
+
 //listroles
-    if(message.content === "--listrole"){
+    if(message.content === "#listrole"){
     let rolemap = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(r => r)
