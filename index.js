@@ -854,6 +854,25 @@ if(message.content.startsWith("#kill")) {
   }
 
 
+  //listchannel
+  if(message.content === "#listchannel"){
+  let channelmap = message.guild.channels.cache
+  .sort((a, b) => b.createdAt - a.createdAt)
+  .map(c => c)
+  .join("\n");
+  if (channelmap.length > 1024) channelmap = "To many channels to display"; 
+  if (!channelmap) channelmap = "No channels";
+  const embed = new Discord.MessageEmbed()
+  .addFields(
+    { name: 'Channel', value: channelmap, inline: true },
+  )
+  message.channel.send({ embeds: [embed] });
+  }
+  
+
+
+
+
 
 
 
