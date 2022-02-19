@@ -60,7 +60,6 @@ client.on('ready', () => {
 
 
 
-
 //help (normal)
 client.on('messageCreate', async message => {
     if (message.content === "#help") {
@@ -146,7 +145,7 @@ client.on('messageCreate', async message => {
 
     const botembed = new MessageEmbed()
     .setTitle('Bot Commands')
-    .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -**check The Ping of the Bot ')
+    .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**support -** Support Server\n**vote -** Vote me on top.gg')
     .setColor('BLACK')
     .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
     .setTimestamp()
