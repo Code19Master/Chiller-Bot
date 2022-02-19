@@ -57,6 +57,19 @@ client.on('ready', () => {
 });
 
 
+//snipe message delete event
+client.snipes = new Discord.Collection
+client.on('messageDelete', function(message, channel) {
+	client.snipes.set(message.channel.id, {
+		content: message.content,
+		author: message.author,
+		image: message.attachments.first()
+			? message.attachments.first().proxyURL
+			: null
+	});
+});
+
+
 
 
 
@@ -742,8 +755,28 @@ if (message.content.toLowerCase().startsWith('#rate')) {
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`I Rate ${argu} a solid **${rate}/100**`)
+  
 }
 
+
+//snipe
+if (message.content === "#snipe") {
+  let channel = message.mentions.channels.first() || message.channel
+let sniped = client.snipes.get(channel.id)
+if(!sniped) {
+ message.channel.send(" :x: | There is nothing to snipe in " + channel.name)
+} else {
+ let em = new Discord.MessageEmbed()
+ .setAuthor(sniped.author.tag, sniped.author.displayAvatarURL())
+ .setDescription(sniped.content)
+ .setColor("BLACK")
+ .setTimestamp()
+ if(sniped.image) {
+   em.setThumbnail(sniped.image)
+ }
+   message.channel.send({ embeds: [em] }); 
+}
+}
 
 
 
