@@ -5,6 +5,8 @@ const { Client, Intents, Collection } = require('discord.js');
 const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
 const moment = require("moment")
+const discordModals = require('discord-modals') 
+const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
@@ -30,7 +32,9 @@ const language = "en";
 const childMode = true;
 const gameType = "character"; 
 const useButtons = true; 
-const embedColor = "#000000"; 
+const embedColor = "#000000";
+
+discordModals(client); // discord-modals needs your client in order to interact with modals 
 
 
 
@@ -70,6 +74,32 @@ client.on('messageDelete', function(message, channel) {
 	});
 });
 
+//modals 
+
+const modal = new Modal() // We create a Modal
+.setCustomId('modal-customid')
+.setTitle('Test of Discord-Modals!')
+.addComponents(
+  new TextInputComponent() // We create an Text Input Component
+  .setCustomId('textinput-customid')
+  .setLabel('Some text Here')
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setMinLength(4)
+  .setMaxLength(10)
+  .setPlaceholder('Write a text here')
+  .setRequired(true) // If it's required or not
+);
+
+client.on('interactionCreate', (interaction) => {
+  // Let's say that the interaction will be an Slash Command called 'ping'.
+  if(interaction.commandName === 'ping'){
+    showModal(modal, {
+      client: client, // The showModal() method needs the client to send the modal through the API.
+      interaction: interaction // The showModal() method needs the interaction to send the modal with the Interaction ID & Token.
+    })
+  }
+  
+})
 
 
 

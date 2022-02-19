@@ -24,7 +24,8 @@
     "discord.js-akinator": "^3.3.3",
     "simply-djs": "^2.5.2",
     "something-random-on-discord": "^3.4.4",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "discord-modals": "^1.1.7"
   },
   "engines": {
     "node": ">=16.6.0"
