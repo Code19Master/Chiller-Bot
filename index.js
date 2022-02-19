@@ -100,6 +100,13 @@ client.on('interactionCreate', (interaction) => {
   }
   
 })
+//modal reply
+client.on('modalSubmit', (modal) => {
+  if(modal.customId === 'modal-customid'){
+    const firstResponse = modal.getTextInputValue('textinput-customid')
+    modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
+  }  
+})
 
 
 
