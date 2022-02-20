@@ -76,6 +76,11 @@ commands?.create({
   description: 'Chiller says what you want him to Say',
 })
 
+commands?.create({
+  name: 'ping',
+  description: 'Ping of the bot',
+})
+
 });
 
 
@@ -104,7 +109,7 @@ const modal = new Modal() // We create a Modal
   .setLabel('What do you want Chiller to say?')
   .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
-  .setMaxLength(10)
+  .setMaxLength(20)
   .setPlaceholder('Write The Text Here')
   .setRequired(true) // If it's required or not
 );
@@ -122,6 +127,14 @@ client.on('interactionCreate', (interaction) => {
       client: client, 
       interaction: interaction
     })
+  }
+  if(interaction.commandName === `ping`){
+    const embed = new MessageEmbed()
+    .setTitle('***Pong!***')
+    .setColor('BLACK')
+    .addField('Ping:', client.ws.ping + 'ms')
+    .setTimestamp()
+    interaction.reply({ embeds: [embed] })
   }
   
 })
