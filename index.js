@@ -6,6 +6,10 @@ const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
@@ -79,6 +83,7 @@ commands?.create({
 });
 
 
+
 //snipe message delete event
 client.snipes = new Discord.Collection
 client.on('messageDelete', function(message, channel) {
@@ -101,7 +106,7 @@ const modal = new Modal() // We create a Modal
   new TextInputComponent() // We create a Text Input Component
   .setCustomId('input-1')
   .setLabel('What do you want Chiller to say?')
-  .setStyle('LONG') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
   .setMaxLength(10)
   .setPlaceholder('Write The Text Here')
@@ -173,7 +178,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Invite Me')
       .setStyle('LINK')
-      .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
+      .setURL('https://discord.com/api/oauth2/authorize?client_id=945030482792439888&permissions=1644972474359&scope=bot%20applications.commands'),
  
 
       new MessageButton()
@@ -389,7 +394,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
         new MessageButton()
         .setLabel('Invite Me')
         .setStyle('LINK')
-        .setURL('https://discord.com/api/oauth2/authorize?client_id=936617927833178132&permissions=8&scope=bot%20applications.commands'),
+        .setURL('https://discord.com/api/oauth2/authorize?client_id=945030482792439888&permissions=1644972474359&scope=bot%20applications.commands'),
         );
         
     await message.channel.send({ embeds: [embed], components: [but] });
