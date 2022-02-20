@@ -81,6 +81,11 @@ commands?.create({
   description: 'Ping of the bot',
 })
 
+commands?.create({
+    name: 'calculator',
+    description: 'Just a casual calculator'
+})
+
 });
 
 
