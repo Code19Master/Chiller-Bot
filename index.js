@@ -59,6 +59,23 @@ client.on('ready', () => {
         client.user.setActivity(status);
         index++;
       }, 5000)
+
+
+const guildId = '888455701016498217';
+const guild = client.guilds.cache.get(guildId);
+let commands
+
+if (guild) {
+  commands = guild.commands
+} else {
+  commands = client.application?.commands
+}
+
+commands?.create({
+  name: 'ping',
+  description: 'Pong!',
+})
+
 });
 
 
@@ -74,40 +91,8 @@ client.on('messageDelete', function(message, channel) {
 	});
 });
 
-//modals 
+//slash command
 
-
-
-client.on('interactionCreate', (interaction) => {
-  // Let's say that the interaction will be an Slash Command called 'ping'.
-  if(interaction.commandName === 'ping'){
-    const modal = new Modal() // We create a Modal
-.setCustomId('modal-customid')
-.setTitle('Test of Discord-Modals!')
-.addComponents(
-  new TextInputComponent() // We create an Text Input Component
-  .setCustomId('textinput-customid')
-  .setLabel('Some text Here')
-  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
-  .setMinLength(4)
-  .setMaxLength(10)
-  .setPlaceholder('Write a text here')
-  .setRequired(true) // If it's required or not
-);
-    showModal(modal, {
-      client: client, // The showModal() method needs the client to send the modal through the API.
-      interaction: interaction // The showModal() method needs the interaction to send the modal with the Interaction ID & Token.
-    })
-  }
-  
-})
-//modal reply
-client.on('modalSubmit', (modal) => {
-  if(modal.customId === 'modal-customid'){
-    const firstResponse = modal.getTextInputValue('textinput-customid')
-    modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
-  }  
-})
 
 
 
