@@ -91,7 +91,41 @@ client.on('messageDelete', function(message, channel) {
 	});
 });
 
-//slash command
+//slash command and modals
+
+
+const modal = new Modal() // We create a Modal
+.setCustomId('modal-customid')
+.setTitle('Test of Discord-Modals!')
+.addComponents(
+  new TextInputComponent() // We create a Text Input Component
+  .setCustomId('textinput-customid')
+  .setLabel('Some text Here')
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setMinLength(4)
+  .setMaxLength(10)
+  .setPlaceholder('Write a text here')
+  .setRequired(true) // If it's required or not
+);
+
+client.on('modalSubmit', (modal) => {
+  if(modal.customId === 'modal-customid'){
+    const firstResponse = modal.getTextInputValue('textinput-customid')
+    modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
+  }  
+})
+
+client.on('interactionCreate', (interaction) => {
+  // Let's say the interaction will be a Slash Command called 'ping'.
+  if(interaction.commandName === 'ping'){
+    showModal(modal, {
+      client: client, // The showModal() method needs the client to send the modal through the API.
+      interaction: interaction // The showModal() method needs the interaction to send the modal with the Interaction ID & Token.
+    })
+  }
+  
+})
+
 
 
 
