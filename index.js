@@ -72,8 +72,8 @@ if (guild) {
 }
 
 commands?.create({
-  name: 'ping',
-  description: 'Pong!',
+  name: 'say',
+  description: 'Chiller says what you want him to Say',
 })
 
 });
@@ -95,32 +95,31 @@ client.on('messageDelete', function(message, channel) {
 
 
 const modal = new Modal() // We create a Modal
-.setCustomId('modal-customid')
-.setTitle('Test of Discord-Modals!')
+.setCustomId('modal-1')
+.setTitle('Say Command')
 .addComponents(
   new TextInputComponent() // We create a Text Input Component
-  .setCustomId('textinput-customid')
-  .setLabel('Some text Here')
-  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setCustomId('input-1')
+  .setLabel('What do you want Chiller to say?')
+  .setStyle('LONG') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
   .setMinLength(4)
   .setMaxLength(10)
-  .setPlaceholder('Write a text here')
+  .setPlaceholder('Write The Text Here')
   .setRequired(true) // If it's required or not
 );
 
 client.on('modalSubmit', (modal) => {
-  if(modal.customId === 'modal-customid'){
-    const firstResponse = modal.getTextInputValue('textinput-customid')
-    modal.reply('Congrats! Powered by discord-modals.' + `\`\`\`${firstResponse}\`\`\``)
+  if(modal.customId === 'modal-1'){
+    const firstResponse = modal.getTextInputValue('input 1')
+    modal.reply(`${firstResponse}`)
   }  
 })
 
 client.on('interactionCreate', (interaction) => {
-  // Let's say the interaction will be a Slash Command called 'ping'.
-  if(interaction.commandName === 'ping'){
+  if(interaction.commandName === 'say'){
     showModal(modal, {
-      client: client, // The showModal() method needs the client to send the modal through the API.
-      interaction: interaction // The showModal() method needs the interaction to send the modal with the Interaction ID & Token.
+      client: client, 
+      interaction: interaction
     })
   }
   
