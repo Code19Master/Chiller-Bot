@@ -83,7 +83,7 @@ commands?.create({
 
 commands?.create({
     name: 'calculator',
-    description: 'Just a casual calculator'
+    description: 'Just a casual calculator. Using simply-djs'
 })
 
 });
