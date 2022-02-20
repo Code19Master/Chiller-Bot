@@ -81,10 +81,7 @@ commands?.create({
   description: 'Ping of the bot',
 })
 
-commands?.delete({
-    name: 'calculator',
-    description: 'Just a casual calculator. Using simply-djs'
-})
+
 
 });
 
