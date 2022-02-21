@@ -61,7 +61,7 @@ client.on('ready', () => {
       }, 5000)
 
 
-const guildId = '888455701016498217';
+const guildId = '945168057033166901';
 const guild = client.guilds.cache.get(guildId);
 let commands
 
