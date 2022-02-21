@@ -81,6 +81,11 @@ commands?.create({
   description: 'Ping of the bot',
 })
 
+commands?.create({
+  name: 'embed',
+  description: 'Create A Embed',
+})
+
 
 
 });
@@ -116,11 +121,52 @@ const modal = new Modal() // We create a Modal
   .setRequired(true) // If it's required or not
 );
 
+const modal2 = new Modal()
+.setCustomId('modal-2')
+.setTitle('Say Command')
+.addComponents(
+  new TextInputComponent() 
+  .setCustomId('input-2-1')
+  .setLabel('TITLE')
+  .setStyle('SHORT')
+  .setMinLength(2)
+  .setMaxLength(20)
+  .setPlaceholder('Title of the embed.')
+  .setRequired(true),
+  new TextInputComponent() 
+  .setCustomId('input-2-2')
+  .setLabel('DESCRIPTION')
+  .setStyle('LONG')
+  .setMinLength(2)
+  .setMaxLength(4000)
+  .setPlaceholder('Description of the embed.')
+  .setRequired(true),
+  new TextInputComponent() 
+  .setCustomId('input-2-3')
+  .setLabel('FOOTER')
+  .setStyle('LONG')
+  .setMinLength(2)
+  .setMaxLength(20)
+  .setPlaceholder('Footer of the embed.')
+  .setRequired(false)
+);
+
+
 client.on('modalSubmit', (modal) => {
   if(modal.customId === 'modal-1'){
     const firstResponse = modal.getTextInputValue('input-1')
     modal.reply(`${firstResponse}`)
   }  
+  if(modal.customId === 'modal-2'){
+    const firstResponse = modal.getTextInputValue('input-2-1')
+    const secondResponse = modal.getTextInputValue('input-2-2')
+    const thirdResponse = modal.getTextInputValue('input-2-3')
+    const embed = new Discord.MessageEmbed()
+    .setTitle(firstResponse)
+    .setDescription(secondResponse)
+    .setFooter(thirdResponse)
+    modal.reply({ embeds: [embed] })
+  }
 })
 
 client.on('interactionCreate', (interaction) => {
@@ -137,6 +183,12 @@ client.on('interactionCreate', (interaction) => {
     .addField('Ping:', client.ws.ping + 'ms')
     .setTimestamp()
     interaction.reply({ embeds: [embed] })
+  }
+  if(interaction.commandName === `embed`){
+    showModal(modal, {
+      client: client, 
+      interaction: interaction
+    })
   }
   
 })
