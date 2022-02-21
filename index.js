@@ -185,7 +185,7 @@ client.on('interactionCreate', (interaction) => {
     interaction.reply({ embeds: [embed] })
   }
   if(interaction.commandName === `embed`){
-    showModal(modal, {
+    showModal(modal2, {
       client: client, 
       interaction: interaction
     })
