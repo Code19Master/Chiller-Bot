@@ -86,6 +86,11 @@ commands?.create({
   description: 'Create A Embed',
 })
 
+commands?.create({
+  name: 'help',
+  description: 'Help Command',
+})
+
 
 
 });
@@ -189,6 +194,157 @@ client.on('interactionCreate', (interaction) => {
       client: client, 
       interaction: interaction
     })
+  }
+
+
+  if (message.content === "#help") {
+  const row = new MessageActionRow()
+    .addComponents(
+
+      new MessageSelectMenu()
+        .setCustomId('select')
+        .setPlaceholder('Nothing selected')
+        .addOptions([
+          {
+            label: 'VIP Commands',
+            emoji: '938788355750105108',
+            value: 'Vip_option',
+          },
+          {
+            label: 'Bot Commands',
+            emoji: '938792606014513222',
+            value: 'bot_option',
+          },
+          {
+            label: 'Utility Commands',
+            emoji: '📦',
+            value: 'utility_option',
+          },
+          {
+            label: 'Moderator Commands',
+            emoji: '938796723420147713',
+            value: 'moderator_option',
+          },
+          {
+            label: 'Fun Commands',
+            emoji: '938797555716882482',
+            value: 'fun_option',
+          },
+        ]),
+        
+    );
+    const but = new MessageActionRow()
+    .addComponents(
+    new MessageButton()
+    .setLabel('Invite Me')
+    .setStyle('LINK')
+    .setURL('https://discord.com/api/oauth2/authorize?client_id=945030482792439888&permissions=1644972474359&scope=bot%20applications.commands'),
+
+
+    new MessageButton()
+    .setLabel('Support Server')
+    .setStyle('LINK')
+    .setURL('https://discord.gg/59PfqAUN3Z'),
+
+    new MessageButton()
+    .setLabel('Vote Me')
+    .setStyle('LINK')
+    .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
+    );
+
+    const firstmainembed = new MessageEmbed()
+    .setTitle(':red_circle: ***CHILLER HELP***')
+    .setColor('BLACK')
+    .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nThe Bot Also has (/) commands!')
+    .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
+
+
+
+
+
+    
+
+
+
+
+
+
+  let msg = await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
+
+  const vipembed = new MessageEmbed()
+  .setTitle('Vip Commands')
+  .setDescription('**vip -** Do #vip to find out.\n**donate -** Donate The Bot Developer\n**contributors -** People who contributed')
+  .setColor('BLACK')
+  .setFooter({ text: 'The Bot Also has (/) commands' })
+  .setTimestamp()
+
+  const botembed = new MessageEmbed()
+  .setTitle('Bot Commands')
+  .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**support -** Support Server\n**vote -** Vote me on top.gg')
+  .setColor('BLACK')
+  .setFooter({ text: 'The Bot Also has (/) commands' })
+  .setTimestamp()
+
+  const utilityembed = new MessageEmbed()
+  .setTitle('Utility Commands')
+  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message')
+  .setColor('BLACK')
+  .setFooter({ text: 'The Bot Also has (/) commands' })
+  .setTimestamp()
+
+  const moderatorembed = new MessageEmbed()
+  .setTitle('Moderator Commands')
+  .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
+  .setColor('BLACK')
+  .setFooter({ text: 'The Bot Also has (/) commands' })
+  .setTimestamp()
+
+  const funembed = new MessageEmbed()
+  .setTitle('Fun Commands')
+  .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin')
+  .setColor('BLACK')
+  .setFooter({ text: 'The Bot Also has (/) commands' })
+  .setTimestamp()
+
+
+const filter = (interaction) => interaction.user.id === message.author.id;   
+
+const collector = message.channel.createMessageComponentCollector({
+  filter,
+  componentType: "SELECT_MENU"
+});
+     
+
+collector.on("collect", async (collected) =>{
+
+const value = collected.values[0]
+
+if(value === "Vip_option"){
+await collected.reply({embeds: [vipembed], ephemeral: true})
+}
+
+if(value === "bot_option"){
+await collected.reply({embeds: [botembed], ephemeral: true})
+}
+
+if(value === "utility_option"){
+await collected.reply({embeds: [utilityembed], ephemeral: true})
+}
+
+if(value === "moderator_option"){
+await collected.reply({embeds: [moderatorembed], ephemeral: true})
+}
+
+if(value === "fun_option"){
+await collected.reply({embeds: [funembed], ephemeral: true})
+}
+
+
+
+
+})
+
+
   }
   
 })
