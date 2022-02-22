@@ -244,7 +244,7 @@ client.on('modalSubmit', async modal => {
             ]),
     );
 
-await interaction.reply({  content: "Hello There take your roles", components: [row]})
+await modal.reply({  content: "Hello There take your roles", components: [row]})
 
 if(interaction.isSelectMenu()){
       
