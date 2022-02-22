@@ -93,7 +93,7 @@ commands?.create({
 })
 
 commands?.create({
-  name: 'pool',
+  name: 'poll',
   description: 'Make A Poll In your Guild',
 })
 
@@ -252,7 +252,6 @@ client.on('interactionCreate', async interaction => {
       client: client, 
       interaction: interaction
     })
-    interaction.reply('**Please Wait**')
   }
 
 
