@@ -91,7 +91,7 @@ commands?.create({
   description: 'Help Command',
 })
 
-Commands?.create({
+commands?.create({
   name: 'dropdown roles',
   description: ' Make Dropdown Roles For your server',
 })
@@ -250,7 +250,7 @@ if(interaction.isSelectMenu()){
       
   let choice = interaction.values[0] 
   const member = interaction.member
-   if(choice == 'first_option'){
+   if(choice == 'first_role'){
       if (member.roles.cache.some(role => role.id == firstroleid)) {
           interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
           member.roles.remove(`${firstroleid}`)
@@ -260,7 +260,7 @@ if(interaction.isSelectMenu()){
           await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
         }
 
-else if(choice == 'second_option'){
+else if(choice == 'second_role'){
   if (member.roles.cache.some(role => role.id == secondroleid)) {
       interaction.reply({content: "The role was successfully removed from you", ephemeral: true})
       member.roles.remove(`${secondroleid}`)
