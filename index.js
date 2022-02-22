@@ -1223,8 +1223,7 @@ if(message.content.startsWith(prefix + "kill")) {
 
   //terminal
   if(message.content.startsWith(prefix + "terminal")) {
-    args = message.content.split(prefix.length).trim().split(/ +/g);
-    
+    let args = message.content.slice(9).split(" ");
     if (message.author.id !== "779749147989245972") return;
     const command = args.join(" ");
     if (!command)
