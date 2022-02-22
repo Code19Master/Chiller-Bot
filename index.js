@@ -246,22 +246,31 @@ client.on('modalSubmit', async modal => {
 
 await modal.reply({  content: "Hello There take your roles", components: [row]})
 
-if(interaction.isSelectMenu()){
-      
-  let choice = interaction.values[0] 
-  const member = interaction.member
-   if(choice == 'first_role'){
-      if (member.roles.cache.some(role => role.id == firstroleid)) {
-          interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
-          member.roles.remove(`${firstroleid}`)
-      }
-      else{
-      member.roles.add(`${firstroleid}`)
-          await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
-        }
 
-else if(choice == 'second_role'){
-  if (member.roles.cache.some(role => role.id == secondroleid)) {
+const filter = (interaction) => interaction.user.id === message.author.id;   
+  
+const collector = message.channel.createMessageComponentCollector({
+   filter,
+   componentType: "SELECT_MENU"
+});
+      
+
+collector.on("collect", async (collected) =>{
+ 
+const value = collected.values[0]
+
+
+if(value === "first_role"){
+  if (member.roles.cache.some(role => role.id == firstroleid)) {
+    interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
+    member.roles.remove(`${firstroleid}`)
+}
+else{
+member.roles.add(`${firstroleid}`)
+    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
+  }
+  if(value === "second_role"){
+    if (member.roles.cache.some(role => role.id == secondroleid)) {
       interaction.reply({content: "The role was successfully removed from you", ephemeral: true})
       member.roles.remove(`${secondroleid}`)
   }
@@ -270,8 +279,7 @@ else if(choice == 'second_role'){
       await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
     }
 
-  }
-
+  })
 
 
 }
