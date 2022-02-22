@@ -1228,7 +1228,7 @@ if(message.content.startsWith(prefix + "kill")) {
     if (!args)
       return message.channel.send("pls specify a command to execute");
 
-      child.exec(command, (err, res) => {
+      child.exec(args, (err, res) => {
         if (err) return message.channel.send(err); 
         message.channel.send(res.slice(0, 2000), { code: "js"});
       });
