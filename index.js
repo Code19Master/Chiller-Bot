@@ -309,7 +309,7 @@ client.on('interactionCreate', (interaction) => {
 
 const filter = (interaction) => interaction.user.id === message.author.id;   
 
-const collector = interaction.reply.createMessageComponentCollector({
+const collector = interaction.channel.createMessageComponentCollector({
   filter,
   componentType: "SELECT_MENU"
 });
