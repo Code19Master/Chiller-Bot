@@ -258,7 +258,7 @@ client.on('messageCreate', async message => {
       const firstmainembed = new MessageEmbed()
       .setTitle(':red_circle: ***CHILLER HELP***')
       .setColor('BLACK')
-      .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nUse #help <command> to get more information about a command.')
+      .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nThe Bot Also has (/) commands!')
       .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
 
 
@@ -276,37 +276,37 @@ client.on('messageCreate', async message => {
 
     const vipembed = new MessageEmbed()
     .setTitle('Vip Commands')
-    .setDescription('**vip -** Do #vip to find out.\n**premium -** Get access to secret commands\n**contributors -** People who contributed')
+    .setDescription('**vip -** Do #vip to find out.\n**donate -** Donate The Bot Developer\n**contributors -** People who contributed')
     .setColor('BLACK')
-    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
+    .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const botembed = new MessageEmbed()
     .setTitle('Bot Commands')
     .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**support -** Support Server\n**vote -** Vote me on top.gg')
     .setColor('BLACK')
-    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
+    .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
     .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message')
     .setColor('BLACK')
-    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
+    .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const moderatorembed = new MessageEmbed()
     .setTitle('Moderator Commands')
-    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild')
+    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
     .setColor('BLACK')
-    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command. Moderation System is currently in development.' })
+    .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const funembed = new MessageEmbed()
     .setTitle('Fun Commands')
     .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin')
     .setColor('BLACK')
-    .setFooter({ text: 'Use `#help <command>` to get additional help on a specific command.' })
+    .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
 
@@ -404,13 +404,13 @@ await collected.reply({embeds: [funembed], ephemeral: true})
     }
   
 
-  //premium
-  if (message.content === "#premium") {
+  //DONATE
+  if (message.content === "#donate") {
       
     const embed = new MessageEmbed()
-    .setTitle('***Get PREMIUM***')
+    .setTitle('***DONATE***')
     .setColor('BLURPLE')
-    .setDescription('> You Can Get PREMIUM by Gifting Me A Gift Card at CodeMaster100#7978. ;)\n> By Having Premium You can have Access To Premium Commands')
+    .setDescription('> if you want to support the Development. You Can donate at Discord User: CodeMaster100#7978. ;)')
     .setTimestamp()
 
     await message.channel.send({ embeds: [embed] });
