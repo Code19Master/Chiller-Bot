@@ -210,6 +210,16 @@ client.on('modalSubmit', async modal => {
     .setFooter(thirdResponse)
     modal.reply({ embeds: [embed] })
   }
+  if(modal.customId === 'modal-3'){
+    const title = modal.getTextInputValue('input-3-1')
+    const poll1 = modal.getTextInputValue('input-3-2')
+    const poll2 = modal.getTextInputValue('input-3-3')
+    const embed = new Discord.MessageEmbed()
+    .setTitle(title)
+    .setDescription(`:regional_indicator_a:${poll1}\n:regional_indicator_b:${poll2}`)
+    .setFooter(`Poll By: ${modal.author.username}`)
+    modal.reply({ embeds: [embed] })
+  }
 
 
 
@@ -235,8 +245,6 @@ client.on('interactionCreate', async interaction => {
       client: client, 
       interaction: interaction
     })
-    const firstrolename = modal.getTextInputValue('input-3-1')
-    interaction.reply({ content: `${firstrolename}` })
   }
 
   if(interaction.commandName === `poll`){
@@ -244,6 +252,7 @@ client.on('interactionCreate', async interaction => {
       client: client, 
       interaction: interaction
     })
+    interaction.reply('**Please Wait**')
   }
 
 
