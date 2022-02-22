@@ -227,7 +227,11 @@ client.on('modalSubmit', async modal => {
     .setTitle(title)
     .setDescription(`:regional_indicator_a:${poll1}\n:regional_indicator_b:${poll2}`)
     .setFooter(`Poll By: ${username}`)
-    modal.reply({ embeds: [embed] })
+    modal.reply({ embeds: [embed] }).then(X => 
+      {
+      X.react(":regional_indicator_a:")
+      X.react(":regional_indicator_b:")
+      })
   }
 
 
