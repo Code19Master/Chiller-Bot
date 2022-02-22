@@ -6,7 +6,9 @@ const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
-
+const discordjsModal = require('discordjs-modal') // Define this package
+discordjsModal(client);
+const {} = require('discordjs-modal')
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
@@ -247,7 +249,37 @@ client.on('interactionCreate', async interaction => {
   }
 
   if(interaction.commandName === `dropdown_roles`){
-    
+    const modal = new Modal()
+    .setCustomId("modal0")
+    .setTitle("Dropdown Roles")
+    .addComponents(
+      new TextInput()
+      .setLabel("1st Role Name")
+      .setStyle("SHORT")
+      .setPlaceholder("The Name of The First Role")
+      .setCustomId("role-1-name")
+      .setRequired(true),
+      new TextInput()
+      .setLabel("1st Role ID") 
+      .setStyle("LONG")
+      .setMax(16)
+      .setCustomId('role-1-id')
+      .setPlaceholder("ID of the 1st role")
+      )
+      new TextInput()
+      .setLabel("2nd Role Name")
+      .setStyle("SHORT")
+      .setPlaceholder("The Name of The Second Role")
+      .setCustomId("role-2-name")
+      .setRequired(true),
+      new TextInput()
+      .setLabel("2nd Role ID") 
+      .setStyle("LONG")
+      .setMax(16)
+      .setCustomId('role-2-id')
+      .setPlaceholder("ID of the 2nd role")
+      
+      client.modal.send(interaction, modal)
   }
 
 
