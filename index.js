@@ -217,36 +217,9 @@ client.on('modalSubmit', async modal => {
     modal.reply({ embeds: [embed] })
   }
 
-  if(modal.customId === 'modal-3'){
-    const firstrolename = modal.getTextInputValue('input-3-1')
-    const firstroleid = modal.getTextInputValue('input-3-2')
-    const secondrolename = modal.getTextInputValue('input-3-3')
-    const secondroleid = modal.getTextInputValue('input-3-4')
 
 
 
-    const row = new MessageActionRow()
-    .addComponents(
-        new MessageSelectMenu()
-            .setCustomId('roles')
-            .setPlaceholder('Select a reaction role')
-            .addOptions([
-                { 
-                    label: `${firstrolename}`,
-                    description: `Take The Role - ${firstrolename}`,
-                    value: 'first_role',
-                },
-                {
-                    label: `${secondrolename}`,
-                    description: `Take The Role - ${secondrolename}`,
-                    value: 'second_role',
-                },
-            ]),
-    );
-
-await modal.reply({  content: "Hello There take your roles", components: [row]})
-
-}
 })
 
 client.on('interactionCreate', async interaction => {
@@ -269,6 +242,38 @@ client.on('interactionCreate', async interaction => {
       client: client, 
       interaction: interaction
     })
+
+
+    if(modal.customId === 'modal-3'){
+      const firstrolename = modal.getTextInputValue('input-3-1')
+      const firstroleid = modal.getTextInputValue('input-3-2')
+      const secondrolename = modal.getTextInputValue('input-3-3')
+      const secondroleid = modal.getTextInputValue('input-3-4')
+  
+  
+  
+      const row = new MessageActionRow()
+      .addComponents(
+          new MessageSelectMenu()
+              .setCustomId('roles')
+              .setPlaceholder('Select a reaction role')
+              .addOptions([
+                  { 
+                      label: `${firstrolename}`,
+                      description: `Take The Role - ${firstrolename}`,
+                      value: 'first_role',
+                  },
+                  {
+                      label: `${secondrolename}`,
+                      description: `Take The Role - ${secondrolename}`,
+                      value: 'second_role',
+                  },
+              ]),
+      );
+  
+  await modal.reply({  content: "Hello There take your roles", components: [row]})
+  
+  }
   }
 
   if(interaction.commandName === `dropdown_roles`){
