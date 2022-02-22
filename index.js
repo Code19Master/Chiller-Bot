@@ -1255,7 +1255,7 @@ message.reply({embeds: [embedError]})
   
 //terminal
 if(message.content.startsWith(prefix + "terminal")) {
-  if (message.author.id !== "779749147989245972") return message.reply("Only the bot owner can use this command")
+  if (message.author.id !== "779749147989245972") return;
   let args = message.content.slice(10)
   if (!args) return message.channel.send("No input");
   require("child_process").exec(args, (err, stdout, stderr, res) =>{
