@@ -8,6 +8,7 @@ const moment = require("moment")
 const discordModals = require('discord-modals') 
 const prefix = "#"
 const child = require('child_process')
+const { inspect } = require("util");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -1221,17 +1222,33 @@ if(message.content.startsWith(prefix + "kill")) {
   message.channel.send({ embeds: [embed] });
   }
 
-  //terminal
-  if(message.content.startsWith(prefix + "terminal")) {
-    if (message.author.id !== "779749147989245972") return;
-    let args = message.content.slice(9).split(" ");
-    if (!args)
-      return message.channel.send("pls specify a command to execute");
-
-      child.exec(args, (err, res) => {
-        if (err) return message.channel.send(err); 
-        message.channel.send(res.slice(0, 2000), { code: "js"});
-      });
+  //eval
+  if(message.content.startsWith(prefix + "eval")) {
+    let embedOwner = new MessageEmbed()
+.addFields({name: "Owner", value: "Only the bot owner can use this command"})
+let embedNone = new MessageEmbed()
+.addFields({name: "No input", value: "There was nothing to eval, what do you want me to eval?"})
+if(message.author.id !== "779749147989245972") return message.reply({embeds: [embedOwner]})
+let args = message.content.split(" ").slice(1)
+let code = args.join(" ")
+if(!code) return message.reply({embeds: [embedNone]})
+try {
+let result = await eval(code)
+let output = result
+if(typeof resut !== "string") {
+output = inspect(result)
+}
+let embedEval = new MessageEmbed()
+.setTitle("Output")
+.setDescription(`\`\`\`js\n${output}\`\`\``)
+.setTimestamp()
+message.reply({embeds: [embedEval], allowedMentions: {repliedUser: false}})
+} catch(error) {
+let embedError = new MessageEmbed()
+.setTitle("Error")
+.setDescription(`\`\`\`js\n${error}\`\`\``)
+message.reply({embeds: [embedError]})
+}
 
       
   }
