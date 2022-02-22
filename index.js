@@ -1223,10 +1223,9 @@ if(message.content.startsWith(prefix + "kill")) {
 
   //terminal
   if(message.content.startsWith(prefix + "terminal")) {
-    let args = message.content.slice(9).split(" ");
     if (message.author.id !== "779749147989245972") return;
-    const command = args.join(" ");
-    if (!command)
+    let args = message.content.slice(9).split(" ");
+    if (!args)
       return message.channel.send("pls specify a command to execute");
 
       child.exec(command, (err, res) => {
