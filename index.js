@@ -249,7 +249,7 @@ await modal.reply({  content: "Hello There take your roles", components: [row]})
 
 const filter = (interaction) => interaction.user.id ;   
   
-const collector = message.interaction.createMessageComponentCollector({
+const collector = interaction.channel.createMessageComponentCollector({
    filter,
    componentType: "SELECT_MENU"
 });
