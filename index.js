@@ -222,10 +222,11 @@ client.on('modalSubmit', async modal => {
     const title = modal.getTextInputValue('input-3-1')
     const poll1 = modal.getTextInputValue('input-3-2')
     const poll2 = modal.getTextInputValue('input-3-3')
+    const username = modal.getTextInputValue('input-3-4')
     const embed = new Discord.MessageEmbed()
     .setTitle(title)
     .setDescription(`:regional_indicator_a:${poll1}\n:regional_indicator_b:${poll2}`)
-    .setFooter(`Poll By: ${name}`)
+    .setFooter(`Poll By: ${username}`)
     modal.reply({ embeds: [embed] })
   }
 
