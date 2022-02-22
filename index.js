@@ -6,6 +6,8 @@ const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
+const prefix = "#"
+const child = require('child_process')
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -96,6 +98,9 @@ commands?.create({
   name: 'poll',
   description: 'Make A Poll In your Guild',
 })
+
+
+
 
 
 
@@ -423,7 +428,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
-    if (message.content === "#help") {
+    if (message.content === `${prefix}help`) {
 		const row = new MessageActionRow()
 			.addComponents(
 
@@ -573,7 +578,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
     }
     //vote
-    if (message.content === "#vote") {
+    if (message.content === prefix + "vote") {
       
       const embed = new MessageEmbed()
       .setTitle('***VOTE ME***')
@@ -594,7 +599,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
     }
     //VIP
-    if (message.content === "#vip") {
+    if (message.content === prefix + "vip") {
       
       const ifembed = new MessageEmbed()
       .setTitle('***Get VIP***')
@@ -613,7 +618,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
       }
 
   //contributors
-  if (message.content === "#contributors") {
+  if (message.content === prefix + "contributors") {
       
     const embed = new MessageEmbed()
     .setTitle('***VIPs***')
@@ -628,7 +633,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
 
   //DONATE
-  if (message.content === "#donate") {
+  if (message.content === prefix + "donate") {
       
     const embed = new MessageEmbed()
     .setTitle('***DONATE***')
@@ -642,7 +647,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
     }
 
     //developer
-    if (message.content === "#devinfo") {
+    if (message.content === prefix + "devinfo") {
       const embed = new MessageEmbed()
       .setTitle('***DEVELOPERS***')
       .setColor('BLACK')
@@ -667,7 +672,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
     }
     //invite
-    if (message.content === "#invite") {
+    if (message.content === prefix + "invite") {
         
         const embed = new MessageEmbed()
         .setTitle('***Invite Me***')
@@ -688,7 +693,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
       //support
-      if (message.content === "#support") {
+      if (message.content === prefix + "support") {
         const embed = new MessageEmbed()
         .setTitle('***Support Server***')
         .setColor('BLACK')
@@ -708,14 +713,14 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
 //say
-if (message.content.startsWith("#say")) {
+if (message.content.startsWith(prefix + "say")) {
   const sayMessage = message.content.slice(5);
   if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
   message.channel.send(sayMessage);
 }
 //uptime
-if (message.content === "#uptime") {
+if (message.content === prefix + "uptime") {
   const embed = new MessageEmbed()
   .setTitle('***Uptime***')
   .setColor('BLACK')
@@ -725,7 +730,7 @@ if (message.content === "#uptime") {
 await message.channel.send({ embeds: [embed] });
 }
 //avatar
-if (message.content === "#avatar") {
+if (message.content === prefix + "avatar") {
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
   .setColor('BLACK')
@@ -736,7 +741,7 @@ if (message.content === "#avatar") {
 await message.channel.send({ embeds: [embed] });
 }
 //ping
-if (message.content === "#ping") {
+if (message.content === prefix + "ping") {
   const embed = new MessageEmbed()
   .setTitle('***Pong!***')
   .setColor('BLACK')
@@ -747,7 +752,7 @@ await message.channel.send({ embeds: [embed] });
 }
 
 //bot info
-if (message.content === "#botinfo") {
+if (message.content === prefix + "botinfo") {
   const embed = new MessageEmbed()
   .setTitle('***Bot Info***')
   .setColor('BLACK')
@@ -770,7 +775,7 @@ if (message.content === "#botinfo") {
 await message.channel.send({ embeds: [embed], components: [but] });
 }
 //akinator
-if(message.content.startsWith(`#akinator`)) {
+if(message.content.startsWith( prefix + `akinator`)) {
   akinator(message, {
       language: language, 
       childMode: childMode, 
@@ -782,7 +787,7 @@ if(message.content.startsWith(`#akinator`)) {
 
 
 //which take suggestion from a user and send it to a channel
-if (message.content.startsWith("#suggest")) {
+if (message.content.startsWith(prefix + "suggest")) {
   const suggestMessage = message.content.slice(8);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
@@ -796,7 +801,7 @@ if (message.content.startsWith("#suggest")) {
   }
 
 //kick command 
-if (message.content.toLowerCase().startsWith('#kick')) {
+if (message.content.toLowerCase().startsWith(prefix + 'kick')) {
   const member = message.mentions.members.first()
   if (!member) return message.channel.send('You need to mention a user/provide an ID')
   if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send('You lack the required permissions')
@@ -811,7 +816,7 @@ if (message.content.toLowerCase().startsWith('#kick')) {
   }
  }
  //calculator 
-if (message.content.toLowerCase().startsWith('#calc')) {
+if (message.content.toLowerCase().startsWith(prefix + 'calc')) {
 simplydjs.calculator(message, {
   embedColor: "#000000",
   credit: false,
@@ -823,27 +828,27 @@ simplydjs.calculator(message, {
 simplydjs.nqn(message);
 
 //simprate command
-if (message.content.toLowerCase().startsWith('#simprate')) {
+if (message.content.toLowerCase().startsWith(prefix + 'simprate')) {
     let user = message.mentions.users.first() || message.author
     let simps = Math.floor(Math.random() * 100) + 1;
     message.channel.send(`${user} is **${simps}**% Simp. SIMP!`)
 }
 
 //cool command
-if (message.content.toLowerCase().startsWith('#cool')) {
+if (message.content.toLowerCase().startsWith(prefix + 'cool')) {
   let user = message.mentions.users.first() || message.author
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
 
 //clownrate command
-if (message.content.toLowerCase().startsWith('#clownrate')) {
+if (message.content.toLowerCase().startsWith(prefix + 'clownrate')) {
   let user = message.mentions.users.first() || message.author
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
 //8ball
-if(message.content.startsWith("#8ball")) {
+if(message.content.startsWith(prefix + "8ball")) {
   const args = message.content.slice(7);
   if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
@@ -855,7 +860,7 @@ if(message.content.startsWith("#8ball")) {
   }
 
   //truths
-  if(message.content.startsWith("#truth")) {
+  if(message.content.startsWith(prefix + "truth")) {
     let truth = 
     ["If you could be invisible, what’s the first thing you would do?",
     "What’s a secret you kept from your parents?",
@@ -921,7 +926,7 @@ if(message.content.startsWith("#8ball")) {
     message.channel.send({ embeds: [embed] })
     }
 //Dare
-  if(message.content.startsWith("#dare")) {
+  if(message.content.startsWith(prefix + "dare")) {
     let dare = 
     ["Do a free-style rap for the next minute.",
     "Let another person post a status on your behalf.",
@@ -982,7 +987,7 @@ if(message.content.startsWith("#8ball")) {
     }
 
   //warn
-  if(message.content.startsWith("#warn")) {
+  if(message.content.startsWith(prefix + "warn")) {
     let user = message.mentions.users.first();
     if (!user) return message.channel.send("Please mention a user to warn!");
     let embed = new Discord.MessageEmbed()
@@ -994,7 +999,7 @@ if(message.content.startsWith("#8ball")) {
     message.channel.send({ embeds: [embed] })
     }
     //ban
-    if(message.content.startsWith("#ban")) {
+    if(message.content.startsWith(prefix + "ban")) {
         if (message.member.permissions.has("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
@@ -1014,7 +1019,7 @@ if(message.content.startsWith("#8ball")) {
         }
     }
 //ttt
-  if(message.content.startsWith("#ttt")) { 
+  if(message.content.startsWith(prefix + "ttt")) { 
 
 simplydjs.tictactoe(message, {
   xEmoji: "❌", 
@@ -1027,7 +1032,7 @@ simplydjs.tictactoe(message, {
 });
   }
 //whois
-if (message.content === "#whois") {
+if (message.content === prefix + "whois") {
   const Target = message.mentions.users.first() || message.author;
   const Member = message.guild.members.cache.get(Target.id);
   let embednew = new MessageEmbed()
@@ -1042,7 +1047,7 @@ if (message.content === "#whois") {
   message.reply({ embeds: [embednew] });
 }
 //poll
-if (message.content.startsWith("#poll")) {
+if (message.content.startsWith(prefix + "poll")) {
   let args = message.content.slice(6);
   if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
@@ -1061,20 +1066,20 @@ if (message.content.startsWith("#poll")) {
 }
 
 //sanity check
-if (message.content.startsWith("#sanitycheck")) {
+if (message.content.startsWith(prefix + "sanitycheck")) {
   let user = message.mentions.users.first() || message.author
   let sane = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${sane}**% sane Today!`)
 }
 
 //f
-if (message.content.startsWith("#f")) {
+if (message.content.startsWith(prefix + "f")) {
   let user = message.author
   message.channel.send(`**${user}** has paid Respect :heart:`)
 }
 
 //flipcoin
-if (message.content.startsWith("#coinflip")) {
+if (message.content.startsWith(prefix + "coinflip")) {
   let user = message.author
   let coinside = ["Heads", "Tails"]
   message.channel.send(`**${user}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
@@ -1098,7 +1103,7 @@ message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}`
 
 }
 //rate 
-if (message.content.toLowerCase().startsWith('#rate')) {
+if (message.content.toLowerCase().startsWith(prefix + 'rate')) {
   let argu = message.content.slice(6);
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
@@ -1108,7 +1113,7 @@ if (message.content.toLowerCase().startsWith('#rate')) {
 
 
 //snipe
-if (message.content === "#snipe") {
+if (message.content === prefix + "snipe") {
   let channel = message.mentions.channels.first() || message.channel
 let sniped = client.snipes.get(channel.id)
 if(!sniped) {
@@ -1127,7 +1132,7 @@ if(!sniped) {
 }
 
 //kill
-if(message.content.startsWith("#kill")) {
+if(message.content.startsWith(prefix + "kill")) {
   let victim = message.mentions.users.first()
   if(!victim) message.reply("Mention someone to Kill")
   else{
@@ -1147,7 +1152,7 @@ if(message.content.startsWith("#kill")) {
   
 
 //listroles
-    if(message.content === "#listrole"){
+    if(message.content === prefix + "listrole"){
     let rolemap = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(r => r)
@@ -1164,7 +1169,7 @@ if(message.content.startsWith("#kill")) {
 
 
   //listmember
-  if(message.content === "#listmember"){
+  if(message.content === prefix + "listmember"){
   let membermap = message.guild.members.cache
   .sort((a, b) => b.joinedAt - a.joinedAt)
   .map(m => m)
@@ -1179,7 +1184,7 @@ if(message.content.startsWith("#kill")) {
   }
 
   //listemoji
-  if(message.content === "#listemoji"){
+  if(message.content === prefix + "listemoji"){
   let emojimap = message.guild.emojis.cache
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(e => e)
@@ -1194,7 +1199,7 @@ if(message.content.startsWith("#kill")) {
   }
 
   //listserver 
-  if(message.content === "#listserver"){
+  if(message.content === prefix + "listserver"){
     client.guilds.cache.forEach(guild => {
       message.channel.send(`${guild.name} | ${guild.id}`);
     })
@@ -1202,7 +1207,7 @@ if(message.content.startsWith("#kill")) {
 
 
   //listchannel
-  if(message.content === "#listchannel"){
+  if(message.content === prefix + "listchannel"){
   let channelmap = message.guild.channels.cache
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(c => c)
@@ -1214,6 +1219,22 @@ if(message.content.startsWith("#kill")) {
     { name: 'Channel', value: channelmap, inline: true },
   )
   message.channel.send({ embeds: [embed] });
+  }
+
+  //terminal
+  if(message.content.startsWith(prefix + "terminal")) {
+    args = message.content.split(prefix.length).trim().split(/ +/g);
+    if (message.author.id !== "779749147989245972") return;
+    const command = args.join(" ");
+    if (!command)
+      return message.channel.send("pls specify a command to execute");
+
+      child.exec(command, (err, res) => {
+        if (err) return message.channel.send(err); 
+        message.channel.send(res.slice(0, 2000), { code: "js"});
+      });
+
+      
   }
   
 
