@@ -242,7 +242,10 @@ client.on('interactionCreate', async interaction => {
   }
 
   if(interaction.commandName === `poll`){
-
+    showModal(modal3, {
+      client: client, 
+      interaction: interaction
+    })
   }
 
 
