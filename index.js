@@ -91,6 +91,11 @@ commands?.create({
   description: 'Help Command',
 })
 
+Commands?.create({
+  name: 'dropdown roles',
+  description: ' Make Dropdown Roles For your server',
+})
+
 
 
 });
@@ -157,6 +162,45 @@ const modal2 = new Modal()
 );
 
 
+const modal3 = new Modal()
+.setCustomId('modal-3')
+.setTitle('Dropdown Roles')
+.addComponents(
+  new TextInputComponent() 
+  .setCustomId('input-3-1')
+  .setLabel('1st Role Name')
+  .setStyle('SHORT')
+  .setMinLength(2)
+  .setMaxLength(20)
+  .setPlaceholder('The Name of The First Role')
+  .setRequired(true),
+  new TextInputComponent() 
+  .setCustomId('input-3-2')
+  .setLabel('1st Role ID')
+  .setStyle('LONG')
+  .setMinLength(18)
+  .setMaxLength(18)
+  .setPlaceholder('The Role Id of The First Role')
+  .setRequired(true),
+  new TextInputComponent() 
+  .setCustomId('input-3-3')
+  .setLabel('2nd Role Name')
+  .setStyle('SHORT')
+  .setMinLength(2)
+  .setMaxLength(20)
+  .setPlaceholder('The Name of The Second Role')
+  .setRequired(true),
+  new TextInputComponent() 
+  .setCustomId('input-3-4')
+  .setLabel('2nd Role ID')
+  .setStyle('LONG')
+  .setMinLength(18)
+  .setMaxLength(18)
+  .setPlaceholder('The Role Id of The Second Role')
+  .setRequired(true)
+);
+
+
 client.on('modalSubmit', (modal) => {
   if(modal.customId === 'modal-1'){
     const firstResponse = modal.getTextInputValue('input-1')
@@ -172,9 +216,68 @@ client.on('modalSubmit', (modal) => {
     .setFooter(thirdResponse)
     modal.reply({ embeds: [embed] })
   }
+
+  if(modal.customId === 'modal-3'){
+    const firstrolename = modal.getTextInputValue('input-3-1')
+    const firstroleid = modal.getTextInputValue('input-3-2')
+    const secondrolename = modal.getTextInputValue('input-3-3')
+    const secondroleid = modal.getTextInputValue('input-3-4')
+
+
+
+    const row = new MessageActionRow()
+    .addComponents(
+        new MessageSelectMenu()
+            .setCustomId('roles')
+            .setPlaceholder('Select a reaction role')
+            .addOptions([
+                { //edit the option according to you ⚠leave the emoji fields like they are 
+                    label: `${firstrolename}`,
+                    description: `Take The Role - ${firstrolename}`,
+                    value: 'first_role',
+                },
+                {
+                    label: `${secondrolename}`,
+                    description: `Take The Role - ${secondrolename}`,
+                    value: 'second_role',
+                },
+            ]),
+    );
+
+await interaction.reply({  content: "Hello There take your roles", components: [row]})
+
+if(interaction.isSelectMenu()){
+      
+  let choice = interaction.values[0] 
+  const member = interaction.member
+   if(choice == 'first_option'){
+      if (member.roles.cache.some(role => role.id == firstroleid)) {
+          interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
+          member.roles.remove(`${firstroleid}`)
+      }
+      else{
+      member.roles.add(`${firstroleid}`)
+          await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
+        }
+
+else if(choice == 'second_option'){
+  if (member.roles.cache.some(role => role.id == secondroleid)) {
+      interaction.reply({content: "The role was successfully removed from you", ephemeral: true})
+      member.roles.remove(`${secondroleid}`)
+  }
+  else{
+  member.roles.add(`${secondroleid}`)
+      await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
+    }
+
+  }
+
+
+
+}
 })
 
-client.on('interactionCreate', (interaction) => {
+client.on('interactionCreate', async interaction => {
   if(interaction.commandName === 'say'){
     showModal(modal, {
       client: client, 
@@ -192,6 +295,13 @@ client.on('interactionCreate', (interaction) => {
   if(interaction.commandName === `embed`){
     showModal(modal2, {
       client: client, 
+      interaction: interaction
+    })
+  }
+
+  if(interaction.commandName === `dropdown roles`){
+    showModal(modal3, {
+      client: client,
       interaction: interaction
     })
   }
