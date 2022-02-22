@@ -201,7 +201,7 @@ const modal3 = new Modal()
 );
 
 
-client.on('modalSubmit', (modal) => {
+client.on('modalSubmit', async modal => {
   if(modal.customId === 'modal-1'){
     const firstResponse = modal.getTextInputValue('input-1')
     modal.reply(`${firstResponse}`)
