@@ -1268,7 +1268,7 @@ message.channel.send(stdout + "\nres:\n" + res);
 if(message.content.startsWith(prefix + "shutdown")) {
   if (message.author.id !== "779749147989245972") return;
   message.channel.send("Shutting down...").then(() => {
-    process.exit(0);
+    process.exit(0); 
     message.channel.send("Shutdown complete");
   });
   };
