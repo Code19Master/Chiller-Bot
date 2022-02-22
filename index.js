@@ -1264,6 +1264,15 @@ message.channel.send(stdout + "\nres:\n" + res);
 })
 }
 
+//shutdown bot
+if(message.content.startsWith(prefix + "shutdown")) {
+  if (message.author.id !== "779749147989245972") return;
+  message.channel.send("Shutting down...").then(() => {
+    client.destroy();
+    message.channel.send("Shutdown complete");
+  });
+  };
+
 
 
 
