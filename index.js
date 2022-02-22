@@ -6,6 +6,7 @@ const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
+
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
@@ -217,36 +218,8 @@ client.on('modalSubmit', async modal => {
     modal.reply({ embeds: [embed] })
   }
 
-  if(modal.customId === 'modal-3'){
-    const firstrolename = modal.getTextInputValue('input-3-1')
-    const firstroleid = modal.getTextInputValue('input-3-2')
-    const secondrolename = modal.getTextInputValue('input-3-3')
-    const secondroleid = modal.getTextInputValue('input-3-4')
 
 
-
-    const row = new MessageActionRow()
-    .addComponents(
-        new MessageSelectMenu()
-            .setCustomId('roles')
-            .setPlaceholder('Select a reaction role')
-            .addOptions([
-                { //edit the option according to you ⚠leave the emoji fields like they are 
-                    label: `${firstrolename}`,
-                    description: `Take The Role - ${firstrolename}`,
-                    value: 'first_role',
-                },
-                {
-                    label: `${secondrolename}`,
-                    description: `Take The Role - ${secondrolename}`,
-                    value: 'second_role',
-                },
-            ]),
-    );
-
-await modal.reply({  content: "Hello There take your roles", components: [row]})
-
-}
 })
 
 client.on('interactionCreate', async interaction => {
@@ -274,36 +247,6 @@ client.on('interactionCreate', async interaction => {
   }
 
   if(interaction.commandName === `dropdown_roles`){
-    showModal(modal3, {
-      client: client,
-      interaction: interaction
-    })
-
-    if(interaction.isSelectMenu()){
-      
-      let choice = interaction.values[0] 
-      const member = interaction.member
-       if(choice == 'first_role'){
-          if (member.roles.cache.some(role => role.id == firstroleid)) {
-              interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
-              member.roles.remove(`${firstroleid}`)
-          }
-          else{
-          member.roles.add(`${firstroleid}`)
-              await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
-            }
-    
-    else if(choice == 'second_role'){
-      if (member.roles.cache.some(role => role.id == secondroleid)) {
-          interaction.reply({content: "The role was successfully removed from you", ephemeral: true})
-          member.roles.remove(`${secondroleid}`)
-      }
-      else{
-      member.roles.add(`${secondroleid}`)
-          await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })}
-        }
-    
-      }
     
   }
 
