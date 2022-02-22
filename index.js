@@ -1255,7 +1255,9 @@ message.reply({embeds: [embedError]})
   
 //terminal
 if(message.content.startsWith(prefix + "terminal")) {
-  require("child_process").exec("node -v", (err, stdout, stderr) =>{
+  let args = message.content.slice(10).split(" ");
+  if (!args) return message.channel.send("No input");
+  require("child_process").exec(args, (err, stdout, stderr) =>{
 if (err) return "f";
 message.channel.send(stdout)
 })
