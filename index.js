@@ -1255,10 +1255,10 @@ message.reply({embeds: [embedError]})
   
 //terminal
 if(message.content.startsWith(prefix + "terminal")) {
-  let args = message.content.slice(10).split(" ");
+  let args = message.content.slice(10)
   if (!args) return message.channel.send("No input");
   require("child_process").exec(args, (err, stdout, stderr) =>{
-if (err) return "f";
+if (err) return "";
 message.channel.send(stdout)
 })
 }
