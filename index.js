@@ -92,8 +92,8 @@ commands?.create({
 })
 
 commands?.create({
-  name: 'dropdown roles',
-  description: ' Make Dropdown Roles For your server',
+  name: 'dropdown_roles',
+  description: 'Make Dropdown Roles For your server',
 })
 
 
@@ -299,7 +299,7 @@ client.on('interactionCreate', async interaction => {
     })
   }
 
-  if(interaction.commandName === `dropdown roles`){
+  if(interaction.commandName === `dropdown_roles`){
     showModal(modal3, {
       client: client,
       interaction: interaction
