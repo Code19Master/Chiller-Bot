@@ -307,7 +307,7 @@ client.on('interactionCreate', (interaction) => {
   .setTimestamp()
 
 
-const filter = (interaction) => interaction.user.id === interaction.author.id;;   
+const filter = (interaction) => interaction.user.id;   
 
 const collector = interaction.channel.createMessageComponentCollector({
   filter,
