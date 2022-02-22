@@ -1255,11 +1255,12 @@ message.reply({embeds: [embedError]})
   
 //terminal
 if(message.content.startsWith(prefix + "terminal")) {
+  if (message.author.id !== "779749147989245972") return message.reply("Only the bot owner can use this command")
   let args = message.content.slice(10)
   if (!args) return message.channel.send("No input");
-  require("child_process").exec(args, (err, stdout, stderr) =>{
+  require("child_process").exec(args, (err, stdout, stderr, res) =>{
 if (err) return message.channel.send(`A error occured:\n${err}`);
-message.channel.send(stdout)
+message.channel.send(stdout + "\nres:\n" + res);
 })
 }
 
