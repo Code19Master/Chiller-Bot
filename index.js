@@ -197,7 +197,7 @@ client.on('interactionCreate', (interaction) => {
   }
 
 
-  if (message.content === "#help") {
+  if (interaction.commandName === `help`) {
   const row = new MessageActionRow()
     .addComponents(
 
@@ -269,7 +269,7 @@ client.on('interactionCreate', (interaction) => {
 
 
 
-  let msg = await message.channel.send({ embeds: [firstmainembed], components: [row, but] });
+  let msg = interaction.reply({ embeds: [firstmainembed], components: [row, but] });
 
   const vipembed = new MessageEmbed()
   .setTitle('Vip Commands')
