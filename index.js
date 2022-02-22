@@ -247,9 +247,9 @@ client.on('modalSubmit', async modal => {
 await modal.reply({  content: "Hello There take your roles", components: [row]})
 
 
-const filter = (interaction) => interaction.user.id === message.author.id;   
+const filter = (interaction) => interaction.user.id ;   
   
-const collector = message.channel.createMessageComponentCollector({
+const collector = message.interaction.createMessageComponentCollector({
    filter,
    componentType: "SELECT_MENU"
 });
