@@ -95,8 +95,8 @@ commands?.create({
 })
 
 commands?.create({
-  name: 'dropdown_roles',
-  description: 'Make Dropdown Roles For your server',
+  name: 'pool',
+  description: 'Make A Poll In your Guild',
 })
 
 
@@ -164,44 +164,37 @@ const modal2 = new Modal()
   .setRequired(false)
 );
 
-
 const modal3 = new Modal()
 .setCustomId('modal-3')
-.setTitle('Dropdown Roles')
+.setTitle('Say Command')
 .addComponents(
   new TextInputComponent() 
   .setCustomId('input-3-1')
-  .setLabel('1st Role Name')
+  .setLabel('TITLE')
   .setStyle('SHORT')
   .setMinLength(2)
   .setMaxLength(20)
-  .setPlaceholder('The Name of The First Role')
+  .setPlaceholder('Title of the Poll.')
   .setRequired(true),
   new TextInputComponent() 
   .setCustomId('input-3-2')
-  .setLabel('1st Role ID')
+  .setLabel('1st Option')
   .setStyle('LONG')
-  .setMinLength(18)
-  .setMaxLength(18)
-  .setPlaceholder('The Role Id of The First Role')
+  .setMinLength(2)
+  .setMaxLength(4000)
+  .setPlaceholder('1st Option of the Poll')
   .setRequired(true),
   new TextInputComponent() 
   .setCustomId('input-3-3')
-  .setLabel('2nd Role Name')
-  .setStyle('SHORT')
+  .setLabel('2nd Option')
+  .setStyle('LONG')
   .setMinLength(2)
   .setMaxLength(20)
-  .setPlaceholder('The Name of The Second Role')
-  .setRequired(true),
-  new TextInputComponent() 
-  .setCustomId('input-3-4')
-  .setLabel('2nd Role ID')
-  .setStyle('LONG')
-  .setMinLength(18)
-  .setMaxLength(18)
-  .setPlaceholder('The Role Id of The Second Role')
+  .setPlaceholder('2nd Option of the Poll')
   .setRequired(true)
 );
+
+
 
 
 client.on('modalSubmit', async modal => {
@@ -248,38 +241,8 @@ client.on('interactionCreate', async interaction => {
     interaction.reply({ content: `${firstrolename}` })
   }
 
-  if(interaction.commandName === `dropdown_roles`){
-    const modal = new Modal()
-    .setCustomId("modal0")
-    .setTitle("Dropdown Roles")
-    .addComponents(
-      new TextInput()
-      .setLabel("1st Role Name")
-      .setStyle("SHORT")
-      .setPlaceholder("The Name of The First Role")
-      .setCustomId("role-1-name")
-      .setRequired(true),
-      new TextInput()
-      .setLabel("1st Role ID") 
-      .setStyle("LONG")
-      .setMax(16)
-      .setCustomId('role-1-id')
-      .setPlaceholder("ID of the 1st role")
-      )
-      new TextInput()
-      .setLabel("2nd Role Name")
-      .setStyle("SHORT")
-      .setPlaceholder("The Name of The Second Role")
-      .setCustomId("role-2-name")
-      .setRequired(true),
-      new TextInput()
-      .setLabel("2nd Role ID") 
-      .setStyle("LONG")
-      .setMax(16)
-      .setCustomId('role-2-id')
-      .setPlaceholder("ID of the 2nd role")
-      
-      client.modal.send(interaction, modal)
+  if(interaction.commandName === `poll`){
+
   }
 
 
