@@ -140,6 +140,17 @@ client.on('messageDelete', function(message, channel) {
 	});
 });
 
+
+//snipe message edit event
+client.on("messageUpdate", async (oldMessage, newMessage) => {
+  esnipes[message.guild.id] = {
+    author: message.author,
+    oldcontent: oldMessage.content,
+    newcontent: newMessage.content,
+    channel: message.channel.id,
+  };
+} 
+);
 //slash command and modals
 
 
@@ -1382,6 +1393,25 @@ if(message.content.startsWith(prefix + "shutdown")) {
     message.channel.send("Shutdown complete");
   });
   };
+
+//esnipe
+if(message.content.startsWith(prefix + "esnipe")) {
+  const snipe = esnipes[message.guildId];
+  let sniped = client.snipes.get(channel.id)
+
+  
+  const embed = new MessageEmbed()
+  .setDescription(`Old Message:\n${snipe.oldcontent}\nNewMessage:${snipe.newcontent}`)
+  .setAuthor(snipe.author.tag)
+  .setFooter(`Sniped from : <#${snipe.channel}>`)
+  if(!sniped) {
+    message.channel.send(" :x: | There is nothing to snipe ")
+   } else {
+  await message.channel.send({ embeds: [embed] }); 
+
+
+   }
+}
 
 
 
