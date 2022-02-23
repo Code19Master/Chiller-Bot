@@ -1449,7 +1449,7 @@ if(message.content.startsWith(prefix + "esnipe")) {
 //getitem
 if(message.content.startsWith(prefix + "getfnitem")) {
   fortniteapi.getItem('208f8a9-35aff6e-b1ae608-1cb4c7b').then(data => {
-  message.channel.send(data)
+  message.channel.send(`${data}`)
 })
 }
 
