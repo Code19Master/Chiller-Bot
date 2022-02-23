@@ -581,7 +581,7 @@ client.on('messageCreate', async message => {
 
    let arguse = message.content.slice(prefix.length).split(" ");
 
-   if (command === "prefix") {
+   if (message.content === "#setprefix") {
     let pre = arguse[0]
     if(message.member.hasPermission("ADMINISTRATOR")) {
     if (!pre) {
