@@ -7,6 +7,7 @@ const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
 const child = require('child_process')
+const prefix = "#"
 const { inspect } = require("util");
 const db = require("quick.db")
 
@@ -571,32 +572,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
-  if (db.get(`prefix_${message.guild.id}`) === null) {
-    prefix = "#"
-    }
-   
-    else {
-    prefix = db.get(`prefix_${message.guild.id}`)
-    }
 
-   let arguse = message.content.slice(prefix.length).split(" ");
-
-   if (message.content === "#setprefix") {
-    let pre = arguse[0]
-    if(message.member.permissions.has("ADMINISTRATOR")) {
-    if (!pre) {
-    message.channel.send(":x: | \`Please specify the prefix!\`")
-    }
-   
-    else {
-    db.set(`prefix_${message.guild.id}`, pre)
-   
-    message.channel.send(`Your new prefix is \`${pre}\``)
-    }
-    } else {
-    message.channel.send(":x: | \`You do not have permission to use this!\`")
-   }
-   }
    
 
     if (message.content === `${prefix}help`) {
