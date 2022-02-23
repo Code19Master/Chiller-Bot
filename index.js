@@ -1398,14 +1398,13 @@ if(message.content.startsWith(prefix + "shutdown")) {
 //esnipe
 if(message.content.startsWith(prefix + "esnipe")) {
   const snipe = esnipes[message.guildId];
-  let sniped = client.snipes.get(channel.id)
 
   
   const embed = new MessageEmbed()
   .setDescription(`Old Message:\n${snipe.oldcontent}\nNewMessage:${snipe.newcontent}`)
   .setAuthor(snipe.author.tag)
   .setFooter(`Sniped from : <#${snipe.channel}>`)
-  if(!sniped) {
+  if(!snipe) {
     message.channel.send(" :x: | There is nothing to snipe ")
    } else {
   await message.channel.send({ embeds: [embed] }); 
