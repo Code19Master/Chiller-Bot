@@ -6,9 +6,10 @@ const akinator = require("discord.js-akinator")
 const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
-const prefix = "#"
 const child = require('child_process')
 const { inspect } = require("util");
+const db = require("quick.db")
+
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -570,6 +571,34 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
+  if (db.get(`prefix_${message.guild.id}`) === null) {
+    prefix = "#"
+    }
+   
+    else {
+    prefix = db.get(`prefix_${message.guild.id}`)
+    }
+
+   let arguse = message.content.slice(prefix.length).split(" ");
+
+   if (command === "prefix") {
+    let pre = arguse[0]
+    if(message.member.hasPermission("ADMINISTRATOR")) {
+    if (!pre) {
+    message.channel.send(":x: | \`Please specify the prefix!\`")
+    }
+   
+    else {
+    db.set(`prefix_${message.guild.id}`, pre)
+   
+    message.channel.send(`Your new prefix is \`${pre}\``)
+    }
+    } else {
+    message.channel.send(":x: | \`You do not have permission to use this!\`")
+   }
+   }
+   
+
     if (message.content === `${prefix}help`) {
 		const row = new MessageActionRow()
 			.addComponents(
