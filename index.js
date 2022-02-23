@@ -110,6 +110,11 @@ commands?.create({
   description: 'Ask the 8ball a question',
 })
 
+ commands?.create({
+  name: 'sus',
+  description: 'Sus',
+ })
+
 
 
 
@@ -328,6 +333,21 @@ client.on('interactionCreate', async interaction => {
       client: client,
       interaction: interaction
     })
+  }
+
+  if(interaction.commandName === `sus`){
+    let sus = 
+["https://c.tenor.com/YebbLUmkg9YAAAAM/among-us.gif",
+"https://c.tenor.com/vHroFuuevf0AAAAM/among-us.gif",
+"https://c.tenor.com/5j6SImhtzsEAAAAM/sus-suspect.gif",
+"https://c.tenor.com/SSF8otXFR3UAAAAM/sus.gif",
+"https://c.tenor.com/LxeR852sVAMAAAAM/sus-check.gif",
+"https://c.tenor.com/1A6sTQJwLYAAAAAM/king-of-fighters-iori-yagami.gif",
+"https://c.tenor.com/H46daZMWzi4AAAAM/sus-buff.gif",
+"https://c.tenor.com/9smDMBhbmPoAAAAM/among-us-kinda-sus.gif",
+"https://c.tenor.com/u4DTDP287_kAAAAM/sus-suspect.gif"]
+
+ interaction.reply({ content: `${sus[Math.floor(Math.random() * sus.length)]}` })
   }
 
 
