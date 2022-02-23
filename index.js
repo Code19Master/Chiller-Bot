@@ -264,7 +264,7 @@ client.on('modalSubmit', async modal => {
     let embed = new Discord.MessageEmbed()
     .setDescription(`**QUESTION** - ` + question + `\n:8ball: Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
     .setColor("BLACK")
-    interaction.reply({ embeds: [embed] })
+    modal.reply({ embeds: [embed] })
   }
     
 
