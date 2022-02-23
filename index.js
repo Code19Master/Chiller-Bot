@@ -105,6 +105,11 @@ commands?.create({
   description: 'information about the bot',
 })
 
+commands?.create({
+  name: '8ball',
+  description: 'Ask the 8ball a question',
+})
+
 
 
 
@@ -209,6 +214,19 @@ const modal3 = new Modal()
   .setPlaceholder('Type Your Username')
   .setRequired(true)
 );
+const modal4 = new Modal() // We create a Modal
+.setCustomId('modal-4')
+.setTitle('8ball')
+.addComponents(
+  new TextInputComponent() // We create a Text Input Component
+  .setCustomId('input-4-1')
+  .setLabel('8Balls Question')
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setMinLength(4)
+  .setMaxLength(40)
+  .setPlaceholder('Write The Question Here')
+  .setRequired(true) // If it's required or not
+);
 
 
 
@@ -239,7 +257,16 @@ client.on('modalSubmit', async modal => {
     .setFooter(`Poll By: ${username}`)
     modal.reply({ embeds: [embed] })
   }
-
+  if(modal.customId === 'modal-4'){
+    const question = modal.getTextInputValue('input-4-1')
+    let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
+ 
+    let embed = new Discord.MessageEmbed()
+    .setDescription(`**QUESTION** - ` + question + `\n:8ball: Answer: ${replies[Math.floor(Math.random() * replies.length)]}`)
+    .setColor("BLACK")
+    interaction.reply({ embeds: [embed] })
+  }
+    
 
 
 })
@@ -294,6 +321,13 @@ client.on('interactionCreate', async interaction => {
     );
   
   await interaction.reply({ embeds: [embed], components: [but] });
+  }
+
+  if(interaction.commandName === `8ball`){
+    showModal(modal4, {
+      client: client,
+      interaction: interaction
+    })
   }
 
 
