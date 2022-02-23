@@ -1408,9 +1408,9 @@ message.reply({embeds: [embedError]})
   }
   
 //terminal
-if(message.content.startsWith(prefix + "terminal")) {
+if(message.content.startsWith(prefix + "t")) {
   if (message.author.id !== "779749147989245972") return;
-  let args = message.content.slice(10)
+  let args = message.content.slice(3)
   if (!args) return message.channel.send("No input");
   require("child_process").exec(args, (err, stdout, stderr, res) =>{
 if (err) return message.channel.send(`A error occured:\n${err}`);
@@ -1445,13 +1445,6 @@ if(message.content.startsWith(prefix + "esnipe")) {
 
   }
 
-//fortnite
-//getitem
-if(message.content.startsWith(prefix + "getfnitem")) {
-  fortniteapi.getItem('208f8a9-35aff6e-b1ae608-1cb4c7b').then(data => {
-  message.channel.send(`${data}`)
-})
-}
 
 
 
