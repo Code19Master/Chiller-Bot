@@ -331,7 +331,7 @@ client.on('interactionCreate', async interaction => {
     .setURL('https://codemaster-portfolio.netlify.app/'),
     );
     
-await message.channel.send({ embeds: [embed], components: [but] });
+await interaction.send({ embeds: [embed], components: [but] });
   }
 
   if(interaction.commandName === `botinfo`){
