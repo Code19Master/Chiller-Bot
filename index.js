@@ -118,6 +118,7 @@ commands?.create({
   commands?.create({
   name: 'devinfo',
   description: 'Info about the Developer',
+  })
 
 
 
