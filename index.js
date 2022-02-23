@@ -49,7 +49,7 @@ fortniteapi.configuration({
   key: fn_api
 });
 
-fortniteapi.getUserStatsV2('Japof').then(data => {
+fortniteapi.getItem('208f8a9-35aff6e-b1ae608-1cb4c7b').then(data => {
   console.log(data)
 })
 
