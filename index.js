@@ -583,7 +583,7 @@ client.on('messageCreate', async message => {
 
    if (message.content === "#setprefix") {
     let pre = arguse[0]
-    if(message.member.hasPermission("ADMINISTRATOR")) {
+    if(message.member.permissions.has("ADMINISTRATOR")) {
     if (!pre) {
     message.channel.send(":x: | \`Please specify the prefix!\`")
     }
