@@ -121,6 +121,16 @@ commands?.create({
   description: 'Info about the Developer',
   })
 
+  commands?.create({
+  name: 'f',
+  description: 'Pay respect',
+  })
+
+  commands?.create({
+  name: 'coinflip',
+  description: 'Flip a coin',
+  })
+
 
 
 
@@ -390,6 +400,16 @@ await interaction.reply({ embeds: [embed], components: [but] });
  interaction.reply({ content: `${sus[Math.floor(Math.random() * sus.length)]}` })
   }
 
+  if(interaction.commandName === `f`){
+    let user = interaction.author
+    interaction.reply(`**${user}** has paid Respect :heart:`)
+  }
+
+  if(interaction.commandName === `coinflip`){
+    let user = interaction.author
+    let coinside = ["Heads", "Tails"]
+    message.channel.send(`**${user}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
+  }
 
   if (interaction.commandName === `help`) {
   const row = new MessageActionRow()
