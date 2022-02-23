@@ -37,6 +37,7 @@ const childMode = true;
 const gameType = "character"; 
 const useButtons = true; 
 const embedColor = "#000000";
+const esnipes = {};
 
 discordModals(client); // discord-modals needs your client in order to interact with modals 
 
