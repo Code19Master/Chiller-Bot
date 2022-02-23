@@ -100,6 +100,10 @@ commands?.create({
   description: 'Make A Poll In your Guild',
 })
 
+commands?.create({
+  name: 'botinfo',
+  description: 'information about the bot',
+})
 
 
 
@@ -269,6 +273,29 @@ client.on('interactionCreate', async interaction => {
     })
   }
 
+  if(interaction.commandName === `botinfo`){
+    const embed = new MessageEmbed()
+    .setTitle('***Bot Info***')
+    .setColor('BLACK')
+    .addField('Bot Name:', client.user.username)
+    .addField('Bot ID:', client.user.id)
+    .addField('Bot Tag:', client.user.tag)
+    .addField('Bot Owner:', 'CodeMaster100#7978')
+    .addField('Bot Prefix:', '#')
+    .addField('Bot Version:', '1.0.0')
+    .setTimestamp()
+    
+    const but = new MessageActionRow()
+    .addComponents(
+    new MessageButton()
+    .setLabel('Vote Me')
+    .setStyle('LINK')
+    .setURL('https://top.gg/bot/945030482792439888'),//Change Link To Vote Me TOPGG 
+    );
+  
+  await interaction.reply({ embeds: [embed], components: [but] });
+  }
+
 
   if (interaction.commandName === `help`) {
   const row = new MessageActionRow()
@@ -322,7 +349,7 @@ client.on('interactionCreate', async interaction => {
     new MessageButton()
     .setLabel('Vote Me')
     .setStyle('LINK')
-    .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
+    .setURL('https://top.gg/bot/945030482792439888'),//Change Link To Vote Me TOPGG  
     );
 
     const firstmainembed = new MessageEmbed()
@@ -481,7 +508,7 @@ client.on('messageCreate', async message => {
       new MessageButton()
       .setLabel('Vote Me')
       .setStyle('LINK')
-      .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
+      .setURL('https://top.gg/bot/945030482792439888'),//Change Link To Vote Me TOPGG 
       );
 
       const firstmainembed = new MessageEmbed()
@@ -592,7 +619,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
       new MessageButton()
       .setLabel('Vote Me')
       .setStyle('LINK')
-      .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
+      .setURL('https://top.gg/bot/945030482792439888'),//Change Link To Vote Me TOPGG 
       );
       
   await message.channel.send({ embeds: [embed], components: [but] });
@@ -770,7 +797,7 @@ if (message.content === prefix + "botinfo") {
   new MessageButton()
   .setLabel('Vote Me')
   .setStyle('LINK')
-  .setURL('https://top.gg/bot/936617927833178132'),//Change Link To Vote Me TOPGG 
+  .setURL('https://top.gg/bot/945030482792439888'),//Change Link To Vote Me TOPGG 
   );
 
 await message.channel.send({ embeds: [embed], components: [but] });
