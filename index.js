@@ -143,6 +143,7 @@ client.on('messageDelete', function(message, channel) {
 
 
 //snipe message edit event
+client.editSnipe = new Discord.Collection
 client.on("messageUpdate", async (oldMessage, newMessage) => {
   client.editSnipe.set(newMessage.channel.id, {
     oldMessage: oldMessage,
