@@ -144,14 +144,12 @@ client.on('messageDelete', function(message, channel) {
 
 //snipe message edit event
 client.on("messageUpdate", async (oldMessage, newMessage) => {
-  esnipes[message.guild.id] = {
-    author: message.author,
-    oldcontent: oldMessage.content,
-    newcontent: newMessage.content,
-    channel: message.channel.id,
-  };
-} 
-);
+  client.editSnipe.set(newMessage.channel.id, {
+    oldMessage: oldMessage,
+    newMessage: newMessage
+    })
+   })
+;
 //slash command and modals
 
 
@@ -1397,22 +1395,21 @@ if(message.content.startsWith(prefix + "shutdown")) {
 
 //esnipe
 if(message.content.startsWith(prefix + "esnipe")) {
-  const snipe = esnipes[message.guildId];
+  let channel = message.mentions.channels.first() || message.channel
+  let msg = client.editSnipe.get(channel.id)
+  if(!msg) return message.channel.send("There is nothing to editsnipe!")
+  let embed = new Discord.MessageEmbed()
+  .setTitle(msg.oldMessage.author.tag)
+  .setThumbnail(msg.oldMessage.author.displayAvatarURL({dynamic: true}))
+  .setColor("RANDOM")
+  .addFields(
+  {name: "Content Before", value: msg.oldMessage.content},
+  {name: "Content After", value: msg.newMessage.content}
+  )
+  if(msg.oldMessage.attachments.first()) embed.setImage(msg.oldMessage.attachments.first().url)
+  message.channel.send({embeds: [embed]})
 
-  
-  const embed = new MessageEmbed()
-  .setDescription(`Old Message:\n${snipe.oldcontent}\nNewMessage:${snipe.newcontent}`)
-  .setAuthor(snipe.author.tag)
-  .setFooter(`Sniped from : <#${snipe.channel}>`)
-  if(!snipe) {
-    message.channel.send(" :x: | There is nothing to snipe ")
-   } else {
-  await message.channel.send({ embeds: [embed] }); 
-
-
-   }
-}
-
+  }
 
 
 
