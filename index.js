@@ -10,6 +10,7 @@ const child = require('child_process')
 const prefix = "#"
 const { inspect } = require("util");
 const db = require("quick.db")
+const fortniteapi = require('fortnite-api-js');
 
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
@@ -34,6 +35,7 @@ const client = new Discord.Client({
 
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
+const fn_api = process.env.FN_API_KEY; //fn api key
 const language = "en"; 
 const childMode = true;
 const gameType = "character"; 
@@ -42,6 +44,14 @@ const embedColor = "#000000";
 const esnipes = {};
 
 discordModals(client); // discord-modals needs your client in order to interact with modals 
+
+fortniteapi.configuration({
+  key: fn_api
+});
+
+fortniteapi.getShop('en').then(data => {
+  console.log(data)
+})
 
 
 
