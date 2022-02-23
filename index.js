@@ -115,6 +115,10 @@ commands?.create({
   description: 'Sus',
  })
 
+  commands?.create({
+  name: 'devinfo',
+  description: 'Info about the Developer',
+
 
 
 
@@ -305,6 +309,30 @@ client.on('interactionCreate', async interaction => {
     })
   }
 
+  if(interaction.commandName === `devinfo`){
+    const embed = new MessageEmbed()
+    .setTitle('***DEVELOPERS***')
+    .setColor('BLACK')
+    .setDescription('Divik aka CodeMaster100#7978 - Bot Developer, Web Developer and Game Developer')
+    .setTimestamp()
+
+    const but = new MessageActionRow()
+    .addComponents(
+      new MessageButton()
+      .setLabel('My Github')
+      .setStyle('LINK')
+      .setURL('https://github.com/Code19Master'),
+    )
+    .addComponents(
+    new MessageButton()
+    .setLabel('My Portfolio')
+    .setStyle('LINK')
+    .setURL('https://codemaster-portfolio.netlify.app/'),
+    );
+    
+await message.channel.send({ embeds: [embed], components: [but] });
+  }
+
   if(interaction.commandName === `botinfo`){
     const embed = new MessageEmbed()
     .setTitle('***Bot Info***')
@@ -441,7 +469,7 @@ client.on('interactionCreate', async interaction => {
 
   const utilityembed = new MessageEmbed()
   .setTitle('Utility Commands')
-  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message')
+  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
