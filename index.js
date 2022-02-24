@@ -1408,9 +1408,9 @@ message.reply({embeds: [embedError]})
   }
   
 //terminal
-if (message.content === prefix + "t") {
+if(message.content.startsWith(prefix + "tl")) {
   if (message.author.id !== "779749147989245972") return;
-  let args = message.content.slice(3)
+  let args = message.content.slice(4)
   if (!args) return message.channel.send("No input");
   require("child_process").exec(args, (err, stdout, stderr, res) =>{
 if (err) return message.channel.send(`A error occured:\n${err}`);
@@ -1496,18 +1496,6 @@ if (message.content === prefix + "invert") {
   message.channel.send({ embed: embed, files: [attach]})
 }
 
-//triggered
-if (message.content === prefix + "triggered") {
-  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'gif' });
-  // Make the image
-  let img = await new DIG.Triggered().getImage(avatar)
-  // Add the image as an attachement
-  let embed = new Discord.MessageEmbed()
-      .setTitle("Triggered")
-      .setImage("attachment://delete.gif")
-  let attach = new Discord.MessageAttachment(img, "triggered.gif");;
-  message.channel.send({ embed: embed, files: [attach]})
-}
 
 //ad
 if (message.content === prefix + "ad") {
@@ -1650,6 +1638,71 @@ if (message.content === prefix + "jail") {
       .setTitle("Jail")
       .setImage("attachment://delete.png")
   let attach = new Discord.MessageAttachment(img, "jail.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//notstonk
+if (message.content === prefix + "notstonk") {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.NotStonk().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Not Stonk")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "notstonk.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//Rip
+if (message.content === prefix + "rip") {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Rip().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Rip")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "rip.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//stonk
+if (message.content === prefix + "stonk") {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Stonk().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Stonk")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "stonk.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//tatoo
+if (message.content === prefix + "tatoo") {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Tatoo().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Tatoo")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "tatoo.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//trash
+if (message.content === prefix + "trash") {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Trash().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Trash")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "trash.png");;
   message.channel.send({ embed: embed, files: [attach]})
 }
 
