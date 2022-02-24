@@ -11,7 +11,7 @@ const prefix = "#"
 const { inspect } = require("util");
 const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
-
+const DIG = require("discord-image-generation");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -1444,6 +1444,19 @@ if(message.content.startsWith(prefix + "esnipe")) {
   message.channel.send({embeds: [embed]})
 
   }
+//blurav
+if(message.content.startsWith(prefix + "blurav")) {
+    let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+    // Make the image
+    let img = await new DIG.Blur().getImage(avatar)
+    // Add the image as an attachement
+    let embed = new Discord.MessageEmbed()
+        .setTitle("Blur")
+        .setImage("attachment://delete.png")
+    let attach = new Discord.MessageAttachment(img, "blur.png");;
+    message.channel.send({ embed: embed, files: [attach]})
+}
+
 
 
 
