@@ -1457,6 +1457,206 @@ if(message.content.startsWith(prefix + "blurav")) {
     message.channel.send({ embed: embed, files: [attach]})
 }
 
+//gay
+if(message.content.startsWith(prefix + "gay")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Gay().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Gay")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "gay.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//grey
+if(message.content.startsWith(prefix + "grey")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Greyscale().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Grey")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "grey.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//invert
+if(message.content.startsWith(prefix + "invert")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Invert().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Invert")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "invert.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//triggered
+if(message.content.startsWith(prefix + "triggered")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'gif' });
+  // Make the image
+  let img = await new DIG.Triggered().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Triggered")
+      .setImage("attachment://delete.gif")
+  let attach = new Discord.MessageAttachment(img, "triggered.gif");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//ad
+if(message.content.startsWith(prefix + "ad")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Ad().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Advertisement")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "ad.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//affect meme
+if(message.content.startsWith(prefix + "affect")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Affect().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Affect")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "affect.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//beautiful
+if(message.content.startsWith(prefix + "beautiful")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Beautiful().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Beautiful")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "beautiful.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//bob ross
+if(message.content.startsWith(prefix + "bobross")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Bobross().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Bob Ross")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "bobross.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//confused stonk
+if(message.content.startsWith(prefix + "confusedstonk")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.ConfusedStonk().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Confused Stonk")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "confusedstonk.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//delete
+if(message.content.startsWith(prefix + "delete")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Delete().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Delete")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "delete.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//discordblack
+if(message.content.startsWith(prefix + "discordblack")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.DiscordBlack().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Discord Black")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "discordblack.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//discordblue
+if(message.content.startsWith(prefix + "discordblue")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.DiscordBlue().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Discord Blue")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "grey.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//facepalm
+if(message.content.startsWith(prefix + "facepalm")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Facepalm().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("FacePalm")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "facepalm.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+//hitler
+if(message.content.startsWith(prefix + "hitler")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Hitler().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Hitler")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "hitler.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+
+//Jail
+if(message.content.startsWith(prefix + "jail")) {
+  let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
+  // Make the image
+  let img = await new DIG.Jail().getImage(avatar)
+  // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("Jail")
+      .setImage("attachment://delete.png")
+  let attach = new Discord.MessageAttachment(img, "jail.png");;
+  message.channel.send({ embed: embed, files: [attach]})
+}
+
+
+
+
+
 
 
 
