@@ -868,7 +868,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
 //say
-if (message.content.startsWith(prefix + "say")) {
+if (message.content === prefix + "say") {
   const sayMessage = message.content.slice(5);
   if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
@@ -930,7 +930,7 @@ if (message.content === prefix + "botinfo") {
 await message.channel.send({ embeds: [embed], components: [but] });
 }
 //akinator
-if(message.content.startsWith( prefix + `akinator`)) {
+if (message.content === prefix + "akinator") {
   akinator(message, {
       language: language, 
       childMode: childMode, 
@@ -942,7 +942,7 @@ if(message.content.startsWith( prefix + `akinator`)) {
 
 
 //which take suggestion from a user and send it to a channel
-if (message.content.startsWith(prefix + "suggest")) {
+if (message.content === prefix + "suggest") {
   const suggestMessage = message.content.slice(8);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
@@ -956,7 +956,7 @@ if (message.content.startsWith(prefix + "suggest")) {
   }
 
 //kick command 
-if (message.content.toLowerCase().startsWith(prefix + 'kick')) {
+if (message.content === prefix + "kick") {
   const member = message.mentions.members.first()
   if (!member) return message.channel.send('You need to mention a user/provide an ID')
   if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send('You lack the required permissions')
@@ -971,7 +971,7 @@ if (message.content.toLowerCase().startsWith(prefix + 'kick')) {
   }
  }
  //calculator 
-if (message.content.toLowerCase().startsWith(prefix + 'calc')) {
+ if (message.content === prefix + "calc") {
 simplydjs.calculator(message, {
   embedColor: "#000000",
   credit: false,
@@ -983,27 +983,27 @@ simplydjs.calculator(message, {
 simplydjs.nqn(message);
 
 //simprate command
-if (message.content.toLowerCase().startsWith(prefix + 'simprate')) {
+if (message.content === prefix + "simprate") {
     let user = message.mentions.users.first() || message.author
     let simps = Math.floor(Math.random() * 100) + 1;
     message.channel.send(`${user} is **${simps}**% Simp. SIMP!`)
 }
 
 //cool command
-if (message.content.toLowerCase().startsWith(prefix + 'cool')) {
+if (message.content === prefix + "cool") {
   let user = message.mentions.users.first() || message.author
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
 
 //clownrate command
-if (message.content.toLowerCase().startsWith(prefix + 'clownrate')) {
+if (message.content === prefix + "clownrate") {
   let user = message.mentions.users.first() || message.author
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
 //8ball
-if(message.content.startsWith(prefix + "8ball")) {
+if (message.content === prefix + "8ball") {
   const args = message.content.slice(7);
   if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
@@ -1015,7 +1015,7 @@ if(message.content.startsWith(prefix + "8ball")) {
   }
 
   //truths
-  if(message.content.startsWith(prefix + "truth")) {
+  if (message.content === prefix + "truth") {
     let truth = 
     ["If you could be invisible, what’s the first thing you would do?",
     "What’s a secret you kept from your parents?",
@@ -1081,7 +1081,7 @@ if(message.content.startsWith(prefix + "8ball")) {
     message.channel.send({ embeds: [embed] })
     }
 //Dare
-  if(message.content.startsWith(prefix + "dare")) {
+if (message.content === prefix + "dare") {
     let dare = 
     ["Do a free-style rap for the next minute.",
     "Let another person post a status on your behalf.",
@@ -1142,7 +1142,7 @@ if(message.content.startsWith(prefix + "8ball")) {
     }
 
   //warn
-  if(message.content.startsWith(prefix + "warn")) {
+  if (message.content === prefix + "warn") {
     let user = message.mentions.users.first();
     if (!user) return message.channel.send("Please mention a user to warn!");
     let embed = new Discord.MessageEmbed()
@@ -1154,7 +1154,7 @@ if(message.content.startsWith(prefix + "8ball")) {
     message.channel.send({ embeds: [embed] })
     }
     //ban
-    if(message.content.startsWith(prefix + "ban")) {
+    if (message.content === prefix + "ban") {
         if (message.member.permissions.has("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
@@ -1174,7 +1174,7 @@ if(message.content.startsWith(prefix + "8ball")) {
         }
     }
 //ttt
-  if(message.content.startsWith(prefix + "ttt")) { 
+if (message.content === prefix + "ttt") {
 
 simplydjs.tictactoe(message, {
   xEmoji: "❌", 
@@ -1202,7 +1202,7 @@ if (message.content === prefix + "whois") {
   message.reply({ embeds: [embednew] });
 }
 //poll
-if (message.content.startsWith(prefix + "poll")) {
+if (message.content === prefix + "poll") {
   let args = message.content.slice(6);
   if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
@@ -1221,27 +1221,27 @@ if (message.content.startsWith(prefix + "poll")) {
 }
 
 //sanity check
-if (message.content.startsWith(prefix + "sanitycheck")) {
+if (message.content === prefix + "sanitycheck") {
   let user = message.mentions.users.first() || message.author
   let sane = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${sane}**% sane Today!`)
 }
 
 //f
-if (message.content.startsWith(prefix + "f")) {
+if (message.content === prefix + "f") {
   let user = message.author
   message.channel.send(`**${user}** has paid Respect :heart:`)
 }
 
 //flipcoin
-if (message.content.startsWith(prefix + "coinflip")) {
+if (message.content === prefix + "coinflip") {
   let user = message.author
   let coinside = ["Heads", "Tails"]
   message.channel.send(`**${user}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
 }
 
 //sus
-if (message.content.startsWith("#sus")) {
+if (message.content === prefix + "sus") {
 
 let sus = 
 ["https://c.tenor.com/YebbLUmkg9YAAAAM/among-us.gif",
@@ -1258,7 +1258,7 @@ message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}`
 
 }
 //rate 
-if (message.content.toLowerCase().startsWith(prefix + 'rate')) {
+if (message.content === prefix + "rate") {
   let argu = message.content.slice(6);
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
@@ -1287,7 +1287,7 @@ if(!sniped) {
 }
 
 //kill
-if(message.content.startsWith(prefix + "kill")) {
+if (message.content === prefix + "kill") {
   let victim = message.mentions.users.first()
   if(!victim) message.reply("Mention someone to Kill")
   else{
@@ -1377,7 +1377,7 @@ if(message.content.startsWith(prefix + "kill")) {
   }
 
   //eval
-  if(message.content.startsWith(prefix + "eval")) {
+  if (message.content === prefix + "eval") {
     let embedOwner = new MessageEmbed()
 .addFields({name: "Owner", value: "Only the bot owner can use this command"})
 let embedNone = new MessageEmbed()
@@ -1408,7 +1408,7 @@ message.reply({embeds: [embedError]})
   }
   
 //terminal
-if(message.content.startsWith(prefix + "t")) {
+if (message.content === prefix + "t") {
   if (message.author.id !== "779749147989245972") return;
   let args = message.content.slice(3)
   if (!args) return message.channel.send("No input");
@@ -1419,7 +1419,7 @@ message.channel.send(stdout + "\nres:\n" + res);
 }
 
 //shutdown bot
-if(message.content.startsWith(prefix + "shutdown")) {
+if (message.content === prefix + "shutdown") {
   if (message.author.id !== "779749147989245972") return;
   message.channel.send("Shutting down...").then(() => {
     process.exit(0); 
@@ -1428,7 +1428,7 @@ if(message.content.startsWith(prefix + "shutdown")) {
   };
 
 //esnipe
-if(message.content.startsWith(prefix + "esnipe")) {
+if (message.content === prefix + "esnipe") {
   let channel = message.mentions.channels.first() || message.channel
   let msg = client.editSnipe.get(channel.id)
   if(!msg) return message.channel.send("There is nothing to editsnipe!")
@@ -1445,7 +1445,7 @@ if(message.content.startsWith(prefix + "esnipe")) {
 
   }
 //blurav
-if(message.content.startsWith(prefix + "blurav")) {
+if (message.content === prefix + "blurav") {
     let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
     // Make the image
     let img = await new DIG.Blur().getImage(avatar)
@@ -1458,7 +1458,7 @@ if(message.content.startsWith(prefix + "blurav")) {
 }
 
 //gay
-if(message.content.startsWith(prefix + "gay")) {
+if (message.content === prefix + "gay") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Gay().getImage(avatar)
@@ -1471,7 +1471,7 @@ if(message.content.startsWith(prefix + "gay")) {
 }
 
 //grey
-if(message.content.startsWith(prefix + "grey")) {
+if (message.content === prefix + "grey") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Greyscale().getImage(avatar)
@@ -1484,7 +1484,7 @@ if(message.content.startsWith(prefix + "grey")) {
 }
 
 //invert
-if(message.content.startsWith(prefix + "invert")) {
+if (message.content === prefix + "invert") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Invert().getImage(avatar)
@@ -1497,7 +1497,7 @@ if(message.content.startsWith(prefix + "invert")) {
 }
 
 //triggered
-if(message.content.startsWith(prefix + "triggered")) {
+if (message.content === prefix + "triggered") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'gif' });
   // Make the image
   let img = await new DIG.Triggered().getImage(avatar)
@@ -1510,7 +1510,7 @@ if(message.content.startsWith(prefix + "triggered")) {
 }
 
 //ad
-if(message.content.startsWith(prefix + "ad")) {
+if (message.content === prefix + "ad") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Ad().getImage(avatar)
@@ -1523,7 +1523,7 @@ if(message.content.startsWith(prefix + "ad")) {
 }
 
 //affect meme
-if(message.content.startsWith(prefix + "affect")) {
+if (message.content === prefix + "affect") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Affect().getImage(avatar)
@@ -1536,7 +1536,7 @@ if(message.content.startsWith(prefix + "affect")) {
 }
 
 //beautiful
-if(message.content.startsWith(prefix + "beautiful")) {
+if (message.content === prefix + "beautiful") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Beautiful().getImage(avatar)
@@ -1549,7 +1549,7 @@ if(message.content.startsWith(prefix + "beautiful")) {
 }
 
 //bob ross
-if(message.content.startsWith(prefix + "bobross")) {
+if (message.content === prefix + "bobross") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Bobross().getImage(avatar)
@@ -1562,7 +1562,7 @@ if(message.content.startsWith(prefix + "bobross")) {
 }
 
 //confused stonk
-if(message.content.startsWith(prefix + "confusedstonk")) {
+if (message.content === prefix + "confusedstonk") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.ConfusedStonk().getImage(avatar)
@@ -1575,7 +1575,7 @@ if(message.content.startsWith(prefix + "confusedstonk")) {
 }
 
 //delete
-if(message.content.startsWith(prefix + "delete")) {
+if (message.content === prefix + "delete") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Delete().getImage(avatar)
@@ -1588,7 +1588,7 @@ if(message.content.startsWith(prefix + "delete")) {
 }
 
 //discordblack
-if(message.content.startsWith(prefix + "discordblack")) {
+if (message.content === prefix + "discordblack") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.DiscordBlack().getImage(avatar)
@@ -1601,7 +1601,7 @@ if(message.content.startsWith(prefix + "discordblack")) {
 }
 
 //discordblue
-if(message.content.startsWith(prefix + "discordblue")) {
+if (message.content === prefix + "discordblue") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.DiscordBlue().getImage(avatar)
@@ -1614,7 +1614,7 @@ if(message.content.startsWith(prefix + "discordblue")) {
 }
 
 //facepalm
-if(message.content.startsWith(prefix + "facepalm")) {
+if (message.content === prefix + "facepalm") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Facepalm().getImage(avatar)
@@ -1627,7 +1627,7 @@ if(message.content.startsWith(prefix + "facepalm")) {
 }
 
 //hitler
-if(message.content.startsWith(prefix + "hitler")) {
+if (message.content === prefix + "hitler") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Hitler().getImage(avatar)
@@ -1641,7 +1641,7 @@ if(message.content.startsWith(prefix + "hitler")) {
 
 
 //Jail
-if(message.content.startsWith(prefix + "jail")) {
+if (message.content === prefix + "jail") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Jail().getImage(avatar)
