@@ -89,7 +89,7 @@ commands?.create({
   description: 'Chiller says what you want him to Say',
 })
 
-command?.create({
+commands?.create({
   name: 'ping',
   description: 'Ping of the bot',
 })
