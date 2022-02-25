@@ -733,7 +733,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
     }
     //vote
-    if (message.content === prefix + "vote") {
+    if (message.content === prefix + "vote" || message.content === prefix + "Vote") {
       
       const embed = new MessageEmbed()
       .setTitle('***VOTE ME***')
@@ -754,7 +754,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
     }
     //VIP
-    if (message.content === prefix + "vip") {
+    if (message.content === prefix + "vip" || message.content === prefix + "Vip") {
       
       const ifembed = new MessageEmbed()
       .setTitle('***Get VIP***')
@@ -788,7 +788,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
 
   //DONATE
-  if (message.content === prefix + "donate") {
+  if (message.content === prefix + "donate" || message.content === prefix + "Donate") {
       
     const embed = new MessageEmbed()
     .setTitle('***DONATE***')
@@ -802,7 +802,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
     }
 
     //developer
-    if (message.content === prefix + "devinfo") {
+    if (message.content === prefix + "devinfo" || message.content === prefix + "Devinfo") {
       const embed = new MessageEmbed()
       .setTitle('***DEVELOPERS***')
       .setColor('BLACK')
@@ -827,7 +827,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
     }
     //invite
-    if (message.content === prefix + "invite") {
+    if (message.content === prefix + "invite" || message.content === prefix + "Invite") {
         
         const embed = new MessageEmbed()
         .setTitle('***Invite Me***')
@@ -848,7 +848,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
       //support
-      if (message.content === prefix + "support") {
+      if (message.content === prefix + "support" || message.content === prefix + "Support") {
         const embed = new MessageEmbed()
         .setTitle('***Support Server***')
         .setColor('BLACK')
@@ -868,7 +868,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
 //say
-if (message.content === prefix + "say") {
+if (message.content === prefix + "say"  || message.content === prefix + "Say") {
   const sayMessage = message.content.slice(5);
   if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
@@ -885,7 +885,7 @@ if (message.content === prefix + "uptime") {
 await message.channel.send({ embeds: [embed] });
 }
 //avatar
-if (message.content === prefix + "avatar") {
+if (message.content === prefix + "avatar" || message.content === prefix + "Avatar") { 
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
   .setColor('BLACK')
@@ -896,7 +896,7 @@ if (message.content === prefix + "avatar") {
 await message.channel.send({ embeds: [embed] });
 }
 //ping
-if (message.content === prefix + "ping") {
+if (message.content === prefix + "ping" || message.content === prefix + "Ping") {
   const embed = new MessageEmbed()
   .setTitle('***Pong!***')
   .setColor('BLACK')
@@ -907,7 +907,7 @@ await message.channel.send({ embeds: [embed] });
 }
 
 //bot info
-if (message.content === prefix + "botinfo") {
+if (message.content === prefix + "botinfo" || message.content === prefix + "Botinfo") {
   const embed = new MessageEmbed()
   .setTitle('***Bot Info***')
   .setColor('BLACK')
@@ -930,7 +930,7 @@ if (message.content === prefix + "botinfo") {
 await message.channel.send({ embeds: [embed], components: [but] });
 }
 //akinator
-if (message.content === prefix + "akinator") {
+if (message.content === prefix + "akinator" || message.content === prefix + "Akinator") {
   akinator(message, {
       language: language, 
       childMode: childMode, 
@@ -942,7 +942,7 @@ if (message.content === prefix + "akinator") {
 
 
 //which take suggestion from a user and send it to a channel
-if (message.content === prefix + "suggest") {
+if (message.content === prefix + "suggest" || message.content === prefix + "Suggest") {
   const suggestMessage = message.content.slice(8);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
@@ -956,7 +956,7 @@ if (message.content === prefix + "suggest") {
   }
 
 //kick command 
-if (message.content === prefix + "kick") {
+if (message.content === prefix + "kick" || message.content === prefix + "Kick") {
   const member = message.mentions.members.first()
   if (!member) return message.channel.send('You need to mention a user/provide an ID')
   if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send('You lack the required permissions')
@@ -971,7 +971,7 @@ if (message.content === prefix + "kick") {
   }
  }
  //calculator 
- if (message.content === prefix + "calc") {
+ if (message.content === prefix + "calc" || message.content === prefix + "Calc") {
 simplydjs.calculator(message, {
   embedColor: "#000000",
   credit: false,
@@ -983,27 +983,27 @@ simplydjs.calculator(message, {
 simplydjs.nqn(message);
 
 //simprate command
-if (message.content === prefix + "simprate") {
+if (message.content === prefix + "simprate" || message.content === prefix + "Simprate") {
     let user = message.mentions.users.first() || message.author
     let simps = Math.floor(Math.random() * 100) + 1;
     message.channel.send(`${user} is **${simps}**% Simp. SIMP!`)
 }
 
 //cool command
-if (message.content === prefix + "cool") {
+if (message.content === prefix + "cool" || message.content === prefix + "Cool") {
   let user = message.mentions.users.first() || message.author
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
 
 //clownrate command
-if (message.content === prefix + "clownrate") {
+if (message.content === prefix + "clownrate" || message.content === prefix + "Clownrate") {
   let user = message.mentions.users.first() || message.author
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
 //8ball
-if (message.content === prefix + "8ball") {
+if (message.content === prefix + "8ball" || message.content === prefix + "8Ball") {
   const args = message.content.slice(7);
   if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
@@ -1015,7 +1015,7 @@ if (message.content === prefix + "8ball") {
   }
 
   //truths
-  if (message.content === prefix + "truth") {
+  if (message.content === prefix + "truth" || message.content === prefix + "Truth") {
     let truth = 
     ["If you could be invisible, what’s the first thing you would do?",
     "What’s a secret you kept from your parents?",
@@ -1081,7 +1081,7 @@ if (message.content === prefix + "8ball") {
     message.channel.send({ embeds: [embed] })
     }
 //Dare
-if (message.content === prefix + "dare") {
+if (message.content === prefix + "dare" || message.content === prefix + "Dare") {
     let dare = 
     ["Do a free-style rap for the next minute.",
     "Let another person post a status on your behalf.",
@@ -1142,7 +1142,7 @@ if (message.content === prefix + "dare") {
     }
 
   //warn
-  if (message.content === prefix + "warn") {
+  if (message.content === prefix + "warn" || message.content === prefix + "Warn") {
     let user = message.mentions.users.first();
     if (!user) return message.channel.send("Please mention a user to warn!");
     let embed = new Discord.MessageEmbed()
@@ -1154,7 +1154,7 @@ if (message.content === prefix + "dare") {
     message.channel.send({ embeds: [embed] })
     }
     //ban
-    if (message.content === prefix + "ban") {
+    if (message.content === prefix + "ban" || message.content === prefix + "Ban") {
         if (message.member.permissions.has("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
@@ -1174,7 +1174,7 @@ if (message.content === prefix + "dare") {
         }
     }
 //ttt
-if (message.content === prefix + "ttt") {
+if (message.content === prefix + "ttt" || message.content === prefix + "Ttt") {
 
 simplydjs.tictactoe(message, {
   xEmoji: "❌", 
@@ -1187,7 +1187,7 @@ simplydjs.tictactoe(message, {
 });
   }
 //whois
-if (message.content === prefix + "whois") {
+if (message.content === prefix + "whois" || message.content === prefix + "Whois") {
   const Target = message.mentions.users.first() || message.author;
   const Member = message.guild.members.cache.get(Target.id);
   let embednew = new MessageEmbed()
@@ -1202,7 +1202,7 @@ if (message.content === prefix + "whois") {
   message.reply({ embeds: [embednew] });
 }
 //poll
-if (message.content === prefix + "poll") {
+if (message.content === prefix + "poll" || message.content === prefix + "Poll") {
   let args = message.content.slice(6);
   if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
@@ -1221,27 +1221,27 @@ if (message.content === prefix + "poll") {
 }
 
 //sanity check
-if (message.content === prefix + "sanitycheck") {
+if (message.content === prefix + "sanitycheck" || message.content === prefix + "Sanitycheck") {
   let user = message.mentions.users.first() || message.author
   let sane = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${sane}**% sane Today!`)
 }
 
 //f
-if (message.content === prefix + "f") {
+if (message.content === prefix + "f" || message.content === prefix + "F") {
   let user = message.author
   message.channel.send(`**${user}** has paid Respect :heart:`)
 }
 
 //flipcoin
-if (message.content === prefix + "coinflip") {
+if (message.content === prefix + "coinflip" || message.content === prefix + "Coinflip") {
   let user = message.author
   let coinside = ["Heads", "Tails"]
   message.channel.send(`**${user}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
 }
 
 //sus
-if (message.content === prefix + "sus") {
+if (message.content === prefix + "sus" || message.content === prefix + "Sus") {
 
 let sus = 
 ["https://c.tenor.com/YebbLUmkg9YAAAAM/among-us.gif",
@@ -1258,7 +1258,7 @@ message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}`
 
 }
 //rate 
-if (message.content === prefix + "rate") {
+if (message.content === prefix + "rate" || message.content === prefix + "Rate") { 
   let argu = message.content.slice(6);
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
@@ -1268,7 +1268,7 @@ if (message.content === prefix + "rate") {
 
 
 //snipe
-if (message.content === prefix + "snipe") {
+if (message.content === prefix + "snipe" || message.content === prefix + "Snipe") {
   let channel = message.mentions.channels.first() || message.channel
 let sniped = client.snipes.get(channel.id)
 if(!sniped) {
@@ -1287,7 +1287,7 @@ if(!sniped) {
 }
 
 //kill
-if (message.content === prefix + "kill") {
+if (message.content === prefix + "kill" || message.content === prefix + "Kill") {
   let victim = message.mentions.users.first()
   if(!victim) message.reply("Mention someone to Kill")
   else{
@@ -1307,7 +1307,7 @@ if (message.content === prefix + "kill") {
   
 
 //listroles
-    if(message.content === prefix + "listrole"){
+    if(message.content === prefix + "listrole" || message.content === prefix + "Listrole") {
     let rolemap = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .map(r => r)
@@ -1324,7 +1324,7 @@ if (message.content === prefix + "kill") {
 
 
   //listmember
-  if(message.content === prefix + "listmember"){
+  if(message.content === prefix + "listmember" || message.content === prefix + "Listmember") {
   let membermap = message.guild.members.cache
   .sort((a, b) => b.joinedAt - a.joinedAt)
   .map(m => m)
@@ -1339,7 +1339,7 @@ if (message.content === prefix + "kill") {
   }
 
   //listemoji
-  if(message.content === prefix + "listemoji"){
+  if(message.content === prefix + "listemoji" || message.content === prefix + "Listemoji") {
   let emojimap = message.guild.emojis.cache
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(e => e)
@@ -1354,7 +1354,7 @@ if (message.content === prefix + "kill") {
   }
 
   //listserver 
-  if(message.content === prefix + "listserver"){
+  if(message.content === prefix + "listserver" || message.content === prefix + "Listserver") {
     client.guilds.cache.forEach(guild => {
       message.channel.send(`${guild.name} | ${guild.id}`);
     })
@@ -1362,7 +1362,7 @@ if (message.content === prefix + "kill") {
 
 
   //listchannel
-  if(message.content === prefix + "listchannel"){
+  if(message.content === prefix + "listchannel" || message.content === prefix + "Listchannel") {
   let channelmap = message.guild.channels.cache
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(c => c)
@@ -1428,7 +1428,7 @@ if (message.content === prefix + "shutdown") {
   };
 
 //esnipe
-if (message.content === prefix + "esnipe") {
+if (message.content === prefix + "esnipe" || message.content === prefix + "Esnipe") {
   let channel = message.mentions.channels.first() || message.channel
   let msg = client.editSnipe.get(channel.id)
   if(!msg) return message.channel.send("There is nothing to editsnipe!")
@@ -1445,7 +1445,7 @@ if (message.content === prefix + "esnipe") {
 
   }
 //blurav
-if (message.content === prefix + "blurav") {
+if (message.content === prefix + "blurav" || message.content === prefix + "Blurav") {
     let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
     // Make the image
     let img = await new DIG.Blur().getImage(avatar)
@@ -1458,7 +1458,7 @@ if (message.content === prefix + "blurav") {
 }
 
 //gay
-if (message.content === prefix + "gay") {
+if (message.content === prefix + "gay" || message.content === prefix + "Gay") {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Gay().getImage(avatar)
@@ -1471,7 +1471,7 @@ if (message.content === prefix + "gay") {
 }
 
 //grey
-if (message.content === prefix + "grey") {
+if (message.content === prefix + "grey" ) {
   let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
   // Make the image
   let img = await new DIG.Greyscale().getImage(avatar)
