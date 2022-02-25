@@ -73,14 +73,8 @@ client.on('ready', () => {
         index++;
       }, 4000)
 
-const clientId = '945030482792439888'
-let command
 
-if (clientId === '945030482792439888') {
-  command = 'client.application?.commands'
-} 
-
-const guildId = '945168057033166901';
+const guildId = '';
 const guild = client.guilds.cache.get(guildId);
 let commands
 
