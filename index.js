@@ -58,12 +58,10 @@ client.on('ready', () => {
 
     console.log(`Logged in as ${client.user.tag}!`);
     const arrayOfStatus = [
-        `test`,
-        `beta`,
-        `test`,
-        `beya`,
-        `With BAKA's head 💀`,
-        `--help || By CodeMaster100#7978`,
+        `${client.guilds.cache.size} servers || ${client.users.cache.size} users`,
+        `${prefix}help || CodeMaster100#7978`,
+        `Vote me On Top.gg`, 
+        `invite me || ${prefix}invite`,
      ];
       
       let index = 0;
@@ -73,7 +71,7 @@ client.on('ready', () => {
         //console.log(status);
         client.user.setActivity(status);
         index++;
-      }, 5000)
+      }, 4000)
 
 
 const guildId = '945168057033166901';
