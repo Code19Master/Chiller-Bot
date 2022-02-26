@@ -406,6 +406,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
 "https://c.tenor.com/u4DTDP287_kAAAAM/sus-suspect.gif"]
 
  interaction.reply({ content: `${sus[Math.floor(Math.random() * sus.length)]}` })
+
   }
 
   if(interaction.commandName === `f`){
