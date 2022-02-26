@@ -414,9 +414,8 @@ await interaction.reply({ embeds: [embed], components: [but] });
   }
 
   if(interaction.commandName === `coinflip`){
-    let user = interaction.username
     let coinside = ["Heads", "Tails"]
-    interaction.reply(`**${user}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
+    interaction.reply(`**${interaction.username}** Just flipped a coin and got **${coinside[Math.floor(Math.random() * coinside.length)]}**`)
   }
 
   if (interaction.commandName === `help`) {
