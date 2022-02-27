@@ -1382,8 +1382,7 @@ if (message.content === prefix + "kill" || message.content === prefix + "Kill") 
 let embedNone = new MessageEmbed()
 .addFields({name: "No input", value: "There was nothing to eval, what do you want me to eval?"})
 if(message.author.id !== "779749147989245972") return message.reply({embeds: [embedOwner]})
-let args = message.content.split(" ").slice(3);
-let code = args.join(" ")
+let args = message.content.slice(8);
 if(!code) return message.reply({embeds: [embedNone]})
 try {
 let result = await eval(code)
