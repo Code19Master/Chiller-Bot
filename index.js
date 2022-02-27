@@ -1385,7 +1385,7 @@ if(message.author.id !== "779749147989245972") return message.reply({embeds: [em
 let args = message.content.slice(8);
 if(!args) return message.reply({embeds: [embedNone]})
 try {
-let result = await eval(code)
+let result = await eval(args)
 let output = result
 if(typeof resut !== "string") {
 output = inspect(result)
