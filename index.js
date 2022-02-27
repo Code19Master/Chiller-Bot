@@ -868,7 +868,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
       }
 //say
 if (message.content === prefix + "say"  || message.content === prefix + "Say") {
-  const sayMessage = message.content.slice(5);
+  const sayMessage = message.content.slice(7);
   if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
   message.channel.send(sayMessage);
@@ -942,7 +942,7 @@ if (message.content === prefix + "akinator" || message.content === prefix + "Aki
 
 //which take suggestion from a user and send it to a channel
 if (message.content === prefix + "suggest" || message.content === prefix + "Suggest") {
-  const suggestMessage = message.content.slice(8);
+  const suggestMessage = message.content.slice(11);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
   const embed = new MessageEmbed()
@@ -1003,7 +1003,7 @@ if (message.content === prefix + "clownrate" || message.content === prefix + "Cl
 }
 //8ball
 if (message.content === prefix + "8ball" || message.content === prefix + "8Ball") {
-  const args = message.content.slice(7);
+  const args = message.content.slice(9);
   if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
  
@@ -1202,7 +1202,7 @@ if (message.content === prefix + "whois" || message.content === prefix + "Whois"
 }
 //poll
 if (message.content === prefix + "poll" || message.content === prefix + "Poll") {
-  let args = message.content.slice(6);
+  let args = message.content.slice(8);
   if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
   .setTitle("**POLL**")
@@ -1258,7 +1258,7 @@ message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}`
 }
 //rate 
 if (message.content === prefix + "rate" || message.content === prefix + "Rate") { 
-  let argu = message.content.slice(6);
+  let argu = message.content.slice(8);
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`I Rate ${argu} a solid **${rate}/100**`)
@@ -1382,7 +1382,7 @@ if (message.content === prefix + "kill" || message.content === prefix + "Kill") 
 let embedNone = new MessageEmbed()
 .addFields({name: "No input", value: "There was nothing to eval, what do you want me to eval?"})
 if(message.author.id !== "779749147989245972") return message.reply({embeds: [embedOwner]})
-let args = message.content.split(" ").slice(1)
+let args = message.content.split(" ").slice(1);
 let code = args.join(" ")
 if(!code) return message.reply({embeds: [embedNone]})
 try {
@@ -1409,7 +1409,7 @@ message.reply({embeds: [embedError]})
 //terminal
 if(message.content.startsWith(prefix + "tl")) {
   if (message.author.id !== "779749147989245972") return;
-  let args = message.content.slice(4)
+  let args = message.content.slice(6)
   if (!args) return message.channel.send("No input");
   require("child_process").exec(args, (err, stdout, stderr, res) =>{
 if (err) return message.channel.send(`A error occured:\n${err}`);
