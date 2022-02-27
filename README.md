@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> A Discord bot
+> A Discord bot For all of your needs With Commands like image manipulation, rate and NQN built in
 
 ### 🏠 [Homepage](https://github.com/Code19Master/Chiller-Bot#readme)
 
