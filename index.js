@@ -7,7 +7,7 @@ const simplydjs = require("simply-djs");
 const moment = require("moment")
 const discordModals = require('discord-modals') 
 const child = require('child_process')
-const prefix = "#"
+const prefix = "."
 const { inspect } = require("util");
 const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
@@ -371,7 +371,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
     .addField('Bot ID:', client.user.id)
     .addField('Bot Tag:', client.user.tag)
     .addField('Bot Owner:', 'CodeMaster100#7978')
-    .addField('Bot Prefix:', '#')
+    .addField('Bot Prefix:', `${prefix}`)
     .addField('Bot Version:', '1.0.0')
     .setTimestamp()
     
@@ -658,7 +658,7 @@ client.on('messageCreate', async message => {
 
     const vipembed = new MessageEmbed()
     .setTitle('Vip Commands')
-    .setDescription('**vip -** Do #vip to find out.\n**donate -** Donate The Bot Developer\n**contributors -** People who contributed')
+    .setDescription('**vip -** Do .vip to find out.\n**donate -** Donate The Bot Developer\n**contributors -** People who contributed')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
@@ -758,7 +758,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
       const ifembed = new MessageEmbed()
       .setTitle('***Get VIP***')
       .setColor('BLURPLE')
-      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in **#contributors** Command.')
+      .setDescription('> You Can Get VIP By Contributing To The Repository Of Chiller Bot.\n> By Having VIP You Will have your name in **.contributors** Command.')
       .setTimestamp()
 
       const but = new MessageActionRow()
@@ -914,7 +914,7 @@ if (message.content === prefix + "botinfo" || message.content === prefix + "Boti
   .addField('Bot ID:', client.user.id)
   .addField('Bot Tag:', client.user.tag)
   .addField('Bot Owner:', 'CodeMaster100#7978')
-  .addField('Bot Prefix:', '#')
+  .addField('Bot Prefix:', `${prefix}`)
   .addField('Bot Version:', '1.0.0')
   .setTimestamp()
   
