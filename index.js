@@ -1181,7 +1181,8 @@ simplydjs.tictactoe(message, {
   idleEmoji: "➖",
   embedColor: "#000000", 
   embedFoot: "Tic Tac Toe ",
-  credit: false
+  credit: false,
+  resultBtn: true
 });
   }
 //whois
