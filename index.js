@@ -955,7 +955,7 @@ if (message.content === prefix + "suggest" || message.content === prefix + "Sugg
   }
 
 //kick command 
-if (message.content === prefix + "kick" || message.content === prefix + "Kick") {
+if (message.content.startsWith(prefix + "kick") || message.content.startsWith(prefix + "Kick")) {
   const member = message.mentions.members.first()
   if (!member) return message.channel.send('You need to mention a user/provide an ID')
   if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send('You lack the required permissions')
@@ -982,21 +982,21 @@ simplydjs.calculator(message, {
 simplydjs.nqn(message);
 
 //simprate command
-if (message.content === prefix + "simprate" || message.content === prefix + "Simprate") {
+if (message.content.startsWith(prefix + "simprate") || message.content.startsWith(prefix + "Simprate")) {
     let user = message.mentions.users.first() || message.author
     let simps = Math.floor(Math.random() * 100) + 1;
     message.channel.send(`${user} is **${simps}**% Simp. SIMP!`)
 }
 
 //cool command
-if (message.content === prefix + "cool" || message.content === prefix + "Cool") {
+if (message.content.startsWith(prefix + "cool") || message.content.startsWith(prefix + "Cool")) {
   let user = message.mentions.users.first() || message.author
   let cool = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${cool}** Percent Cool Right Now, Atleast`)
 }
 
 //clownrate command
-if (message.content === prefix + "clownrate" || message.content === prefix + "Clownrate") {
+if (message.content.startsWith(prefix + "clownrate") || message.content.startsWith(prefix + "Clownrate")) {
   let user = message.mentions.users.first() || message.author
   let clown = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
@@ -1141,7 +1141,7 @@ if (message.content === prefix + "dare" || message.content === prefix + "Dare") 
     }
 
   //warn
-  if (message.content === prefix + "warn" || message.content === prefix + "Warn") {
+  if (message.content.startsWith(prefix + "warn") || message.content.startsWith(prefix + "Warn")) {
     let user = message.mentions.users.first();
     if (!user) return message.channel.send("Please mention a user to warn!");
     let embed = new Discord.MessageEmbed()
@@ -1153,7 +1153,7 @@ if (message.content === prefix + "dare" || message.content === prefix + "Dare") 
     message.channel.send({ embeds: [embed] })
     }
     //ban
-    if (message.content === prefix + "ban" || message.content === prefix + "Ban") {
+    if (message.content.startsWith(prefix + "ban") || message.content.startsWith(prefix + "Ban")) {
         if (message.member.permissions.has("BAN_MEMBERS")) {
         let member = message.mentions.members.first()
         if (!member) message.channel.send("Please mention someone")
@@ -1173,7 +1173,7 @@ if (message.content === prefix + "dare" || message.content === prefix + "Dare") 
         }
     }
 //ttt
-if (message.content === prefix + "ttt" || message.content === prefix + "Ttt") {
+if (message.content.startsWith(prefix + "ttt") || message.content.startsWith(prefix + "Ttt")) {
 
 simplydjs.tictactoe(message, {
   xEmoji: "❌", 
@@ -1185,7 +1185,7 @@ simplydjs.tictactoe(message, {
 });
   }
 //whois
-if (message.content === prefix + "whois" || message.content === prefix + "Whois") {
+if (message.content.startsWith(prefix + "whois") || message.content.startsWith(prefix + "Whois")) {
   const Target = message.mentions.users.first() || message.author;
   const Member = message.guild.members.cache.get(Target.id);
   let embednew = new MessageEmbed()
@@ -1219,7 +1219,7 @@ if (message.content === prefix + "poll" || message.content === prefix + "Poll") 
 }
 
 //sanity check
-if (message.content === prefix + "sanitycheck" || message.content === prefix + "Sanitycheck") {
+if (message.content.startsWith(prefix + "sanitycheck") || message.content.startsWith(prefix + "Sanitycheck")) {
   let user = message.mentions.users.first() || message.author
   let sane = Math.floor(Math.random() * 100) + 1;
   message.channel.send(`${user} is **${sane}**% sane Today!`)
@@ -1266,7 +1266,7 @@ if (message.content === prefix + "rate" || message.content === prefix + "Rate") 
 
 
 //snipe
-if (message.content === prefix + "snipe" || message.content === prefix + "Snipe") {
+if (message.content.startsWith(prefix + "snipe") || message.content.startsWith(prefix + "Snipe")) {
   let channel = message.mentions.channels.first() || message.channel
 let sniped = client.snipes.get(channel.id)
 if(!sniped) {
@@ -1285,19 +1285,28 @@ if(!sniped) {
 }
 
 //kill
-if (message.content === prefix + "kill" || message.content === prefix + "Kill") {
+if (message.content.startsWith(prefix + "kill") || message.content.startsWith(prefix + "Kill")) {
   let victim = message.mentions.users.first()
   if(!victim) message.reply("Mention someone to Kill")
   else{
- let replies = [ `${victim} has been shot`, `${victim} has been stabbed`, `${victim} has been drowned`, 
-  `${victim} has been electrified`, `A goose honked at ${victim} to death`, 
+ let replies = [
+  `${victim} has been shot`,
+  `${victim} has been stabbed`, 
+  `${victim} has been drowned`, 
+  `${victim} has been electrified`, 
+  `A goose honked at ${victim} to death`, 
   `Some psychopath zapped ${victim} with his laser eyes`, 
-  `${victim} ate a poisonous potato`, `${victim} died from slowmode being to long`, 
-  `${victim} was run over by car`, `${victim} was pushed in lava`, `${victim} was banned by the server owner`, 
+  `${victim} ate a poisonous potato`, 
+  `${victim} died from slowmode being to long`, 
+  `${victim} was run over by car`, 
+  `${victim} was pushed in lava`, 
+  `${victim} was banned by the server owner`, 
   `${victim} was found dead in a dumpster`, 
-  `Someone named Joe was found chewing on ${victim}'s leg`, `${victim} got drunk and fell in the water`, 
-  `${victim} made a deal with the devil`, `${victim} was hacked by an 
- Oreo`, `An alien named MEE6 abducted ${victim} in their sleep`]
+  `Someone named Joe was found chewing on ${victim}'s leg`, 
+  `${victim} got drunk and fell in the water`, 
+  `${victim} made a deal with the devil`, 
+  `${victim} was hacked by an Oreo`, 
+  `An alien named MEE6 abducted ${victim} in their sleep`]
  
   message.channel.send(`${replies[Math.floor(Math.random() * replies.length)]}`) 
   }
@@ -1425,7 +1434,7 @@ if (message.content === prefix + "shutdown") {
   };
 
 //esnipe
-if (message.content === prefix + "esnipe" || message.content === prefix + "Esnipe") {
+if (message.content.startsWith(prefix + "esnipe") || message.content.startsWith(prefix + "Esnipe")) {
   let channel = message.mentions.channels.first() || message.channel
   let msg = client.editSnipe.get(channel.id)
   if(!msg) return message.channel.send("There is nothing to editsnipe!")
