@@ -1181,8 +1181,7 @@ simplydjs.tictactoe(message, {
   idleEmoji: "➖",
   embedColor: "#000000", 
   embedFoot: "Tic Tac Toe ",
-  credit: false,
-  resultBtn: true
+  credit: false
 });
   }
 //whois
@@ -1298,7 +1297,7 @@ if (message.content === prefix + "kill" || message.content === prefix + "Kill") 
   `${victim} was found dead in a dumpster`, 
   `Someone named Joe was found chewing on ${victim}'s leg`, `${victim} got drunk and fell in the water`, 
   `${victim} made a deal with the devil`, `${victim} was hacked by an 
- Oreo`, `An alien named MEE6 abducted ${victim} in their sleep`,]
+ Oreo`, `An alien named MEE6 abducted ${victim} in their sleep`]
  
   message.channel.send(`${replies[Math.floor(Math.random() * replies.length)]}`) 
   }
