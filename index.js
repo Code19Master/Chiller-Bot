@@ -867,7 +867,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
 //say
-if (message.content === prefix + "say"  || message.content === prefix + "Say") {
+if (message.content.startsWith(prefix + "say")  || message.content.startsWith(prefix + "Say")) {
   const sayMessage = message.content.slice(7);
   if(!sayMessage) return message.channel.send("Please Provide A Message To Say!");
   message.delete();
@@ -941,7 +941,7 @@ if (message.content === prefix + "akinator" || message.content === prefix + "Aki
 
 
 //which take suggestion from a user and send it to a channel
-if (message.content === prefix + "suggest" || message.content === prefix + "Suggest") {
+if (message.content.startsWith(prefix + "suggest") || message.content.startsWith(prefix + "Suggest")) {
   const suggestMessage = message.content.slice(11);
   if(!suggestMessage) return message.channel.send("Please Provide A Suggestion!");
   message.delete();
@@ -1002,7 +1002,7 @@ if (message.content.startsWith(prefix + "clownrate") || message.content.startsWi
   message.channel.send(`${user} is **${clown}**% Clown. :clown:`)
 }
 //8ball
-if (message.content === prefix + "8ball" || message.content === prefix + "8Ball") {
+if (message.content.startsWith(prefix + "8ball") || message.content.startsWith(prefix + "8Ball")) {
   const args = message.content.slice(9);
   if(!args) return message.channel.send("Please Provide A Question!");
   let replies = ["Yes.", "No.", "idk", "Nope.", "yes and no", "Won't tell", "Ask CodeMaster100", "What if i said **NO**", "What if i said **YES**", "Tough Question", "Excellent Question", "Dumb Question"]
@@ -1201,7 +1201,7 @@ if (message.content.startsWith(prefix + "whois") || message.content.startsWith(p
   message.reply({ embeds: [embednew] });
 }
 //poll
-if (message.content === prefix + "poll" || message.content === prefix + "Poll") {
+if (message.content.startsWith(prefix + "poll") || message.content.startsWith(prefix + "Poll")) {
   let args = message.content.slice(8);
   if (!args) return message.channel.send("Please enter a poll question!");
   let embed = new Discord.MessageEmbed()
@@ -1257,7 +1257,7 @@ message.channel.send({ content: `${sus[Math.floor(Math.random() * sus.length)]}`
 
 }
 //rate 
-if (message.content === prefix + "rate" || message.content === prefix + "Rate") { 
+if (message.content.startsWith(prefix + "rate") || message.content.startsWith(prefix + "Rate")) { 
   let argu = message.content.slice(8);
   if (!argu) return message.channel.send("Please enter a thing to rate!");
   let rate = Math.floor(Math.random() * 100) + 1;
@@ -1383,7 +1383,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   }
 
   //eval
-  if (message.content === "#eval") {
+  if (message.content.startsWith("#eval")) {
     let embedOwner = new MessageEmbed()
     .addFields({name: "Owner", value: "Only the bot owner can use this command"})
     let embedReject = new MessageEmbed()
