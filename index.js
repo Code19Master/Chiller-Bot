@@ -1320,7 +1320,6 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
             .sort((a, b) => b.position - a.position)
             .map(r => r)
             .join("\n");
-            if (rolemap.length > 1024) rolemap = "To many roles to display";
             if (!rolemap) rolemap = "No roles";
     const embed = new Discord.MessageEmbed()
 	.addFields(
@@ -1337,7 +1336,6 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.joinedAt - a.joinedAt)
   .map(m => m)
   .join("\n");
-  if (membermap.length > 1024) membermap = "To many members to display";
   if (!membermap) membermap = "No members";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1352,7 +1350,6 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(e => e)
   .join("\n");
-  if (emojimap.length > 1024) emojimap = "To many emojis to display";
   if (!emojimap) emojimap = "No emojis";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1363,7 +1360,9 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
 
   //listserver 
   if(message.content === prefix + "listserver" || message.content === prefix + "Listserver") {
+    if (message.author.id !== "779749147989245972") return;
     client.guilds.cache.forEach(guild => {
+
       message.channel.send(`${guild.name} | ${guild.id}`);
     })
   }
@@ -1375,7 +1374,6 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(c => c)
   .join("\n");
-  if (channelmap.length > 1024) channelmap = "To many channels to display"; 
   if (!channelmap) channelmap = "No channels";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1385,32 +1383,35 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   }
 
   //eval
-  if (message.content === prefix + "eval") {
+  if (message.content === "#eval") {
     let embedOwner = new MessageEmbed()
-.addFields({name: "Owner", value: "Only the bot owner can use this command"})
-let embedNone = new MessageEmbed()
-.addFields({name: "No input", value: "There was nothing to eval, what do you want me to eval?"})
-if(message.author.id !== "779749147989245972") return message.reply({embeds: [embedOwner]})
-let args = message.content.slice(8);
-if(!args) return message.reply({embeds: [embedNone]})
-try {
-let result = await eval(args)
-let output = result
-if(typeof resut !== "string") {
-output = inspect(result)
-}
-let embedEval = new MessageEmbed()
-.setTitle("Output")
-.setDescription(`\`\`\`js\n${output}\`\`\``)
-.setTimestamp()
-message.reply({embeds: [embedEval], allowedMentions: {repliedUser: false}})
-} catch(error) {
-let embedError = new MessageEmbed()
-.setTitle("Error")
-.setDescription(`\`\`\`js\n${error}\`\`\``)
-message.reply({embeds: [embedError]})
-}
-
+    .addFields({name: "Owner", value: "Only the bot owner can use this command"})
+    let embedReject = new MessageEmbed()
+    .addFields({name: "Rejected", value: "The eval was rejected for security reasons"})
+    let embedNone = new MessageEmbed()
+    .addFields({name: "No input", value: "There was nothing to eval, what do you want me to eval?"})
+    if(message.author.id !== "779749147989245972") return message.reply({embeds: [embedOwner]})
+    if(message.content.toLowerCase().includes("token") || message.content.toLowerCase().includes("env")) return message.reply({embeds: [embedReject]})
+    let args = message.content.split(" ").slice(1)
+    let code = args.join(" ")
+    if(!code) return message.reply({embeds: [embedNone]})
+    try {
+    let result = await eval(code)
+    let output = result
+    if(typeof resut !== "string") {
+    output = inspect(result)
+    }
+    let embedEval = new MessageEmbed()
+    .setTitle("Output")
+    .setDescription(`\`\`\`js\n${output}\`\`\``)
+    .setTimestamp()
+    message.reply({embeds: [embedEval], allowedMentions: {repliedUser: false}})
+    } catch(error) {
+    let embedError = new MessageEmbed()
+    .setTitle("Error")
+    .setDescription(`\`\`\`js\n${error}\`\`\``)
+    message.reply({embeds: [embedError]})
+    }
       
   }
   
