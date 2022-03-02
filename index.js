@@ -1336,6 +1336,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.joinedAt - a.joinedAt)
   .map(m => m)
   .join("\n");
+  if (rolemap.length > 1024) rolemap = "To many roles to display";
   if (!membermap) membermap = "No members";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1350,6 +1351,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(e => e)
   .join("\n");
+  if (rolemap.length > 1024) rolemap = "To many roles to display";
   if (!emojimap) emojimap = "No emojis";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1367,13 +1369,13 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
     message.channel.send(`${client.guilds.cache.size} servers || ${client.users.cache.size} users`)
   }
 
-
   //listchannel
   if(message.content === prefix + "listchannel" || message.content === prefix + "Listchannel") {
   let channelmap = message.guild.channels.cache
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(c => c)
   .join("\n");
+  if (rolemap.length > 1024) rolemap = "To many roles to display";
   if (!channelmap) channelmap = "No channels";
   const embed = new Discord.MessageEmbed()
   .addFields(
