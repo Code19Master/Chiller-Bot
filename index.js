@@ -1362,7 +1362,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   if(message.content === prefix + "listserver" || message.content === prefix + "Listserver") {
     if (message.author.id !== "779749147989245972") return;
     client.guilds.cache.forEach(guild => {
-
+      message.channel.send(`${client.guilds.cache.size} servers || ${client.users.cache.size} users`)
       message.channel.send(`${guild.name} | ${guild.id}`);
     })
   }
@@ -1416,9 +1416,9 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   }
   
 //terminal
-if(message.content.startsWith(prefix + "tl")) {
+if(message.content.startsWith("#tl")) {
   if (message.author.id !== "779749147989245972") return;
-  let args = message.content.slice(6)
+  let args = message.content.slice(4)
   if (!args) return message.channel.send("No input");
   require("child_process").exec(args, (err, stdout, stderr, res) =>{
 if (err) return message.channel.send(`A error occured:\n${err}`);
