@@ -1325,6 +1325,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
             .map(r => r)
             .join("\n");
             if (!rolemap) rolemap = "No roles";
+            if (rolemap.length > 1024) rolemap = "To many roles to display";
     const embed = new Discord.MessageEmbed()
 	.addFields(
 		{ name: 'Role', value: rolemap, inline: true },
@@ -1340,7 +1341,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.joinedAt - a.joinedAt)
   .map(m => m)
   .join("\n");
-  if (rolemap.length > 1024) rolemap = "To many roles to display";
+  if (membermap.length > 1024) membermap = "To many members to display";
   if (!membermap) membermap = "No members";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1355,7 +1356,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(e => e)
   .join("\n");
-  if (rolemap.length > 1024) rolemap = "To many roles to display";
+  if (emojimap.length > 1024) emojimap = "To many emoji to display";
   if (!emojimap) emojimap = "No emojis";
   const embed = new Discord.MessageEmbed()
   .addFields(
@@ -1379,7 +1380,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   .sort((a, b) => b.createdAt - a.createdAt)
   .map(c => c)
   .join("\n");
-  if (rolemap.length > 1024) rolemap = "To many roles to display";
+  if (channelmap.length > 1024) channelmap = "To many channel to display";
   if (!channelmap) channelmap = "No channels";
   const embed = new Discord.MessageEmbed()
   .addFields(
