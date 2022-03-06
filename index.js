@@ -1369,7 +1369,7 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
   if(message.content === prefix + "listserver" || message.content === prefix + "Listserver") {
     if (message.author.id !== "779749147989245972") return;
     client.guilds.cache.forEach(guild => {
-      message.channel.send(`${guild.name} | ${guild.id}`);
+      message.channel.send(`${guild.name} | ${guild.id} | ${guild.memberCount}`);
     })
     message.channel.send(`${client.guilds.cache.size} servers || ${client.users.cache.size} users`)
   }
