@@ -1373,7 +1373,6 @@ if (message.content.startsWith(prefix + "kill") || message.content.startsWith(pr
     })
     message.channel.send(`${client.guilds.cache.size} servers || ${client.users.cache.size} users`)
   }
-  
 
   //listchannel
   if(message.content === prefix + "listchannel" || message.content === prefix + "Listchannel") {
