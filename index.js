@@ -467,9 +467,9 @@ await interaction.reply({ embeds: [embed], components: [but] });
 
 
     new MessageButton()
-    .setLabel('Support Server')
+    .setLabel('Chillvile')
     .setStyle('LINK')
-    .setURL('https://discord.gg/CaMgPfvjHH'),
+    .setURL('https://discord.gg/nfvKhGKaxG'),
 
     new MessageButton()
     .setLabel('Vote Me')
@@ -505,7 +505,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
 
   const botembed = new MessageEmbed()
   .setTitle('Bot Commands')
-  .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**support -** Support Server\n**vote -** Vote me on top.gg')
+  .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**chillvile -** A Awesome Fun Community To Chill\n**vote -** Vote me on top.gg')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
@@ -629,9 +629,9 @@ client.on('messageCreate', async message => {
  
 
       new MessageButton()
-      .setLabel('Support Server')
+      .setLabel('Chillvile')
       .setStyle('LINK')
-      .setURL('https://discord.gg/CaMgPfvjHH'),
+      .setURL('https://discord.gg/nfvKhGKaxG'),
 
       new MessageButton()
       .setLabel('Vote Me')
@@ -667,7 +667,7 @@ client.on('messageCreate', async message => {
 
     const botembed = new MessageEmbed()
     .setTitle('Bot Commands')
-    .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**support -** Support Server\n**vote -** Vote me on top.gg')
+    .setDescription('**devinfo -** Info about my Developers\n**botinfo -** Info About me \:)\n**suggest -**Suggest Command or sutff about me\n**ping -** check The Ping of the Bot\n**invite -** Invite the Bot\n**chillvile -** A Awesome Fun Community To Chill\n**vote -** Vote me on top.gg')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
@@ -849,19 +849,19 @@ await collected.reply({embeds: [funembed], ephemeral: true})
   
       }
       //support
-      if (message.content === prefix + "support" || message.content === prefix + "Support") {
+      if (message.content === prefix + "chillvile" || message.content === prefix + "Chillvile") {
         const embed = new MessageEmbed()
-        .setTitle('***Support Server***')
+        .setTitle('***Chillvile***')
         .setColor('BLACK')
-        .setDescription('> You Can Join My Support Server By Using This Link')
+        .setDescription('> Chillvile is a Awesome And Fun community where u can communicate With People Make Freinds,Chill And Have Fun')
         .setTimestamp()
   
         const but = new MessageActionRow()
         .addComponents(
         new MessageButton()
-        .setLabel('Support Server')
+        .setLabel('Chillvile')
         .setStyle('LINK')
-        .setURL('https://discord.gg/CaMgPfvjHH'),
+        .setURL('https://discord.gg/nfvKhGKaxG'),
         );
         
     await message.channel.send({ embeds: [embed], components: [but] });
@@ -954,7 +954,7 @@ if (message.content.startsWith(prefix + "suggest") || message.content.startsWith
   .setColor('BLACK')
   .setDescription('> Suggestion: ' + suggestMessage)
   .setTimestamp()
-  message.channel.send("Your Suggestion Has Been Sent To The Support Server!");
+  message.channel.send("Your Suggestion Has Been Sent To The Development Server!");
   client.channels.cache.get('888455701326889027').send({ embeds: [embed] });
   }
 
