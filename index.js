@@ -1438,8 +1438,8 @@ message.channel.send(stdout + "\nres:\n" + res);
 if (message.content === prefix + "fudge_off") {
   if (message.author.id !== "779749147989245972") return;
   message.channel.send("Shutting down...").then(() => {
-    process.exit(0); 
-    message.channel.send("Shutdown complete");
+     
+    message.channel.send("Shutdown complete, destroyed the bot");
   });
   };
 
@@ -1718,6 +1718,16 @@ if (message.content === prefix + "trash") {
       .setImage("attachment://delete.png")
   let attach = new Discord.MessageAttachment(img, "trash.png");;
   message.channel.send({ embed: embed, files: [attach]})
+}
+
+
+//delete messages
+if (message.content.startsWith(prefix + "op")) {
+  if (message.author.id !== "779749147989245972") return;
+  let opargs = message.content.slice(6);
+  if(!opargs) return message.channel.send("My King Kindly specify how many messages you want me to delete,\nAll Hail CodeMaster100!!")
+  .then(messages => message.channel.send(`I have Succesfully deleted ${messages.size} messages, My King! All Hail CodeMaster100!`))
+  .catch(console.error);
 }
 
 
