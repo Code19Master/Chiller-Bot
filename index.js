@@ -887,7 +887,7 @@ await message.channel.send({ embeds: [embed] });
 }
 //avatar
 if (message.content.startsWith(prefix + "avatar") || message.content.startsWith(prefix + "Avatar")) { 
-  let user = message.mentions.users.first() || message.author.avatarURL();
+  let user = member.guild.user.displayAvatarURL(message.mentions.users.first()) || message.author.avatarURL();
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
   .setColor('BLACK')
