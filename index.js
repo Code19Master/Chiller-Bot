@@ -1786,14 +1786,13 @@ if (message.content.startsWith(prefix + "github")) {
             .addField(`Following`, `${following}`, true)
             .addField(`Location`, `${location || "No Location"}`)
             .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
-            .setFooter(`Tysm For Using Me! ${message.author.username}`)
+            .setFooter(`This Is All About ${login} on github!`)
 
             message.channel.send({embeds: [embed]})
 
     })
 
-         .catch(console.error);
-          return message.channel.send(`Something Went Wrong Try Again Later!`)
+
         }
 
 
