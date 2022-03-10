@@ -891,8 +891,8 @@ if (message.content === prefix + "avatar" || message.content === prefix + "Avata
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
   .setColor('BLACK')
-  .setURL(message.author.avatarURL())
-  .setImage(message.author.avatarURL())
+  .setURL(user)
+  .setImage(user)
   .setTimestamp()
 
 await message.channel.send({ embeds: [embed] });
@@ -1676,8 +1676,6 @@ if (message.content === prefix + "rip") {
   // Make the image
   let img = await new DIG.Rip().getImage(avatar)
   // Add the image as an attachement
-  let embed = new Discord.MessageEmbed()
-      .setTitle("Rip")
       .setImage("attachment://delete.png")
   let attach = new Discord.MessageAttachment(img, "rip.png");;
   message.channel.send({ embed: embed, files: [attach]})
