@@ -1769,7 +1769,7 @@ return message.channel.send({embeds: [Embed]});
 if (message.content.startsWith(prefix + "github")) {
   if (!args[0]) return message.channel.send(`Please Give Me A Username!`)
     
-  fetch(`https://api.github.com/users/${args.join('-')}`)
+  Fetch(`https://api.github.com/users/${args.join('-')}`)
     .then(res => res.json()).then(body => {
       if(body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
     let { login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio } = body;
