@@ -30,7 +30,8 @@
     "fortnite-api-js": "^1.0.2",
     "discord-image-generation": "^1.4.12",
     "node-fetch": "^2.0.0",
-    "mal-scraper": "^2.11.4"
+    "mal-scraper": "^2.11.4",
+    "relevant-urban": "^2.0.0"
   },
   "engines": {
     "node": ">=16.6.0"

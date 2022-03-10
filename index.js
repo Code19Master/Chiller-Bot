@@ -14,6 +14,7 @@ const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
 const Fetch = require("node-fetch"); 
 const Scraper = require("mal-scraper");
+const urban = require('relevant-urban');
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -1795,54 +1796,39 @@ if (message.content.startsWith(prefix + "github")) {
 
 
         }
-  
-//Anime
-if (message.content.startsWith(prefix + "anime")) {
+
+//urban
+if (message.content.startsWith(prefix + "urban")) {
   const args = message.content.slice(9).trim().split(/ +/g);
-  let Text = args.join(" ");
+  if(!args[0])
+  return message.channel.send("<:recluse6:827723300457152512> | Please Enter Something To Search");
 
-  if (!Text) return message.channel.send(`Please Give anime character to search information about that!`);
-
-  if (Text.length > 200) return message.channel.send(`Text Limit - 200`);
-
-  let Msg = await message.channel.send(`**Searching It For You please wait for while**`);
-
-  let Replaced = Text.replace(/ +/g, " ");
-
-  await Msg.delete();
-
-  let Anime;
-
-  let Embed;
-
+  let image = "http://cdn.marketplaceimages.windowsphone.com/v8/images/5c942bfe-6c90-45b0-8cd7-1f2129c6e319?imageType=ws_icon_medium";
   try {
+      let res = await urban(args.join(' '))
+          if (!res) return message.channel.send("No results found for this topic, sorry!");
+          let { word, urbanURL, definition, example, thumbsUp, thumbsDown, author } = res;
 
-  Anime = await Scraper.getInfoFromName(Replaced);
+          let embed = new MessageEmbed()
+              .setColor("GREEN")
+              .setAuthor(`Urban - ${word}`)
+              .setThumbnail(image)
+              .setDescription(`**Meaning:**\n*${definition || "No meaning"}*\n\n**Example:**\n*${example || "No Example"}*`)
+              .addField('**Rating:**', `**\`Upvotes: ${thumbsUp} | Downvotes: ${thumbsDown}\`**`)
+              .addField("**Link**",  `[link to ${word}](${urbanURL})`)
+              .addField("**Author:**", `${author || "unknown"}`)
+              .setTimestamp()
 
-  if (!Anime.genres[0] || Anime.genres[0] === null) Anime.genres[0] = "None";
-
-  Embed = new MessageEmbed()
-  .setColor(Color || "RANDOM")
-  .setURL(Anime.url)
-  .setTitle(Anime.title)
-  .setDescription(Anime.synopsis)
-  .addField(`Type`, Anime.type, true)
-  .addField(`Status`, Anime.status, true)
-  .addField(`Premiered`, Anime.premiered, true)
-  .addField(`Episodes`, Anime.episodes, true)
-  .addField(`Duration`, Anime.duration, true)
-  .addField(`Popularity`, Anime.popularity, true)
-  .addField(`Gneres`, Anime.genres.join(", "))
-  .setThumbnail(Anime.picture)
-  .setFooter(`Score - ${Anime.score}`)
-  .setTimestamp();
-
-  } catch (error) {
-    return message.channel.send(`No Anime Found!`);
-  };
-
-  return message.channel.send({embeds: [Embed]});
+          message.channel.send(embed)
+      
+  } catch (e) {
+      console.log(e)
+      return message.channel.send("looks like i've broken! Try again")
+  }
 }
+
+
+
 
 
 
