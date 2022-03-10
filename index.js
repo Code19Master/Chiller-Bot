@@ -13,6 +13,7 @@ const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
 const Fetch = require("node-fetch"); 
+const Scraper = require("mal-scraper");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -1794,6 +1795,54 @@ if (message.content.startsWith(prefix + "github")) {
 
 
         }
+  
+//Anime
+if (message.content.startsWith(prefix + "anime")) {
+  const args = message.content.slice(9).trim().split(/ +/g);
+  let Text = args.join(" ");
+
+  if (!Text) return message.channel.send(`Please Give anime character to search information about that!`);
+
+  if (Text.length > 200) return message.channel.send(`Text Limit - 200`);
+
+  let Msg = await message.channel.send(`**Searching It For You please wait for while**`);
+
+  let Replaced = Text.replace(/ +/g, " ");
+
+  await Msg.delete();
+
+  let Anime;
+
+  let Embed;
+
+  try {
+
+  Anime = await Scraper.getInfoFromName(Replaced);
+
+  if (!Anime.genres[0] || Anime.genres[0] === null) Anime.genres[0] = "None";
+
+  Embed = new MessageEmbed()
+  .setColor(Color || "RANDOM")
+  .setURL(Anime.url)
+  .setTitle(Anime.title)
+  .setDescription(Anime.synopsis)
+  .addField(`Type`, Anime.type, true)
+  .addField(`Status`, Anime.status, true)
+  .addField(`Premiered`, Anime.premiered, true)
+  .addField(`Episodes`, Anime.episodes, true)
+  .addField(`Duration`, Anime.duration, true)
+  .addField(`Popularity`, Anime.popularity, true)
+  .addField(`Gneres`, Anime.genres.join(", "))
+  .setThumbnail(Anime.picture)
+  .setFooter(`Score - ${Anime.score}`)
+  .setTimestamp();
+
+  } catch (error) {
+    return message.channel.send(`No Anime Found!`);
+  };
+
+  return message.channel.send({embeds: [Embed]});
+}
 
 
 
