@@ -1760,7 +1760,7 @@ const Embed = new MessageEmbed()
     .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
     .setTimestamp();
 
-return message.channel.send({components: Embed});
+return message.channel.send({embeds: [Embed]});
 
 }
 
