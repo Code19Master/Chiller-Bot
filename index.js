@@ -43,7 +43,6 @@ const gameType = "character";
 const useButtons = true; 
 const embedColor = "#000000";
 const esnipes = {};
-const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
 discordModals(client); // discord-modals needs your client in order to interact with modals 
 
@@ -583,6 +582,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
    
 
