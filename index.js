@@ -1753,7 +1753,6 @@ if (!json[0]) return message.channel.send(`Your Life Lmfao`);
 const data = json[0].data.children[0].data;
 
 const Embed = new MessageEmbed()
-    .setColor(BLACK)
     .setURL(`https://reddit.com${data.permalink}`)
     .setTitle(data.title)
     .setDescription(`Author : ${data.author}`)
