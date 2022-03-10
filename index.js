@@ -12,6 +12,7 @@ const { inspect } = require("util");
 const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
+const Fetch = require("node-fetch"); 
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -1731,6 +1732,38 @@ if (message.content.startsWith(prefix + "op")) {
   .catch(console.error);
 }
 
+//meme
+if (message.content.startsWith(prefix + "meme")) {
+  const Reds = [
+    "memes",
+    "me_irl",
+    "dankmemes",
+    "comedyheaven",
+    "Animemes"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`Your Life Lmfao`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setColor(BLACK)
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({components: Embed});
+
+}
 
 
 
@@ -1756,10 +1789,10 @@ if (message.content.startsWith(prefix + "op")) {
 
 
 //main
-client.login(token);
+//client.login(token);
 
 //for test
 
-//client.login(testtoken);
+client.login(testtoken);
 
 
