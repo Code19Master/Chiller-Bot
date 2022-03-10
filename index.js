@@ -1801,7 +1801,7 @@ if (message.content.startsWith(prefix + "github")) {
 if (message.content.startsWith(prefix + "urban")) {
   const args = message.content.slice(9).trim().split(/ +/g);
   if(!args[0])
-  return message.channel.send("<:recluse6:827723300457152512> | Please Enter Something To Search");
+  return message.channel.send("Please Enter Something To Search");
 
   let image = "http://cdn.marketplaceimages.windowsphone.com/v8/images/5c942bfe-6c90-45b0-8cd7-1f2129c6e319?imageType=ws_icon_medium";
   try {
@@ -1819,7 +1819,7 @@ if (message.content.startsWith(prefix + "urban")) {
               .addField("**Author:**", `${author || "unknown"}`)
               .setTimestamp()
 
-          message.channel.send(embed)
+          message.channel.send({embeds: [embed]})
       
   } catch (e) {
       console.log(e)
