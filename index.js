@@ -12,7 +12,7 @@ const { inspect } = require("util");
 const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
-const Fetch = require("node-fetch"); 
+let Fetch = await import('node-fetch')
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
