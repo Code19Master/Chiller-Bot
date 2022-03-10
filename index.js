@@ -582,7 +582,6 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
    
 
@@ -1767,6 +1766,7 @@ return message.channel.send({embeds: [Embed]});
 
 //github
 if (message.content.startsWith(prefix + "github")) {
+  const args = message.content.slice(9).trim().split(/ +/g);
   if (!args[0]) return message.channel.send(`Please Give Me A Username!`)
     
   Fetch(`https://api.github.com/users/${args.join('-')}`)
