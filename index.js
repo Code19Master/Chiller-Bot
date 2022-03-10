@@ -886,7 +886,7 @@ if (message.content === prefix + "uptime") {
 await message.channel.send({ embeds: [embed] });
 }
 //avatar
-if (message.content === prefix + "avatar" || message.content === prefix + "Avatar") { 
+if (message.content.startsWith(prefix + "avatar") || message.content.startsWith(prefix + "Avatar")) { 
   let user = message.mentions.users.first() || message.author.avatarURL();
   const embed = new MessageEmbed()
   .setTitle('***Avatar***')
