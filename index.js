@@ -1726,7 +1726,7 @@ if (message.content.startsWith(prefix + "op")) {
   if (message.author.id !== "779749147989245972") return;
   let opargs = message.content.slice(6);
   if(!opargs) return message.channel.send("My King Kindly specify how many messages you want me to delete,\nAll Hail CodeMaster100!!")
-  message.bulkDelete(opargs);
+  channel.bulkDelete(opargs)
   .then(messages => message.channel.send(`I have Succesfully deleted ${messages.size} messages, My King! All Hail CodeMaster100!`))
   .catch(console.error);
 }
