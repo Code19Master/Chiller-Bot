@@ -1149,18 +1149,7 @@ if (message.content === prefix + "dare" || message.content === prefix + "Dare") 
     message.channel.send({ embeds: [embed] })
     }
 
-  //warn
-  if (message.content.startsWith(prefix + "warn") || message.content.startsWith(prefix + "Warn")) {
-    let user = message.mentions.users.first();
-    if (!user) return message.channel.send("Please mention a user to warn!");
-    let embed = new Discord.MessageEmbed()
-    .setTitle("**WARNING**")
-    .setDescription(`${user} has been warned for breaking the rules!`)
-    .setColor("BLURPLE")
-    .setFooter({ text: `Moderater : ${message.author.username}`})
-    .setTimestamp()
-    message.channel.send({ embeds: [embed] })
-    }
+
     //ban
     if (message.content.startsWith(prefix + "ban") || message.content.startsWith(prefix + "Ban")) {
         if (message.member.permissions.has("BAN_MEMBERS")) {
@@ -1884,6 +1873,114 @@ if (message.content.startsWith(prefix + "imdb")) {
 
 }
 
+//warn System 
+
+//warn
+if (message.content.startsWith(prefix + "warn")) {
+  if (!message.member.hasPermission("MANAGE_ROLES")) {
+    return message.channel.send(
+      "You should have manage roles perms to use this command!"
+    );
+  }
+
+  const user = message.mentions.members.first();
+
+  if (!user) {
+    return message.channel.send(
+      "Please Mention the person to who you want to warn - warn @mentio"
+    );
+  }
+
+  if (message.mentions.users.first().bot) {
+    return message.channel.send("You can not warn bots");
+  }
+
+  if (message.author.id === user.id) {
+    return message.channel.send("You can not warn yourself");
+  }
+
+  if (user.id === message.guild.owner.id) {
+    return message.channel.send(
+      "You jerk, how you can warn server owner? You can't warn him"
+    );
+  }
+
+
+
+
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+  if (warnings === null) {
+    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+    user.send(
+      `You have been warned in **${message.guild.name}**`
+    );
+    await message.channel.send(
+      `You warned **${
+        message.mentions.users.first().username
+      }`
+    );
+  } else if(warnings !== null) {
+    
+    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
+    
+    user.send(`You have been warned in **${message.guild.name}**`);
+    
+    await message.channel.send(`You warned **${message.mentions.users.first().username}**`);
+    
+    message.delete
+    
+  }
+}
+
+//warnings
+if (message.content.startsWith(prefix + "warnings")) {
+  const user = message.mentions.members.first() || message.author;
+
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+  if (warnings === null) warnings = 0;
+
+  message.channel.send(`${user} have **${warnings}** warning(s)`);
+}
+
+//reset warnings
+if (message.content.startsWith(prefix + "rwarn")) {
+  if (!message.member.hasPermission("MANAGE_ROLES")) {
+    return message.channel.send(
+      "You should have manage roles perms to use this command!"
+    );
+  }
+
+  const user = message.mentions.members.first();
+
+  if (!user) {
+    return message.channel.send("Please mention the person whose warning you want to reset");
+  }
+
+  if (message.mentions.users.first().bot) {
+    return message.channel.send("Bot are not allowed to have warnings");
+  }
+
+  if (message.author.id === user.id) {
+    return message.channel.send("You are not allowed to reset your warnings");
+  }
+
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+  if (warnings === null) {
+    return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
+  }
+
+  db.delete(`warnings_${message.guild.id}_${user.id}`);
+  user.send(
+    `Your all warnings are reseted by ${message.author.username} from ${message.guild.name}`
+  );
+  await message.channel.send(
+    `Reseted all warnings of ${message.mentions.users.first().username}`
+  );
+
+}
 
 
 
