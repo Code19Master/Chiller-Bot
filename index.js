@@ -15,6 +15,7 @@ const DIG = require("discord-image-generation");
 const Fetch = require("node-fetch"); 
 const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
+const imdb = require("imdb-api");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -1852,6 +1853,35 @@ if (message.content.startsWith(prefix + "rurban")) {
   } catch (e) {
       console.log(e)
   }
+}
+
+//imdb
+if (message.content.startsWith(prefix + "imdb")) {
+  const args = message.content.slice(8).trim().split(/ +/g);
+  if(!args) {
+    return message.channel.send("Please give the name of movie or series")
+  }
+  
+  const imob = new imdb.Client({apiKey: "k_75q35qr4"}) //You need to paste you imdb api
+  
+  let movie = await imob.get({'name': args.join(" ")})
+  
+  let embed = new discord.MessageEmbed()
+  .setTitle(movie.title)
+  .setColor("RANDOM")
+  .setThumbnail(movie.poster)
+  .setDescription(movie.plot)
+  .setFooter(`Ratings: ${movie.rating}`)
+  .addField("Country", movie.country, true)
+  .addField("Languages", movie.languages, true)
+  .addField("Type", movie.type, true);
+  
+  
+  message.channel.send({embeds: [embed]})
+  
+  
+  
+
 }
 
 
