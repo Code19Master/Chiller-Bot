@@ -1851,7 +1851,6 @@ if (message.content.startsWith(prefix + "rurban")) {
       
   } catch (e) {
       console.log(e)
-      return message.channel.send("looks like i've broken! Try again")
   }
 }
 
