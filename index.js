@@ -1833,7 +1833,7 @@ if (message.content.startsWith(prefix + "rurban")) {
   
   let image = "http://cdn.marketplaceimages.windowsphone.com/v8/images/5c942bfe-6c90-45b0-8cd7-1f2129c6e319?imageType=ws_icon_medium";
   try {
-      let res = await randomurban()
+      let res = await urban.random()
           if (!res) return message.channel.send("No results found for this topic, sorry!");
           let { word, urbanURL, definition, example, thumbsUp, thumbsDown, author } = res;
 
