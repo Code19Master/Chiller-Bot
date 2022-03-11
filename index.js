@@ -1934,7 +1934,7 @@ if (message.content.startsWith(prefix + "warn")) {
 }
 
 //warnings
-if (message.content.startsWith(prefix + "warnings")) {
+if (message.content.startsWith(prefix + "showswarns")) {
   const user = message.mentions.members.first() || message.author;
 
   let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
