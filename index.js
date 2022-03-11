@@ -1858,7 +1858,7 @@ if (message.content.startsWith(prefix + "rurban")) {
 //imdb
 if (message.content.startsWith(prefix + "imdb")) {
   const args = message.content.slice(8).trim().split(/ +/g);
-  if(!args) {
+  if(!args[0]) {
     return message.channel.send("Please give the name of movie or series")
   }
   
@@ -1866,7 +1866,7 @@ if (message.content.startsWith(prefix + "imdb")) {
   
   let movie = await imob.get({'name': args.join(" ")})
   
-  let embed = new discord.MessageEmbed()
+  let embed = new MessageEmbed()
   .setTitle(movie.title)
   .setColor("RANDOM")
   .setThumbnail(movie.poster)
