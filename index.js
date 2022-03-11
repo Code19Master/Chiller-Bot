@@ -1862,7 +1862,7 @@ if (message.content.startsWith(prefix + "imdb")) {
     return message.channel.send("Please give the name of movie or series")
   }
   
-  const imob = new imdb.Client({apiKey: "k_75q35qr4"}) //You need to paste you imdb api
+  const imob = new imdb.Client({apiKey: "5e36f0db"}) //You need to paste you imdb api
   
   let movie = await imob.get({'name': args.join(" ")})
   
