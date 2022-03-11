@@ -1895,11 +1895,11 @@ if (message.content.startsWith(prefix + "warn")) {
     return message.channel.send("You can not warn bots");
   }
 
-  if (message.author.id === user.user.id) {
+  if (message.author.id === user.id) {
     return message.channel.send("You can not warn yourself");
   }
 
-  if (user.user.id === message.guild.owner.id) {
+  if (user.id === message.guild.ownerId) {
     return message.channel.send(
       "You jerk, how you can warn server owner? You can't warn him"
     );
@@ -1909,10 +1909,10 @@ if (message.content.startsWith(prefix + "warn")) {
 
 
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.user.id}`);
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
-    db.set(`warnings_${message.guild.id}_${user.user.id}`, 1);
+    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
     user.send(
       `You have been warned in **${message.guild.name}**`
     );
@@ -1923,7 +1923,7 @@ if (message.content.startsWith(prefix + "warn")) {
     );
   } else if(warnings !== null) {
     
-    db.add(`warnings_${message.guild.id}_${user.user.id}`, 1);
+    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
     
     user.send(`You have been warned in **${message.guild.name}**`);
     
@@ -1938,7 +1938,7 @@ if (message.content.startsWith(prefix + "warn")) {
 if (message.content.startsWith(prefix + "showswarns")) {
   const user = message.mentions.members.first() || message.author;
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.user.id}`);
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) warnings = 0;
 
@@ -1963,17 +1963,17 @@ if (message.content.startsWith(prefix + "rwarn")) {
     return message.channel.send("Bot are not allowed to have warnings");
   }
 
-  if (message.author.id === user.user.id) {
+  if (message.author.id === user.id) {
     return message.channel.send("You are not allowed to reset your warnings");
   }
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.user.id}`);
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
     return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
   }
 
-  db.delete(`warnings_${message.guild.id}_${user.user.id}`);
+  db.delete(`warnings_${message.guild.id}_${user.id}`);
   user.send(
     `Your all warnings are reseted by ${message.author.username} from ${message.guild.name}`
   );
