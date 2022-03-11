@@ -1877,7 +1877,7 @@ if (message.content.startsWith(prefix + "imdb")) {
 
 //warn
 if (message.content.startsWith(prefix + "warn")) {
-  if (!message.member.hasPermission("MANAGE_ROLES")) {
+  if (!message.member.permissions.has("MANAGE_ROLES")) {
     return message.channel.send(
       "You should have manage roles perms to use this command!"
     );
@@ -1946,7 +1946,7 @@ if (message.content.startsWith(prefix + "warnings")) {
 
 //reset warnings
 if (message.content.startsWith(prefix + "rwarn")) {
-  if (!message.member.hasPermission("MANAGE_ROLES")) {
+  if (!message.member.permissions.has("MANAGE_ROLES")) {
     return message.channel.send(
       "You should have manage roles perms to use this command!"
     );
