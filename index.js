@@ -1908,6 +1908,7 @@ if (message.content.startsWith(prefix + "warn")) {
 
 
 
+  
   let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
