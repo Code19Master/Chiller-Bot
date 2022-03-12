@@ -180,7 +180,6 @@ db.on("ready", () => {
   console.log("Connected to the database");
 });
 
-await db.connect(); 
 
 //slash command and modals
 
@@ -594,6 +593,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
+  await db.connect(); // Connect to the database
 
    
 
