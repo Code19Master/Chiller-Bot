@@ -9,13 +9,14 @@ const discordModals = require('discord-modals')
 const child = require('child_process')
 const prefix = "ch!"
 const { inspect } = require("util");
-const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
 const Fetch = require("node-fetch"); 
 const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
+const { Database } = require("quickmongo");
+const db = new Database("mongodb://localhost/quickmongo");
 
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method

@@ -32,7 +32,8 @@
     "node-fetch": "^2.0.0",
     "mal-scraper": "^2.11.4",
     "relevant-urban": "^2.0.0",
-    "imdb-api": "^4.4.1"
+    "imdb-api": "^4.4.1",
+    "quickmongo": "^5.1.2"
   },
   "engines": {
     "node": ">=16.6.0"
