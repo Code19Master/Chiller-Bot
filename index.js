@@ -9,14 +9,13 @@ const discordModals = require('discord-modals')
 const child = require('child_process')
 const prefix = "ch!"
 const { inspect } = require("util");
+const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
 const Fetch = require("node-fetch"); 
 const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
-const { Database } = require("quickmongo");
-const db = new Database("mongodb://localhost/quickmongo");
 
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
@@ -175,12 +174,6 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     })
    })
 ;
-
-db.on("ready", () => {
-  console.log("Connected to the database");
-});
-
-
 //slash command and modals
 
 
@@ -593,8 +586,6 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
-  
-  await db.connect(); // Connect to the database
 
    
 
@@ -1927,22 +1918,22 @@ if (message.content.startsWith(prefix + "warn")) {
 
   let embed1 = new MessageEmbed()
     .setTitle("Warned")
-    .setDescription(`You warned **${message.mentions.users.first().username}**`)
+    .setDescription(`You warned **${message.mentions.users.first().username}`)
     .setColor("GREEN")
     .setThumbnail(message.guild.iconURL())
     .addField("Warned By", message.author.tag)
     .setTimestamp();
 
 
-  let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
-    await db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
     user.send({embeds: [embed]});
     await message.channel.send({embeds: [embed1]});
   } else if(warnings !== null) {
     
-    await db.add(`warnings_${message.guild.id}_${user.id}`, 1);
+    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
     
     user.send({embeds: [embed]});
     
@@ -1959,12 +1950,12 @@ if (message.content.startsWith(prefix + "showwarns")) {
 
   let embed = new MessageEmbed()
     .setTitle("Warnings")
-    .setDescription(`${user} has **${await db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
+    .setDescription(`${user} has **${db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
     .setColor("BLACK")
     .setThumbnail(message.guild.iconURL())
     .setTimestamp();
 
-  let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) warnings = 0;
 
@@ -1993,7 +1984,7 @@ if (message.content.startsWith(prefix + "rwarn")) {
     return message.channel.send("You are not allowed to reset your warnings");
   }
 
-  let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
     return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
@@ -2014,7 +2005,7 @@ if (message.content.startsWith(prefix + "rwarn")) {
     .setTimestamp();
 
 
-  await db.delete(`warnings_${message.guild.id}_${user.id}`);
+  db.delete(`warnings_${message.guild.id}_${user.id}`);
   user.send({embeds: [embed1]});
   await message.channel.send({embeds: [embed]});
 
