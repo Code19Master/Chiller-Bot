@@ -17,6 +17,7 @@ const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
 
+
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS,
@@ -1917,7 +1918,7 @@ if (message.content.startsWith(prefix + "warn")) {
 
   let embed1 = new MessageEmbed()
     .setTitle("Warned")
-    .setDescription(`You warned **${message.mentions.users.first().username}`)
+    .setDescription(`You warned **${message.mentions.users.first().username}**`)
     .setColor("GREEN")
     .setThumbnail(message.guild.iconURL())
     .addField("Warned By", message.author.tag)
