@@ -1887,7 +1887,7 @@ if (message.content.startsWith(prefix + "warn")) {
 
   if (!user) {
     return message.channel.send(
-      "Please Mention the person to who you want to warn - warn @mention"
+      "Please Mention the person to who you want to warn"
     );
   }
 
@@ -1907,27 +1907,36 @@ if (message.content.startsWith(prefix + "warn")) {
 
 
 
+  let embed = new MessageEmbed()
+    .setTitle("Warned")
+    .setDescription(`You have been warned in **${message.guild.name}**`)
+    .setColor("RED")
+    .setThumbnail(message.guild.iconURL())
+    .addField("Warned By", message.author.tag)
+    .setTimestamp();
+
+  let embed1 = new MessageEmbed()
+    .setTitle("Warned")
+    .setDescription(`You warned **${message.mentions.users.first().username}`)
+    .setColor("GREEN")
+    .setThumbnail(message.guild.iconURL())
+    .addField("Warned By", message.author.tag)
+    .setTimestamp();
 
 
   let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
     db.set(`warnings_${message.guild.id}_${user.id}`, 1);
-    user.send(
-      `You have been warned in **${message.guild.name}**`
-    );
-    await message.channel.send(
-      `You warned **${
-        message.mentions.users.first().username
-      }`
-    );
+    user.send({embeds: [embed]});
+    await message.channel.send({embeds: [embed1]});
   } else if(warnings !== null) {
     
     db.add(`warnings_${message.guild.id}_${user.id}`, 1);
     
-    user.send(`You have been warned in **${message.guild.name}**`);
+    user.send({embeds: [embed]});
     
-    await message.channel.send(`You warned **${message.mentions.users.first().username}**`);
+    await message.channel.send({embeds: [embed1]});
     
     message.delete
     
@@ -1935,14 +1944,21 @@ if (message.content.startsWith(prefix + "warn")) {
 }
 
 //warnings
-if (message.content.startsWith(prefix + "showswarns")) {
+if (message.content.startsWith(prefix + "showwarns")) {
   const user = message.mentions.members.first() || message.author;
+
+  let embed = new MessageEmbed()
+    .setTitle("Warnings")
+    .setDescription(`${user} has **${db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
 
   let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) warnings = 0;
 
-  message.channel.send(`${user} have **${warnings}** warning(s)`);
+  message.channel.send({embeds: [embed]});
 }
 
 //reset warnings
@@ -1973,13 +1989,24 @@ if (message.content.startsWith(prefix + "rwarn")) {
     return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
   }
 
+  let embed = new MessageEmbed()
+    .setTitle("Warnings Reset")
+    .setDescription(`${message.mentions.users.first().username}'s warnings have been reset in **${message.guild.name}**`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+  let embed1 = new MessageEmbed()
+    .setTitle("Warnings Reset")
+    .setDescription(`Your warnings have been reset in **${message.guild.name}** By ${message.author.tag}`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+
   db.delete(`warnings_${message.guild.id}_${user.id}`);
-  user.send(
-    `Your all warnings are reseted by ${message.author.username} from ${message.guild.name}`
-  );
-  await message.channel.send(
-    `Reseted all warnings of ${message.mentions.users.first().username}`
-  );
+  user.send({embeds: [embed1]});
+  await message.channel.send({embeds: [embed]});
 
 }
 
