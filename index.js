@@ -175,6 +175,13 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     })
    })
 ;
+
+db.on("ready", () => {
+  console.log("Connected to the database");
+});
+
+await db.connect(); 
+
 //slash command and modals
 
 
@@ -1926,15 +1933,15 @@ if (message.content.startsWith(prefix + "warn")) {
     .setTimestamp();
 
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+  let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
-    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+    await db.set(`warnings_${message.guild.id}_${user.id}`, 1);
     user.send({embeds: [embed]});
     await message.channel.send({embeds: [embed1]});
   } else if(warnings !== null) {
     
-    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
+    await db.add(`warnings_${message.guild.id}_${user.id}`, 1);
     
     user.send({embeds: [embed]});
     
@@ -1951,12 +1958,12 @@ if (message.content.startsWith(prefix + "showwarns")) {
 
   let embed = new MessageEmbed()
     .setTitle("Warnings")
-    .setDescription(`${user} has **${db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
+    .setDescription(`${user} has **${await db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
     .setColor("BLACK")
     .setThumbnail(message.guild.iconURL())
     .setTimestamp();
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+  let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) warnings = 0;
 
@@ -1985,7 +1992,7 @@ if (message.content.startsWith(prefix + "rwarn")) {
     return message.channel.send("You are not allowed to reset your warnings");
   }
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+  let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
 
   if (warnings === null) {
     return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
@@ -2006,7 +2013,7 @@ if (message.content.startsWith(prefix + "rwarn")) {
     .setTimestamp();
 
 
-  db.delete(`warnings_${message.guild.id}_${user.id}`);
+  await db.delete(`warnings_${message.guild.id}_${user.id}`);
   user.send({embeds: [embed1]});
   await message.channel.send({embeds: [embed]});
 
