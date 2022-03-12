@@ -150,9 +150,7 @@ commands?.create({
 
 });
 
-db.on("ready", () => {
-  console.log("Connected to the database");
-});
+
 
 //snipe message delete event
 client.snipes = new Discord.Collection
