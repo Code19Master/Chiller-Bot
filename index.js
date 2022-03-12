@@ -593,6 +593,7 @@ await collected.reply({embeds: [funembed], ephemeral: true})
 
 //help (normal)
 client.on('messageCreate', async message => {
+  
   await db.connect(); // Connect to the database
 
    
