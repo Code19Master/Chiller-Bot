@@ -1734,7 +1734,8 @@ if (message.content.startsWith(prefix + "meme")) {
     "me_irl",
     "dankmemes",
     "comedyheaven",
-    "Animemes"
+    "Animemes",
+    "meme"
 ];
 
 const Rads = Reds[Math.floor(Math.random() * Reds.length)];
@@ -2012,6 +2013,94 @@ if (message.content.startsWith(prefix + "rwarn")) {
   await message.channel.send({embeds: [embed]});
 
 }
+
+//unix porn
+if (message.content.startsWith(prefix + "unixp")) {
+  const Reds = [
+    "unixporn"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`No Post Fetched`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+//technews
+if (message.content.startsWith(prefix + "technews")) {
+  const Reds = [
+    "technews"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`No Post Fetched`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+//animenews
+if (message.content.startsWith(prefix + "aninews")) {
+  const Reds = [
+    "animenews"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`No Post Fetched`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+
+
+
 
 
 
