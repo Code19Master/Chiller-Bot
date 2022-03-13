@@ -1432,8 +1432,8 @@ message.channel.send(stdout + "\nres:\n" + res);
 if (message.content === prefix + "fudge_off") {
   if (message.author.id !== "779749147989245972") return;
   message.channel.send("Shutting down...").then(() => {
-     client.destroy();
     message.channel.send("Shutdown complete, destroyed the bot");
+    client.destroy();
   });
   };
 
