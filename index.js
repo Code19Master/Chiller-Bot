@@ -2098,6 +2098,19 @@ return message.channel.send({embeds: [Embed]});
 
 }
 
+//newUpdate
+if (message.content.startsWith(prefix + "newUpdate")) {
+
+  let embed = new MessageEmbed()
+    .setTitle("New Update") 
+    .setDescription(`New Stuff In The Bot!\n**Anime News -** Gets Anime News From Reddit\n**Unix Porn -** Sexy Linux Customizations From Unix Porn Reddit\n**Tech News -** Tech News From reddit\n**urban -** Gets Meaning of the word you want to know from Urban Dictionary\n**rurban -** Random urban dictionary meanings\n**Github -** User Stats from github\n**imdb -** Details about a movie from imdb\n**rwarns -** Resets warns froma user\n**warns -** Shows warns of a user\n**memes -** Memes From Reddit`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+  message.channel.send({embeds: [embed]});
+}
+
 
 
 
