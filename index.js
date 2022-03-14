@@ -520,7 +520,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
 
   const utilityembed = new MessageEmbed()
   .setTitle('Utility Commands')
-  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\nAnime News - Gets Anime News From Reddit\nUnix Porn - Sexy Linux Customizations From Unix Porn Reddit\nTech News - Tech News From reddit\nurban - Gets Meaning of the word you want to know from Urban Dictionary\nrurban - Random urban dictionary meanings\nGithub - User Stats from github\nimdb - Details about a movie from imdb')
+  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\n**Anime News -** Gets Anime News From Reddit\n**Unix Porn -** Sexy Linux Customizations From Unix Porn Reddit\n**Tech News -** Tech News From reddit\n**urban -** Gets Meaning of the word you want to know from Urban Dictionary\n**rurban -** Random urban dictionary meanings\n**Github -** User Stats from github\n**imdb -** Details about a movie from imdb')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
@@ -538,7 +538,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
-  
+
 
 
 const filter = (interaction) => interaction.user.id;   
@@ -685,7 +685,7 @@ client.on('messageCreate', async message => {
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
-    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\nAnime News - Gets Anime News From Reddit\nUnix Porn - Sexy Linux Customizations From Unix Porn Reddit\nTech News - Tech News From reddit\nurban - Gets Meaning of the word you want to know from Urban Dictionary\nrurban - Random urban dictionary meanings\nGithub - User Stats from github\nimdb - Details about a movie from imdb')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\n**Anime News -** Gets Anime News From Reddit\n**Unix Porn -** Sexy Linux Customizations From Unix Porn Reddit\n**Tech News -** Tech News From reddit\n**urban -** Gets Meaning of the word you want to know from Urban Dictionary\n**rurban -** Random urban dictionary meanings\n**Github -** User Stats from github\n**imdb -** Details about a movie from imdb')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
