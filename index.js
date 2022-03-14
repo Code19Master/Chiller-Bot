@@ -59,6 +59,8 @@ fortniteapi.configuration({
 
 
 
+
+
 client.on('ready', () => {
 
     console.log(`Logged in as ${client.user.tag}!`);
@@ -487,6 +489,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
     .setColor('BLACK')
     .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nThe Bot Also has (/) commands!')
     .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
+    .setFooter({ text: 'Type ch!newUpdate to see the latest updates in the bot!'})
 
 
 
@@ -517,21 +520,21 @@ await interaction.reply({ embeds: [embed], components: [but] });
 
   const utilityembed = new MessageEmbed()
   .setTitle('Utility Commands')
-  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message')
+  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\nAnime News - Gets Anime News From Reddit\nUnix Porn - Sexy Linux Customizations From Unix Porn Reddit\nTech News - Tech News From reddit\nurban - Gets Meaning of the word you want to know from Urban Dictionary\nrurban - Random urban dictionary meanings\nGithub - User Stats from github\nimdb - Details about a movie from imdb')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
 
   const moderatorembed = new MessageEmbed()
   .setTitle('Moderator Commands')
-  .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
+  .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**rwarn -** Reset All warning\n**warns -** check all warns of a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
 
   const funembed = new MessageEmbed()
   .setTitle('Fun Commands')
-  .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up')
+  .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up\n**memes** - Memes From Reddit**')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
@@ -649,6 +652,8 @@ client.on('messageCreate', async message => {
       .setColor('BLACK')
       .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nThe Bot Also has (/) commands!')
       .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
+      .setFooter({ text: 'Type ch!newUpdate to see the latest updates in the bot!'})
+
 
 
 
@@ -679,21 +684,21 @@ client.on('messageCreate', async message => {
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
-    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\nAnime News - Gets Anime News From Reddit\nUnix Porn - Sexy Linux Customizations From Unix Porn Reddit\nTech News - Tech News From reddit\nurban - Gets Meaning of the word you want to know from Urban Dictionary\nrurban - Random urban dictionary meanings\nGithub - User Stats from github\nimdb - Details about a movie from imdb')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const moderatorembed = new MessageEmbed()
     .setTitle('Moderator Commands')
-    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
+    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**rwarn -** Reset All warning\n**warns -** check all warns of a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const funembed = new MessageEmbed()
     .setTitle('Fun Commands')
-    .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up')
+    .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up\n**memes** - Memes From Reddit**')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
