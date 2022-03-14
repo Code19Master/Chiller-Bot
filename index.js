@@ -12,6 +12,11 @@ const { inspect } = require("util");
 const db = require("quick.db")
 const fortniteapi = require('fortnite-api-js');
 const DIG = require("discord-image-generation");
+const Fetch = require("node-fetch"); 
+const Scraper = require("mal-scraper");
+const urban = require('relevant-urban');
+const imdb = require("imdb-api");
+
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -48,6 +53,8 @@ discordModals(client); // discord-modals needs your client in order to interact 
 fortniteapi.configuration({
   key: fn_api
 });
+
+
 
 
 
@@ -374,7 +381,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
     .addField('Bot Server Count', `${client.guilds.cache.size}`)
     .addField('Bot User Count', `${client.users.cache.size}`)
     .addField('Bot Prefix:', `${prefix}`)
-    .addField('Bot Version:', '1.0.0')
+    .addField('Bot Version:', '1.1.0')
     .setTimestamp()
     
     const but = new MessageActionRow()
@@ -482,6 +489,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
     .setColor('BLACK')
     .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nThe Bot Also has (/) commands!')
     .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
+    .setFooter({ text: 'Type ch!newUpdate to see the latest updates in the bot!'})
 
 
 
@@ -512,24 +520,25 @@ await interaction.reply({ embeds: [embed], components: [but] });
 
   const utilityembed = new MessageEmbed()
   .setTitle('Utility Commands')
-  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message')
+  .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\n**Anime News -** Gets Anime News From Reddit\n**Unix Porn -** Sexy Linux Customizations From Unix Porn Reddit\n**Tech News -** Tech News From reddit\n**urban -** Gets Meaning of the word you want to know from Urban Dictionary\n**rurban -** Random urban dictionary meanings\n**Github -** User Stats from github\n**imdb -** Details about a movie from imdb')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
 
   const moderatorembed = new MessageEmbed()
   .setTitle('Moderator Commands')
-  .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
+  .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**rwarn -** Reset All warning\n**warns -** check all warns of a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
 
   const funembed = new MessageEmbed()
   .setTitle('Fun Commands')
-  .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up')
+  .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up\n**memes** - Memes From Reddit**')
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
+
 
 
 const filter = (interaction) => interaction.user.id;   
@@ -644,6 +653,8 @@ client.on('messageCreate', async message => {
       .setColor('BLACK')
       .setDescription('> Chiller is an open source feature packed discord bot to make your server better. Navigate the help menu to see all commands!\n\nThe Bot Also has (/) commands!')
       .setImage('https://share.creavite.co/iFqmIETXlPzc18fy.gif')
+      .setFooter({ text: 'Type ch!newUpdate to see the latest updates in the bot!'})
+
 
 
 
@@ -674,21 +685,21 @@ client.on('messageCreate', async message => {
 
     const utilityembed = new MessageEmbed()
     .setTitle('Utility Commands')
-    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message')
+    .setDescription('**calculator -** Calculate any math equation\n**recommend Anime -** Get a Anime Recommendation(in development)\n**poll -** Do a poll\n**whois -** Get info about yourself\n**avatar -**Get your avatar\n**snipe -** Snipes the latest deleted message\n**esnipe -** Snipe a Edited Message\n**Anime News -** Gets Anime News From Reddit\n**Unix Porn -** Sexy Linux Customizations From Unix Porn Reddit\n**Tech News -** Tech News From reddit\n**urban -** Gets Meaning of the word you want to know from Urban Dictionary\n**rurban -** Random urban dictionary meanings\n**Github -** User Stats from github\n**imdb -** Details about a movie from imdb')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const moderatorembed = new MessageEmbed()
     .setTitle('Moderator Commands')
-    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
+    .setDescription('**kick -** Kick a user\n**ban -** Ban a user\n**warn -** Warn a user\n**rwarn -** Reset All warning\n**warns -** check all warns of a user\n**listrole -** List all roles in the Guild\n**listmember -** List All member In the Guild\n**listemoji -** List all emojis\n**listchannel -** List all channels of the guild')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
 
     const funembed = new MessageEmbed()
     .setTitle('Fun Commands')
-    .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up')
+    .setDescription('**NQN -** Select any animated emoji from the Server and use it\n**Truth -** Gets A Truth for you and your homies\n**Dare -** Gets a dare for you and your homies\n**cool -** Tells how cool you are\n**simprate -** Tells You your simp rate\n**clownrate -** Tell your your clown rate\n**8balls -** 8balls in discord\n**akinator -** Akinator in Discord\n**Tic Tac Toe -** play tic tac toe with your homies\n**say -** Tells The Bot The Thing you want him to say\n**kill -** Kills a person\n**rate -** Rates a thing\n**f -** Pay respect\n**sanitycheck -** Checks Your Sanity\n**flipcoin -** Flips a Coin\n**blurav -** Blur Avatar\n**gay -** Gay Filter on avatar\n**gray -** Gray Filter On avatar\n**invert -** Invert Filter on avatar\n**ad -** Makes you a Ad\n**affect -** Affect Meme But with your avatar\n**beautiful -** Beutiful meme but with yout Avatar\n**bobross -** Bob Ross Paints You\n**confusedstonk -** The stonk is confused\n**delete -** Deletes Trash\n**discordblack -** Discord in black colors\n**discordblue -** Discord in blue colors\n**facepalm -** Facepalm\n**hitler -** Worse then hitler\n**jail -** Go to jail\n**notstonk -** Stonk Crashes\n**rip -** Rip\n**stonk -** Stonk Go brrrrrr\n**tatoo -** Get The best Tatoo In the world\n**trash -** Someone needs to clean this up\n**memes** - Memes From Reddit**')
     .setColor('BLACK')
     .setFooter({ text: 'The Bot Also has (/) commands' })
     .setTimestamp()
@@ -920,7 +931,7 @@ if (message.content === prefix + "botinfo" || message.content === prefix + "Boti
   .addField('Bot Server Count', `${client.guilds.cache.size}`)
   .addField('Bot User Count', `${client.users.cache.size}`)
   .addField('Bot Prefix:', `${prefix}`)
-  .addField('Bot Version:', '1.0.0')
+  .addField('Bot Version:', '1.1.0')
   .setTimestamp()
   
   const but = new MessageActionRow()
@@ -1145,18 +1156,7 @@ if (message.content === prefix + "dare" || message.content === prefix + "Dare") 
     message.channel.send({ embeds: [embed] })
     }
 
-  //warn
-  if (message.content.startsWith(prefix + "warn") || message.content.startsWith(prefix + "Warn")) {
-    let user = message.mentions.users.first();
-    if (!user) return message.channel.send("Please mention a user to warn!");
-    let embed = new Discord.MessageEmbed()
-    .setTitle("**WARNING**")
-    .setDescription(`${user} has been warned for breaking the rules!`)
-    .setColor("BLURPLE")
-    .setFooter({ text: `Moderater : ${message.author.username}`})
-    .setTimestamp()
-    message.channel.send({ embeds: [embed] })
-    }
+
     //ban
     if (message.content.startsWith(prefix + "ban") || message.content.startsWith(prefix + "Ban")) {
         if (message.member.permissions.has("BAN_MEMBERS")) {
@@ -1438,8 +1438,8 @@ message.channel.send(stdout + "\nres:\n" + res);
 if (message.content === prefix + "fudge_off") {
   if (message.author.id !== "779749147989245972") return;
   message.channel.send("Shutting down...").then(() => {
-     
     message.channel.send("Shutdown complete, destroyed the bot");
+    client.destroy();
   });
   };
 
@@ -1676,6 +1676,8 @@ if (message.content === prefix + "rip") {
   // Make the image
   let img = await new DIG.Rip().getImage(avatar)
   // Add the image as an attachement
+  let embed = new Discord.MessageEmbed()
+      .setTitle("RIP")
       .setImage("attachment://delete.png")
   let attach = new Discord.MessageAttachment(img, "rip.png");;
   message.channel.send({ embed: embed, files: [attach]})
@@ -1731,6 +1733,396 @@ if (message.content.startsWith(prefix + "op")) {
   .catch(console.error);
 }
 
+//meme
+if (message.content.startsWith(prefix + "meme")) {
+  const Reds = [
+    "memes",
+    "me_irl",
+    "dankmemes",
+    "comedyheaven",
+    "Animemes",
+    "meme"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`Your Life Lmfao`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+//github
+if (message.content.startsWith(prefix + "github")) {
+  const args = message.content.slice(9).trim().split(/ +/g);
+  if (!args[0]) return message.channel.send(`Please Give Me A Username!`)
+    
+  Fetch(`https://api.github.com/users/${args.join('-')}`)
+    .then(res => res.json()).then(body => {
+      if(body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
+    let { login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio } = body;
+
+            const embed = new MessageEmbed()
+            .setAuthor(`${login} Information!`, avatar_url)
+            .setColor(`#211F1F`)
+            .setThumbnail(`${avatar_url}`)
+            .addField(`Username`, `${login}`)
+            .addField(`ID`, `${id}`)
+            .addField(`Bio`, `${bio || "No Bio"}`)
+            .addField(`Public Repositories`, `${public_repos || "None"}`, true)
+            .addField(`Followers`, `${followers}`, true)
+            .addField(`Following`, `${following}`, true)
+            .addField(`Location`, `${location || "No Location"}`)
+            .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
+            .setFooter(`This Is All About ${login} on github!`)
+
+            message.channel.send({embeds: [embed]})
+
+    })
+
+
+        }
+
+//urban
+if (message.content.startsWith(prefix + "urban")) {
+  const args = message.content.slice(9).trim().split(/ +/g);
+  if(!args[0])
+  return message.channel.send("Please Enter Something To Search");
+
+  let image = "http://cdn.marketplaceimages.windowsphone.com/v8/images/5c942bfe-6c90-45b0-8cd7-1f2129c6e319?imageType=ws_icon_medium";
+  try {
+      let res = await urban(args.join(' '))
+          if (!res) return message.channel.send("No results found for this topic, sorry!");
+          let { word, urbanURL, definition, example, thumbsUp, thumbsDown, author } = res;
+
+          let embed = new MessageEmbed()
+              .setColor("GREEN")
+              .setAuthor(`Urban - ${word}`)
+              .setThumbnail(image)
+              .setDescription(`**Meaning:**\n*${definition || "No meaning"}*\n\n**Example:**\n*${example || "No Example"}*`)
+              .addField('**Rating:**', `**\`Upvotes: ${thumbsUp} | Downvotes: ${thumbsDown}\`**`)
+              .addField("**Link**",  `[link to ${word}](${urbanURL})`)
+              .addField("**Author:**", `${author || "unknown"}`)
+              .setTimestamp()
+
+          message.channel.send({embeds: [embed]})
+      
+  } catch (e) {
+      console.log(e)
+      return message.channel.send("looks like i've broken! Try again")
+  }
+}
+
+
+//random urban
+if (message.content.startsWith(prefix + "rurban")) {
+  
+  let image = "http://cdn.marketplaceimages.windowsphone.com/v8/images/5c942bfe-6c90-45b0-8cd7-1f2129c6e319?imageType=ws_icon_medium";
+  try {
+      let res = await urban.random()
+          if (!res) return message.channel.send("No results found for this topic, sorry!");
+          let { word, urbanURL, definition, example, thumbsUp, thumbsDown, author } = res;
+
+          let embed = new MessageEmbed()
+              .setColor("GREEN")
+              .setAuthor(`Urban - ${word}`)
+              .setThumbnail(image)
+              .setDescription(`**Meaning:**\n*${definition || "No meaning"}*\n\n**Example:**\n*${example || "No Example"}*`)
+              .addField('**Rating:**', `**\`Upvotes: ${thumbsUp} | Downvotes: ${thumbsDown}\`**`)
+              .addField("**Link**",  `[link to ${word}](${urbanURL})`)
+              .addField("**Author:**", `${author || "unknown"}`)
+              .setTimestamp()
+
+          message.channel.send({embeds: [embed]})
+      
+  } catch (e) {
+      console.log(e)
+  }
+}
+
+//imdb
+if (message.content.startsWith(prefix + "imdb")) {
+  const args = message.content.slice(8).trim().split(/ +/g);
+  if(!args[0]) {
+    return message.channel.send("Please give the name of movie or series")
+  }
+  
+  const imob = new imdb.Client({apiKey: "5e36f0db"}) //You need to paste you imdb api
+  
+  let movie = await imob.get({'name': args.join(" ")})
+  
+  let embed = new MessageEmbed()
+  .setTitle(movie.title)
+  .setColor("RANDOM")
+  .setThumbnail(movie.poster)
+  .setDescription(movie.plot)
+  .setFooter(`Ratings: ${movie.rating}`)
+  .addField("Country", movie.country, true)
+  .addField("Languages", movie.languages, true)
+  .addField("Type", movie.type, true);
+  
+  
+  message.channel.send({embeds: [embed]})
+  
+  
+  
+
+}
+
+//warn System 
+
+//warn
+if (message.content.startsWith(prefix + "warn")) {
+  if (!message.member.permissions.has("MANAGE_ROLES")) {
+    return message.channel.send(
+      "You should have manage roles perms to use this command!"
+    );
+  }
+
+  const user = message.mentions.members.first();
+
+  if (!user) {
+    return message.channel.send(
+      "Please Mention the person to who you want to warn"
+    );
+  }
+
+  if (message.mentions.users.first().bot) {
+    return message.channel.send("You can not warn bots");
+  }
+
+  if (message.author.id === user.id) {
+    return message.channel.send("You can not warn yourself");
+  }
+
+  if (user.id === message.guild.ownerId) {
+    return message.channel.send(
+      "You jerk, how you can warn server owner? You can't warn him"
+    );
+  }
+
+
+
+  let embed = new MessageEmbed()
+    .setTitle("Warned")
+    .setDescription(`You have been warned in **${message.guild.name}**`)
+    .setColor("RED")
+    .setThumbnail(message.guild.iconURL())
+    .addField("Warned By", message.author.tag)
+    .setTimestamp();
+
+  let embed1 = new MessageEmbed()
+    .setTitle("Warned")
+    .setDescription(`You warned **${message.mentions.users.first().username}`)
+    .setColor("GREEN")
+    .setThumbnail(message.guild.iconURL())
+    .addField("Warned By", message.author.tag)
+    .setTimestamp();
+
+
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+  if (warnings === null) {
+    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+    user.send({embeds: [embed]});
+    await message.channel.send({embeds: [embed1]});
+  } else if(warnings !== null) {
+    
+    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
+    
+    user.send({embeds: [embed]});
+    
+    await message.channel.send({embeds: [embed1]});
+    
+    message.delete
+    
+  }
+}
+
+//warnings
+if (message.content.startsWith(prefix + "showwarns")) {
+  const user = message.mentions.members.first() || message.author;
+
+  let embed = new MessageEmbed()
+    .setTitle("Warnings")
+    .setDescription(`${user} has **${db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+  if (warnings === null) warnings = 0;
+
+  message.channel.send({embeds: [embed]});
+}
+
+//reset warnings
+if (message.content.startsWith(prefix + "rwarn")) {
+  if (!message.member.permissions.has("MANAGE_ROLES")) {
+    return message.channel.send(
+      "You should have manage roles perms to use this command!"
+    );
+  }
+
+  const user = message.mentions.members.first();
+
+  if (!user) {
+    return message.channel.send("Please mention the person whose warning you want to reset");
+  }
+
+  if (message.mentions.users.first().bot) {
+    return message.channel.send("Bot are not allowed to have warnings");
+  }
+
+  if (message.author.id === user.id) {
+    return message.channel.send("You are not allowed to reset your warnings");
+  }
+
+  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+  if (warnings === null) {
+    return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
+  }
+
+  let embed = new MessageEmbed()
+    .setTitle("Warnings Reset")
+    .setDescription(`${message.mentions.users.first().username}'s warnings have been reset in **${message.guild.name}**`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+  let embed1 = new MessageEmbed()
+    .setTitle("Warnings Reset")
+    .setDescription(`Your warnings have been reset in **${message.guild.name}** By ${message.author.tag}`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+
+  db.delete(`warnings_${message.guild.id}_${user.id}`);
+  user.send({embeds: [embed1]});
+  await message.channel.send({embeds: [embed]});
+
+}
+
+//unix porn
+if (message.content.startsWith(prefix + "unixp")) {
+  const Reds = [
+    "unixporn"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`No Post Fetched`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+//technews
+if (message.content.startsWith(prefix + "technews")) {
+  const Reds = [
+    "technews"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`No Post Fetched`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+//animenews
+if (message.content.startsWith(prefix + "aninews")) {
+  const Reds = [
+    "animenews"
+];
+
+const Rads = Reds[Math.floor(Math.random() * Reds.length)];
+
+const res = await Fetch(`https://www.reddit.com/r/${Rads}/random/.json`);
+
+const json = await res.json();
+
+if (!json[0]) return message.channel.send(`No Post Fetched`);
+
+const data = json[0].data.children[0].data;
+
+const Embed = new MessageEmbed()
+    .setURL(`https://reddit.com${data.permalink}`)
+    .setTitle(data.title)
+    .setDescription(`Author : ${data.author}`)
+    .setImage(data.url)
+    .setFooter(`${data.ups || 0} 👍 | ${data.downs || 0} 👎 | ${data.num_comments || 0} 💬`)
+    .setTimestamp();
+
+return message.channel.send({embeds: [Embed]});
+
+}
+
+//newUpdate
+if (message.content.startsWith(prefix + "newUpdate")) {
+
+  let embed = new MessageEmbed()
+    .setTitle("New Update") 
+    .setDescription(`New Stuff In The Bot!\n**Anime News -** Gets Anime News From Reddit\n**Unix Porn -** Sexy Linux Customizations From Unix Porn Reddit\n**Tech News -** Tech News From reddit\n**urban -** Gets Meaning of the word you want to know from Urban Dictionary\n**rurban -** Random urban dictionary meanings\n**Github -** User Stats from github\n**imdb -** Details about a movie from imdb\n**rwarns -** Resets warns froma user\n**warns -** Shows warns of a user\n**memes -** Memes From Reddit`)
+    .setColor("BLACK")
+    .setThumbnail(message.guild.iconURL())
+    .setTimestamp();
+
+  message.channel.send({embeds: [embed]});
+}
+
+
+
+
+
+
+
 
 
 
@@ -1756,10 +2148,10 @@ if (message.content.startsWith(prefix + "op")) {
 
 
 //main
-client.login(token);
+//client.login(token);
 
 //for test
 
-//client.login(testtoken);
+client.login(testtoken);
 
 
