@@ -2152,6 +2152,6 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 
 //for test
 
-client.login(testtoken);
+client.login(token);
 
 
