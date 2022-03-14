@@ -381,7 +381,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
     .addField('Bot Server Count', `${client.guilds.cache.size}`)
     .addField('Bot User Count', `${client.users.cache.size}`)
     .addField('Bot Prefix:', `${prefix}`)
-    .addField('Bot Version:', '1.0.0')
+    .addField('Bot Version:', '1.1.0')
     .setTimestamp()
     
     const but = new MessageActionRow()
