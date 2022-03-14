@@ -538,6 +538,7 @@ await interaction.reply({ embeds: [embed], components: [but] });
   .setColor('BLACK')
   .setFooter({ text: 'The Bot Also has (/) commands' })
   .setTimestamp()
+  
 
 
 const filter = (interaction) => interaction.user.id;   
