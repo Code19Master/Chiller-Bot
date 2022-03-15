@@ -56,22 +56,7 @@ fortniteapi.configuration({
   key: fn_api
 });
 
-//mogoose
-mongoose.connect(mongo, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-}).then(() =>{
-  console.log('Connected to the database!');
-}).catch((err) => {
-  console.log(err);
-});
 
-let schema = mongoose.Schema({
-  user: String,
-  guildid: String,
-  content: Array
-})
 
 
 
@@ -170,6 +155,22 @@ commands?.create({
 
 
 });
+//mogoose
+mongoose.connect(mongo, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+}).then(() =>{
+  console.log('Connected to the database!');
+}).catch((err) => {
+  console.log(err);
+});
+
+let schema = mongoose.Schema({
+  user: String,
+  guildid: String,
+  content: Array
+})
 
 
 
