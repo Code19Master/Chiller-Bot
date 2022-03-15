@@ -73,7 +73,6 @@ let schema = mongoose.Schema({
   content: Array
 })
 
-mongoose.model('warns', schema);
 
 
 
