@@ -60,7 +60,7 @@ fortniteapi.configuration({
 mongoose.connect(mongo, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: true
+  useFindAndModify: false
 }).then(() =>{
   console.log('Connected to the database!');
 }).catch((err) => {
