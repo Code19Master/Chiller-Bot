@@ -16,6 +16,7 @@ const Fetch = require("node-fetch");
 const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
+const mongoose = require('mongoose');
 
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
@@ -41,6 +42,7 @@ const client = new Discord.Client({
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
 const fn_api = process.env.FN_API_KEY; //fn api key
+const mongo = process.env.mongodb;
 const language = "en"; 
 const childMode = true;
 const gameType = "character"; 
@@ -54,6 +56,24 @@ fortniteapi.configuration({
   key: fn_api
 });
 
+//mogoose
+mongoose.connect(mongo, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true
+}).then(() =>{
+  console.log('Connected to the database!');
+}).catch((err) => {
+  console.log(err);
+});
+
+let schema = mongoose.Schema({
+  user: String,
+  guildid: String,
+  content: Array
+})
+
+mongoose.model('warns', schema);
 
 
 
@@ -1933,16 +1953,26 @@ if (message.content.startsWith(prefix + "warn")) {
     .addField("Warned By", message.author.tag)
     .setTimestamp();
 
-
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
-
-  if (warnings === null) {
-    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
-    user.send({embeds: [embed]});
-    await message.channel.send({embeds: [embed1]});
-  } else if(warnings !== null) {
-    
-    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
+    schema.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
+      if(err) throw err;
+      if(!data) {
+          data = new schema({
+              guildid: message.guild.id,
+              user : user.user.id,
+              content : [
+                  {
+                      moderator : message.author.id,
+                  }
+              ]
+          })
+      } else {
+          const obj = {
+              moderator: message.author.id,
+          }
+          data.content.push(obj)
+      }
+      data.save()
+      });
     
     user.send({embeds: [embed]});
     
@@ -1951,22 +1981,34 @@ if (message.content.startsWith(prefix + "warn")) {
     message.delete
     
   }
-}
+
 
 //warnings
 if (message.content.startsWith(prefix + "showwarns")) {
   const user = message.mentions.members.first() || message.author;
+  
 
-  let embed = new MessageEmbed()
-    .setTitle("Warnings")
-    .setDescription(`${user} has **${db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
-    .setColor("BLACK")
-    .setThumbnail(message.guild.iconURL())
-    .setTimestamp();
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
-  if (warnings === null) warnings = 0;
+  schema.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
+      if(err) throw err;
+      if(data) {
+        let embed = new MessageEmbed()
+        .setTitle("Warnings")
+        .setDescription(data.content.map(
+          (w, i) => 
+          `\`${i + 1}\` | Moderator : ${message.guild.members.cache.get(w.moderator).user.tag}\nWarnings in **${message.guild.name}**`
+      ))
+        .setColor("BLACK")
+        .setThumbnail(message.guild.iconURL())
+        .setTimestamp();
+          message.channel.send({embeds: [embed]})
+      } else {
+          message.channel.send('User has no data of warning')
+      }
+
+  })
+
 
   message.channel.send({embeds: [embed]});
 }
@@ -1993,11 +2035,7 @@ if (message.content.startsWith(prefix + "rwarn")) {
     return message.channel.send("You are not allowed to reset your warnings");
   }
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
-  if (warnings === null) {
-    return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
-  }
 
   let embed = new MessageEmbed()
     .setTitle("Warnings Reset")
@@ -2014,9 +2052,16 @@ if (message.content.startsWith(prefix + "rwarn")) {
     .setTimestamp();
 
 
-  db.delete(`warnings_${message.guild.id}_${user.id}`);
-  user.send({embeds: [embed1]});
-  await message.channel.send({embeds: [embed]});
+    schema.findOne({ guildid : message.guild.id, user: user.user.id}, async(err,data) => {
+      if(err) throw err;
+      if(data) {
+          await schema.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
+          message.channel.send({embeds: [embed]})
+          user.send({embeds: [embed1]});
+      } else {
+          message.channel.send('This user does not have any warns in this server!')
+      }
+  })
 
 }
 
@@ -2152,6 +2197,6 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 
 //for test
 
-client.login(token);
+client.login(testtoken);
 
 
