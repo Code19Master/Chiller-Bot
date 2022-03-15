@@ -17,7 +17,7 @@ const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
 const mongoose = require('mongoose');
-
+const warnSchema = require("./models/warn-schema.js");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -65,7 +65,10 @@ fortniteapi.configuration({
 
 
 
-client.on('ready', () => {
+client.on('ready', async () => {
+  await mongoose.connect(mongo, {
+    keepAlive: true,
+  })
 
     console.log(`Logged in as ${client.user.tag}!`);
     const arrayOfStatus = [
@@ -156,16 +159,6 @@ commands?.create({
 
 });
 //mogoose
-mongoose.connect(mongo, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-}).then(() =>{
-  console.log('Connected to the database!');
-}).catch((err) => {
-  console.log(err);
-});
-
 let schema = mongoose.Schema({
   user: String,
   guildid: String,
@@ -1905,6 +1898,8 @@ if (message.content.startsWith(prefix + "imdb")) {
 
 //warn System 
 
+
+
 //warn
 if (message.content.startsWith(prefix + "warn")) {
   if (!message.member.permissions.has("MANAGE_ROLES")) {
@@ -1953,26 +1948,13 @@ if (message.content.startsWith(prefix + "warn")) {
     .addField("Warned By", message.author.tag)
     .setTimestamp();
 
-    schema.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
-      if(err) throw err;
-      if(!data) {
-          data = new schema({
-              guildid: message.guild.id,
-              user : user.user.id,
-              content : [
-                  {
-                      moderator : message.author.id,
-                  }
-              ]
-          })
-      } else {
-          const obj = {
-              moderator: message.author.id,
-          }
-          data.content.push(obj)
-      }
-      data.save()
-      });
+
+    const warning = await warnSchema.create({
+      user: user.id,
+      guildid: message.guild.id,
+      moderator: message.author.id,
+    })
+
     
     user.send({embeds: [embed]});
     
@@ -1985,32 +1967,31 @@ if (message.content.startsWith(prefix + "warn")) {
 
 //warnings
 if (message.content.startsWith(prefix + "showwarns")) {
+  const args = message.content.slice(8).trim().split(/ +/g);
   const user = message.mentions.members.first() || message.author;
+
+  const warnings = await warnSchema.find({
+    user: user.id,
+    guildid: message.guild.id,
+  });
+
+  for (const warn of warnings) {
+    description += `**ID:** ${warn._id}\n`
+    description += `**Date:** ${warn.createdAt.toLocaleString()}\n`
+    description += `**Moderator:** ${warn.moderator}\n`
+    description += `**guild:** <#${warn.guildid}>\n`
+  }
+
+  let embed = new MessageEmbed()
+  .setTitle("Warnings")
+  .setDescription(description)
+  .setColor("BLACK")
+  .setThumbnail(message.guild.iconURL())
+  .setTimestamp();
+
+  message.channel.send({embeds: [embed]})
   
 
-
-
-  schema.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
-      if(err) throw err;
-      if(data) {
-        let embed = new MessageEmbed()
-        .setTitle("Warnings")
-        .setDescription(data.content.map(
-          (w, i) => 
-          `\`${i + 1}\` | Moderator : ${message.guild.members.cache.get(w.moderator).user.tag}\nWarnings in **${message.guild.name}**`
-      ))
-        .setColor("BLACK")
-        .setThumbnail(message.guild.iconURL())
-        .setTimestamp();
-          message.channel.send({embeds: [embed]})
-      } else {
-          message.channel.send('User has no data of warning')
-      }
-
-  })
-
-
-  message.channel.send({embeds: [embed]});
 }
 
 //reset warnings
@@ -2051,17 +2032,17 @@ if (message.content.startsWith(prefix + "rwarn")) {
     .setThumbnail(message.guild.iconURL())
     .setTimestamp();
 
+    if(data) {
+      await schema.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
+      message.channel.send({embeds: [embed]})
+      user.send({embeds: [embed1]});
+    } else {
+      message.channel.send('This user does not have any warns in this server!')
+  }
 
-    schema.findOne({ guildid : message.guild.id, user: user.user.id}, async(err,data) => {
-      if(err) throw err;
-      if(data) {
-          await schema.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
-          message.channel.send({embeds: [embed]})
-          user.send({embeds: [embed1]});
-      } else {
-          message.channel.send('This user does not have any warns in this server!')
-      }
-  })
+
+
+
 
 }
 
