@@ -1975,6 +1975,8 @@ if (message.content.startsWith(prefix + "showwarns")) {
     guildid: message.guild.id,
   });
 
+  let description = `Warnings For <@${user.id}>:\n\n`;
+  
   for (const warn of warnings) {
     description += `**ID:** ${warn._id}\n`
     description += `**Date:** ${warn.createdAt.toLocaleString()}\n`
