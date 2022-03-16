@@ -2034,13 +2034,10 @@ if (message.content.startsWith(prefix + "rwarn")) {
     .setThumbnail(message.guild.iconURL())
     .setTimestamp();
 
-    if(data) {
-      await schema.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
-      message.channel.send({embeds: [embed]})
-      user.send({embeds: [embed1]});
-    } else {
-      message.channel.send('This user does not have any warns in this server!')
-  }
+
+    await schema.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
+    message.channel.send({embeds: [embed]})
+    user.send({embeds: [embed1]});
 
 
 
