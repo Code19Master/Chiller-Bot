@@ -1981,7 +1981,7 @@ if (message.content.startsWith(prefix + "showwarns")) {
     description += `**ID:** ${warn._id}\n`
     description += `**Date:** ${warn.createdAt.toLocaleString()}\n`
     description += `**Moderator:** ${warn.moderator}\n`
-    description += `**guild:** ${warn.guild.name}\n`
+    description += `**guild:** <${warn.guildid}>\n`
   }
 
   let embed = new MessageEmbed()
