@@ -1976,12 +1976,12 @@ if (message.content.startsWith(prefix + "showwarns")) {
   });
 
   let description = `Warnings For <@${user.id}>:\n\n`;
-  
+
   for (const warn of warnings) {
     description += `**ID:** ${warn._id}\n`
     description += `**Date:** ${warn.createdAt.toLocaleString()}\n`
     description += `**Moderator:** ${warn.moderator}\n`
-    description += `**guild:** <#${warn.guildid}>\n`
+    description += `**guild:** <${warn.guildid}>\n`
   }
 
   let embed = new MessageEmbed()
