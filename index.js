@@ -16,7 +16,8 @@ const Fetch = require("node-fetch");
 const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
-
+const mongoose = require('mongoose');
+const warnSchema = require("./models/warn-schema.js");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const client = new Discord.Client({
@@ -41,6 +42,7 @@ const client = new Discord.Client({
 const token = process.env.TOKEN;
 const testtoken = process.env.TEST_TOKEN;
 const fn_api = process.env.FN_API_KEY; //fn api key
+const mongo = process.env.mongodb;
 const language = "en"; 
 const childMode = true;
 const gameType = "character"; 
@@ -61,7 +63,12 @@ fortniteapi.configuration({
 
 
 
-client.on('ready', () => {
+
+
+client.on('ready', async () => {
+  await mongoose.connect(mongo, {
+    keepAlive: true,
+  })
 
     console.log(`Logged in as ${client.user.tag}!`);
     const arrayOfStatus = [
@@ -151,6 +158,12 @@ commands?.create({
 
 
 });
+//mogoose
+let schema = mongoose.Schema({
+  user: String,
+  guildid: String,
+  content: Array
+})
 
 
 
@@ -1885,6 +1898,8 @@ if (message.content.startsWith(prefix + "imdb")) {
 
 //warn System 
 
+
+
 //warn
 if (message.content.startsWith(prefix + "warn")) {
   if (!message.member.permissions.has("MANAGE_ROLES")) {
@@ -1934,15 +1949,12 @@ if (message.content.startsWith(prefix + "warn")) {
     .setTimestamp();
 
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+    const warning = await warnSchema.create({
+      user: user.id,
+      guildid: message.guild.id,
+      moderator: message.author.id,
+    })
 
-  if (warnings === null) {
-    db.set(`warnings_${message.guild.id}_${user.id}`, 1);
-    user.send({embeds: [embed]});
-    await message.channel.send({embeds: [embed1]});
-  } else if(warnings !== null) {
-    
-    db.add(`warnings_${message.guild.id}_${user.id}`, 1);
     
     user.send({embeds: [embed]});
     
@@ -1951,72 +1963,87 @@ if (message.content.startsWith(prefix + "warn")) {
     message.delete
     
   }
-}
+
 
 //warnings
 if (message.content.startsWith(prefix + "showwarns")) {
+  const args = message.content.slice(8).trim().split(/ +/g);
   const user = message.mentions.members.first() || message.author;
 
+  const warnings = await warnSchema.find({
+    user: user.id,
+    guildid: message.guild.id,
+  });
+
+  let description = `Warnings For <@${user.id}>:\n\n`;
+
+  for (const warn of warnings) {
+    description += `**ID:** ${warn._id}\n`
+    description += `**Date:** ${warn.createdAt.toLocaleString()}\n`
+    description += `**Moderator:** ${warn.moderator}\n`
+    description += `**guild:** <${warn.guildid}>\n`
+  }
+
   let embed = new MessageEmbed()
-    .setTitle("Warnings")
-    .setDescription(`${user} has **${db.get(`warnings_${message.guild.id}_${user.id}`)}** warnings in **${message.guild.name}**`)
-    .setColor("BLACK")
-    .setThumbnail(message.guild.iconURL())
-    .setTimestamp();
+  .setTitle("Warnings")
+  .setDescription(description)
+  .setColor("BLACK")
+  .setThumbnail(message.guild.iconURL())
+  .setTimestamp();
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+  message.channel.send({embeds: [embed]})
+  
 
-  if (warnings === null) warnings = 0;
-
-  message.channel.send({embeds: [embed]});
 }
 
-//reset warnings
+//remove warnings
 if (message.content.startsWith(prefix + "rwarn")) {
-  if (!message.member.permissions.has("MANAGE_ROLES")) {
-    return message.channel.send(
-      "You should have manage roles perms to use this command!"
-    );
-  }
 
-  const user = message.mentions.members.first();
+  message.channel.send("The Command Is in Construction")
+    // if (!message.member.permissions.has("MANAGE_ROLES")) {
+    //   return message.channel.send(
+    //     "You should have manage roles perms to use this command!"
+    //   );
+    // }
 
-  if (!user) {
-    return message.channel.send("Please mention the person whose warning you want to reset");
-  }
+    // const user = message.mentions.members.first();
+    // const args = message.content.slice(8).trim().split(/ +/g);
 
-  if (message.mentions.users.first().bot) {
-    return message.channel.send("Bot are not allowed to have warnings");
-  }
+    // if (!user) {
+    //   return message.channel.send("Please mention the person whose warning you want to reset");
+    // }
 
-  if (message.author.id === user.id) {
-    return message.channel.send("You are not allowed to reset your warnings");
-  }
+    // if (message.mentions.users.first().bot) {
+    //   return message.channel.send("Bot are not allowed to have warnings");
+    // }
 
-  let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
-
-  if (warnings === null) {
-    return message.channel.send(`${message.mentions.users.first().username} do not have any warnings`);
-  }
-
-  let embed = new MessageEmbed()
-    .setTitle("Warnings Reset")
-    .setDescription(`${message.mentions.users.first().username}'s warnings have been reset in **${message.guild.name}**`)
-    .setColor("BLACK")
-    .setThumbnail(message.guild.iconURL())
-    .setTimestamp();
-
-  let embed1 = new MessageEmbed()
-    .setTitle("Warnings Reset")
-    .setDescription(`Your warnings have been reset in **${message.guild.name}** By ${message.author.tag}`)
-    .setColor("BLACK")
-    .setThumbnail(message.guild.iconURL())
-    .setTimestamp();
+    // if (message.author.id === user.id) {
+    //   return message.channel.send("You are not allowed to reset your warnings");
+    // }
 
 
-  db.delete(`warnings_${message.guild.id}_${user.id}`);
-  user.send({embeds: [embed1]});
-  await message.channel.send({embeds: [embed]});
+
+    // let embed = new MessageEmbed()
+    //   .setTitle("Warnings Removed")
+    //   .setDescription(`${warning.id} warning have been Removed in **${message.guild.name}** Of <@${user}>`)
+    //   .setColor("BLACK")
+    //   .setThumbnail(message.guild.iconURL())
+    //   .setTimestamp();
+
+    // let embed1 = new MessageEmbed()
+    //   .setTitle("Warnings Removed")
+    //   .setDescription(`Your warning **${warning.id}** was removed in **${message.guild.name}**By ${message.author.tag}`)
+    //   .setColor("BLACK")
+    //   .setThumbnail(message.guild.iconURL())
+    //   .setTimestamp();
+
+
+    //   const warning = await warnSchema.findByIdAndDelete(args[1])
+    
+
+
+
+
 
 }
 
@@ -2152,6 +2179,6 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 
 //for test
 
-client.login(token);
+client.login(testtoken);
 
 
