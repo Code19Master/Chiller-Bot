@@ -1981,7 +1981,7 @@ if (message.content.startsWith(prefix + "showwarns")) {
     description += `**ID:** ${warn._id}\n`
     description += `**Date:** ${warn.createdAt.toLocaleString()}\n`
     description += `**Moderator:** ${warn.moderator}\n`
-    description += `**guild:** <${warn.guildid}>\n`
+    description += `**guild:** ${warn.guild.name}\n`
   }
 
   let embed = new MessageEmbed()
@@ -1996,48 +1996,50 @@ if (message.content.startsWith(prefix + "showwarns")) {
 
 }
 
-//reset warnings
+//remove warnings
 if (message.content.startsWith(prefix + "rwarn")) {
-  if (!message.member.permissions.has("MANAGE_ROLES")) {
-    return message.channel.send(
-      "You should have manage roles perms to use this command!"
-    );
-  }
 
-  const user = message.mentions.members.first();
+  message.channel.send("The Command Is in Construction")
+    // if (!message.member.permissions.has("MANAGE_ROLES")) {
+    //   return message.channel.send(
+    //     "You should have manage roles perms to use this command!"
+    //   );
+    // }
 
-  if (!user) {
-    return message.channel.send("Please mention the person whose warning you want to reset");
-  }
+    // const user = message.mentions.members.first();
+    // const args = message.content.slice(8).trim().split(/ +/g);
 
-  if (message.mentions.users.first().bot) {
-    return message.channel.send("Bot are not allowed to have warnings");
-  }
+    // if (!user) {
+    //   return message.channel.send("Please mention the person whose warning you want to reset");
+    // }
 
-  if (message.author.id === user.id) {
-    return message.channel.send("You are not allowed to reset your warnings");
-  }
+    // if (message.mentions.users.first().bot) {
+    //   return message.channel.send("Bot are not allowed to have warnings");
+    // }
 
-
-
-  let embed = new MessageEmbed()
-    .setTitle("Warnings Reset")
-    .setDescription(`${message.mentions.users.first().username}'s warnings have been reset in **${message.guild.name}**`)
-    .setColor("BLACK")
-    .setThumbnail(message.guild.iconURL())
-    .setTimestamp();
-
-  let embed1 = new MessageEmbed()
-    .setTitle("Warnings Reset")
-    .setDescription(`Your warnings have been reset in **${message.guild.name}** By ${message.author.tag}`)
-    .setColor("BLACK")
-    .setThumbnail(message.guild.iconURL())
-    .setTimestamp();
+    // if (message.author.id === user.id) {
+    //   return message.channel.send("You are not allowed to reset your warnings");
+    // }
 
 
-    await schema.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
-    message.channel.send({embeds: [embed]})
-    user.send({embeds: [embed1]});
+
+    // let embed = new MessageEmbed()
+    //   .setTitle("Warnings Removed")
+    //   .setDescription(`${warning.id} warning have been Removed in **${message.guild.name}** Of <@${user}>`)
+    //   .setColor("BLACK")
+    //   .setThumbnail(message.guild.iconURL())
+    //   .setTimestamp();
+
+    // let embed1 = new MessageEmbed()
+    //   .setTitle("Warnings Removed")
+    //   .setDescription(`Your warning **${warning.id}** was removed in **${message.guild.name}**By ${message.author.tag}`)
+    //   .setColor("BLACK")
+    //   .setThumbnail(message.guild.iconURL())
+    //   .setTimestamp();
+
+
+    //   const warning = await warnSchema.findByIdAndDelete(args[1])
+    
 
 
 
