@@ -2158,12 +2158,12 @@ if (message.content.startsWith(prefix + "rank")) {
   
     axios.get(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
     .then(res => {
-      console.log(res.data);
-      console.log(res.data);
-      console.log(res.data);
-      console.log(res.data);
-      console.log(res.data);
-      console.log(res.data);
+      console.log(res.data.name);
+      console.log(res.data.tier);
+      console.log(res.dat.wins);
+      console.log(res.data.rating);
+      console.log(res.data.peak_rating);
+      console.log(res.data.games);
 
           // const embed = new MessageEmbed()
           // .setAuthor(`${name} Information!`)
