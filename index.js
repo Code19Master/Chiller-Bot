@@ -2151,7 +2151,7 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 if (message.content.startsWith(prefix + "rank")) {
   const args = message.content.slice(8).trim().split(/ +/g);
   if (!args[0]) return message.channel.send("Please enter a username");
-  let data = Fetch(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
+  let data = Fetch(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args}`)
   .then(response => response.json()).then(body => {
     if(body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
 
