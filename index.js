@@ -17,6 +17,9 @@ const Scraper = require("mal-scraper");
 const urban = require('relevant-urban');
 const imdb = require("imdb-api");
 const mongoose = require('mongoose');
+const axios = require('axios');
+
+
 const warnSchema = require("./models/warn-schema.js");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
@@ -2151,24 +2154,34 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 if (message.content.startsWith(prefix + "rank")) {
   const args = message.content.slice(8).trim().split(/ +/g);
   if (!args[0]) return message.channel.send("Please enter a username");
-  let data = Fetch(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args}`)
-  .then(response => response.json()).then(body => {
-    if(body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
+
+  axios
+    .get(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
+    .then(res => {
+      const name = res.data[0].name;
+      const tier = res.data[0].tier;
+      const wins = res.data[0].wins;
+      const rating = res.data[0].rating;
+      const peak_rating = res.data[0].peak_rating;
+      const games = res.data[0].games;
 
           const embed = new MessageEmbed()
-          .setAuthor(`${data.name} Information!`)
+          .setAuthor(`${name} Information!`)
           .setColor(`#211F1F`)
-          .addField(`Username`, `${data.name}`)
-          .addField(`Current Elo`, `${data.rating}`)
-          .addField(`Peak Elo`, `${data.peak_rating}`)
-          .addField(`Tier`, `${data.tier}`)
-          .addField(`Wins`, `${data.wins}`)
-          .addField(`Games Played`, `${data.games}`)
-          .setFooter(`This Is All About ${data.name}!`)
+          .addField(`Username`, `${name}`)
+          .addField(`Current Elo`, `${rating}`)
+          .addField(`Peak Elo`, `${peak_rating}`)
+          .addField(`Tier`, `${tier}`)
+          .addField(`Wins`, `${wins}`)
+          .addField(`Games Played`, `${games}`)
+          .setFooter(`This Is All About ${name}!`)
 
           message.channel.send({embeds: [embed]})
+    })
+    .catch(err => {
+      console.log("ERR:", err);
+    });
 
-  })
 
 
 }
