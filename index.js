@@ -2155,8 +2155,15 @@ if (message.content.startsWith(prefix + "rank")) {
   .then(response => response.json())
 
           const embed = new MessageEmbed()
-          .setAuthor(`${name} Information!`)
-
+          .setAuthor(`${fetchbh.name} Information!`)
+          .setColor(`#211F1F`)
+          .addField(`Username`, `${fetchbh.name}`)
+          .addField(`Current Elo`, `${fetchbh.rating}`)
+          .addField(`Peak Elo`, `${fetchbh.peak_rating}`)
+          .addField(`Tier`, `${fetchbh.tier}`)
+          .addField(`Wins`, `${fetchbh.wins}`)
+          .addField(`Games Played`, `${fetchbh.games}`)
+          .setFooter(`This Is All About ${fetchbh.name} on github!`)
 
           message.channel.send({embeds: [embed]})
 
