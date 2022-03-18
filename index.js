@@ -2152,11 +2152,11 @@ if (message.content.startsWith(prefix + "rank")) {
   const args = message.content.slice(8).trim().split(/ +/g);
   if (!args[0]) return message.channel.send("Please enter a username");
   Fetch(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
-  .then(res => res.json()).then(body => {
+  .then(response => response.json()).then(body => {
     if(body.message) return message.channel.send(`User Not Found`);
 
           const embed = new MessageEmbed()
-          .setTitle(`${data.name} Information!`)
+          .setAuthor(`${data.name} Information!`)
 
           message.channel.send({embeds: [embed]})
 
