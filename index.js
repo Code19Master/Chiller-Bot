@@ -2157,7 +2157,7 @@ if (message.content.startsWith(prefix + "rank")) {
   let { name, rating, peak_rating, tier, wins, games } = body;
 
           const embed = new MessageEmbed()
-          .setAuthor(`${.name} Information!`)
+          .setAuthor(`${name} Information!`)
           .setColor(`#211F1F`)
           .addField(`Username`, `${name}`)
           .addField(`Current Elo`, `${rating}`)
