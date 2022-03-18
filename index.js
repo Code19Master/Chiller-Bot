@@ -2152,20 +2152,20 @@ if (message.content.startsWith(prefix + "rank")) {
   const args = message.content.slice(8).trim().split(/ +/g);
   if (!args[0]) return message.channel.send("Please enter a username");
   Fetch(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
-  .then(res => res.json()).then(body => {
+  .then(response => response.json()).then(body => {
     if(body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
   let { name, rating, peak_rating, tier, wins, games } = body;
 
           const embed = new MessageEmbed()
-          .setAuthor(`${fetchbh.name} Information!`)
+          .setAuthor(`${.name} Information!`)
           .setColor(`#211F1F`)
-          .addField(`Username`, `${fetchbh.name}`)
-          .addField(`Current Elo`, `${fetchbh.rating}`)
-          .addField(`Peak Elo`, `${fetchbh.peak_rating}`)
-          .addField(`Tier`, `${fetchbh.tier}`)
-          .addField(`Wins`, `${fetchbh.wins}`)
-          .addField(`Games Played`, `${fetchbh.games}`)
-          .setFooter(`This Is All About ${fetchbh.name}!`)
+          .addField(`Username`, `${name}`)
+          .addField(`Current Elo`, `${rating}`)
+          .addField(`Peak Elo`, `${peak_rating}`)
+          .addField(`Tier`, `${tier}`)
+          .addField(`Wins`, `${wins}`)
+          .addField(`Games Played`, `${games}`)
+          .setFooter(`This Is All About ${name}!`)
 
           message.channel.send({embeds: [embed]})
 
