@@ -2155,8 +2155,8 @@ if (message.content.startsWith(prefix + "rank")) {
   const args = message.content.slice(8).trim().split(/ +/g);
   if (!args[0]) return message.channel.send("Please enter a username");
 
-  axios
-    .get(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
+  
+    axios.get(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
     .then(res => {
       const name = res.data[0].name;
       const tier = res.data[0].tier;
