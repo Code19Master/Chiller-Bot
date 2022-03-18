@@ -2158,25 +2158,25 @@ if (message.content.startsWith(prefix + "rank")) {
   
     axios.get(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
     .then(res => {
-      const name = res.data[0].name;
-      const tier = res.data[1].tier;
-      const wins = res.data[2].wins;
-      const rating = res.data[3].rating;
-      const peak_rating = res.data[4].peak_rating;
-      const games = res.data[5].games;
+      console.log(res.data[0].name);
+      console.log(res.data[1].tier);
+      console.log(res.data[2].wins);
+      console.log(res.data[3].rating);
+      console.log(res.data[4].peak_rating);
+      console.log(res.data[5].games);
 
-          const embed = new MessageEmbed()
-          .setAuthor(`${name} Information!`)
-          .setColor(`#211F1F`)
-          .addField(`Username`, `${name}`)
-          .addField(`Current Elo`, `${rating}`)
-          .addField(`Peak Elo`, `${peak_rating}`)
-          .addField(`Tier`, `${tier}`)
-          .addField(`Wins`, `${wins}`)
-          .addField(`Games Played`, `${games}`)
-          .setFooter(`This Is All About ${name}!`)
+          // const embed = new MessageEmbed()
+          // .setAuthor(`${name} Information!`)
+          // .setColor(`#211F1F`)
+          // .addField(`Username`, `${name}`)
+          // .addField(`Current Elo`, `${rating}`)
+          // .addField(`Peak Elo`, `${peak_rating}`)
+          // .addField(`Tier`, `${tier}`)
+          // .addField(`Wins`, `${wins}`)
+          // .addField(`Games Played`, `${games}`)
+          // .setFooter(`This Is All About ${name}!`)
 
-          message.channel.send({embeds: [embed]})
+          // message.channel.send({embeds: [embed]})
     })
     .catch(err => {
       console.log("ERR:", err);
