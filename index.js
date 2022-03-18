@@ -2160,7 +2160,7 @@ if (message.content.startsWith(prefix + "rank")) {
     .then(res => {
       console.log(res.data.name);
       console.log(res.data.tier);
-      console.log(res.dat.wins);
+      console.log(res.data.wins);
       console.log(res.data.rating);
       console.log(res.data.peak_rating);
       console.log(res.data.games);
