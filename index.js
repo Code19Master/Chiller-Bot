@@ -2145,6 +2145,26 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 }
 
 
+//brawlhalla commands 
+
+//rank
+if (message.content.startsWith(prefix + "rank")) {
+  const args = message.content.slice(8).trim().split(/ +/g);
+  if (!args[0]) return message.channel.send("Please enter a username");
+  Fetch(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
+  .then(res => res.json()).then(body => {
+    if(body.message) return message.channel.send(`User Not Found`);
+
+          const embed = new MessageEmbed()
+          .setTitle(`${data.name} Information!`)
+
+          message.channel.send({embeds: [embed]})
+
+  })
+
+}
+
+
 
 
 
@@ -2179,6 +2199,6 @@ if (message.content.startsWith(prefix + "newUpdate")) {
 
 //for test
 
-client.login(token);
+client.login(testtoken);
 
 
