@@ -2155,7 +2155,7 @@ if (message.content.startsWith(prefix + "rank")) {
   .then(response => response.json())
 
           const embed = new MessageEmbed()
-          .setAuthor(`${data.name} Information!`)
+          .setAuthor(`${name} Information!`)
 
 
           message.channel.send({embeds: [embed]})
