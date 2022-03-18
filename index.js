@@ -2165,18 +2165,18 @@ if (message.content.startsWith(prefix + "rank")) {
       console.log(res.data.peak_rating);
       console.log(res.data.games);
 
-          // const embed = new MessageEmbed()
-          // .setAuthor(`${name} Information!`)
-          // .setColor(`#211F1F`)
-          // .addField(`Username`, `${name}`)
-          // .addField(`Current Elo`, `${rating}`)
-          // .addField(`Peak Elo`, `${peak_rating}`)
-          // .addField(`Tier`, `${tier}`)
-          // .addField(`Wins`, `${wins}`)
-          // .addField(`Games Played`, `${games}`)
-          // .setFooter(`This Is All About ${name}!`)
+          const embed = new MessageEmbed()
+          .setAuthor(`${res.data.name} Information!`)
+          .setColor(`#211F1F`)
+          .addField(`Username`, `${res.data.name}`)
+          .addField(`Current Elo`, `${res.data.rating}`)
+          .addField(`Peak Elo`, `${res.data.peak_rating}`)
+          .addField(`Tier`, `${res.data.tier}`)
+          .addField(`Wins`, `${res.data.wins}`)
+          .addField(`Games Played`, `${res.data.games}`)
+          .setFooter(`This Is All About ${res.data.name}!`)
 
-          // message.channel.send({embeds: [embed]})
+          message.channel.send({embeds: [embed]})
     })
     .catch(err => {
       console.log("ERR:", err);
