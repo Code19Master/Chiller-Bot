@@ -2147,44 +2147,13 @@ if (message.content.startsWith(prefix + "newUpdate")) {
   message.channel.send({embeds: [embed]});
 }
 
-
-//brawlhalla commands 
-
-//rank
-if (message.content.startsWith(prefix + "rank")) {
-  const args = message.content.slice(8).trim().split(/ +/g);
-  if (!args[0]) return message.channel.send("Please enter a username");
-
-  
-    axios.get(`https://brawlhalla-api.herokuapp.com/v1/ranked/name?name=${args[0]}`)
-    .then(res => {
-      console.log(res.data.name);
-      console.log(res.data.tier);
-      console.log(res.data.wins);
-      console.log(res.data.rating);
-      console.log(res.data.peak_rating);
-      console.log(res.data.games);
-
-          const embed = new MessageEmbed()
-          .setAuthor(`${res.data.name} Information!`)
-          .setColor(`#211F1F`)
-          .addField(`Username`, `${res.data.name}`)
-          .addField(`Current Elo`, `${res.data.rating}`)
-          .addField(`Peak Elo`, `${res.data.peak_rating}`)
-          .addField(`Tier`, `${res.data.tier}`)
-          .addField(`Wins`, `${res.data.wins}`)
-          .addField(`Games Played`, `${res.data.games}`)
-          .setFooter(`This Is All About ${res.data.name}!`)
-
-          message.channel.send({embeds: [embed]})
-    })
-    .catch(err => {
-      console.log("ERR:", err);
-    });
-
-
-
+//cat
+if (message.content.startsWith(prefix + "cat")) {
+  const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+  message.channel.send({ files: [file] });
 }
+
+
 
 
 
