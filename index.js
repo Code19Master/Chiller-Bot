@@ -2165,12 +2165,12 @@ if (message.content.startsWith(prefix + "cat")) {
     responseType: 'stream'
   })
     .then(function (response) {
-      const cat = response.data.pipe(fs.createWriteStream('cat.jpg'))
+      response.data.pipe(fs.createWriteStream('cat.jpg'))
     });
 
   const embed = new MessageEmbed()
     .setTitle("Cat")
-    .setImage(cat)
+    .setImage(response)
     .setColor("BLACK")
     .setTimestamp();
 
