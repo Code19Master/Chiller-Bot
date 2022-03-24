@@ -18,8 +18,6 @@ const urban = require('relevant-urban');
 const imdb = require("imdb-api");
 const mongoose = require('mongoose');
 const axios = require('axios');
-
-
 const warnSchema = require("./models/warn-schema.js");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
@@ -2147,13 +2145,17 @@ if (message.content.startsWith(prefix + "newUpdate")) {
   message.channel.send({embeds: [embed]});
 }
 
-//cat
-if (message.content.startsWith(prefix + "cat")) {
-  const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
-  message.channel.send({ files: [file] });
+
+if (message.content.startsWith(prefix + "waifu")) {
+
+  const embed = new MessageEmbed()
+    .setTitle("Waifu")
+    .setImage("https://api.dhravya.me/waifu?simple=True")
+    .setColor("BLACK")
+    .setTimestamp();
+
+  message.channel.send({embeds: [embed]});
 }
-
-
 
 
 
