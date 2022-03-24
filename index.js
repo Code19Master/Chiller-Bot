@@ -2145,18 +2145,27 @@ if (message.content.startsWith(prefix + "newUpdate")) {
   message.channel.send({embeds: [embed]});
 }
 
-
+//waifu
 if (message.content.startsWith(prefix + "waifu")) {
-
   const embed = new MessageEmbed()
     .setTitle("Waifu")
-    .setImage("https://api.dhravya.me/waifu?simple=True")
+    .setImage("https://api.dhravya.me/waifu")
     .setColor("BLACK")
     .setTimestamp();
 
   message.channel.send({embeds: [embed]});
 }
 
+//cat
+if (message.content.startsWith(prefix + "cat")) {
+  const embed = new MessageEmbed()
+    .setTitle("Cat")
+    .setImage("https://api.dhravya.me/cat")
+    .setColor("BLACK")
+    .setTimestamp();
+
+  message.channel.send({embeds: [embed]});
+}
 
 
 
