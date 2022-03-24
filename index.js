@@ -18,6 +18,7 @@ const urban = require('relevant-urban');
 const imdb = require("imdb-api");
 const mongoose = require('mongoose');
 const axios = require('axios');
+const fs = require('fs');
 const warnSchema = require("./models/warn-schema.js");
 
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
@@ -2158,9 +2159,18 @@ if (message.content.startsWith(prefix + "waifu")) {
 
 //cat
 if (message.content.startsWith(prefix + "cat")) {
+  axios({
+    method: 'get',
+    url: 'https://api.dhravya.me/cat',
+    responseType: 'stream'
+  })
+    .then(function (response) {
+      const cat = response.data.pipe(fs.createWriteStream('cat.jpg'))
+    });
+
   const embed = new MessageEmbed()
     .setTitle("Cat")
-    .setImage("https://api.dhravya.me/cat")
+    .setImage(cat)
     .setColor("BLACK")
     .setTimestamp();
 
