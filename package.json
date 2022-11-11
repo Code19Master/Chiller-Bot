@@ -37,7 +37,7 @@
     "mongoose": "^6.2.6"
   },
   "engines": {
-    "node": ">=16.6.0"
+    "node": ">=19.0.1"
   },
   "bugs": {
     "url": "https://github.com/Code19Master/Chiller-Bot/issues"
